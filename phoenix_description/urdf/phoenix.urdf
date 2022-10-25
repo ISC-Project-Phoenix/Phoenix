@@ -1,0 +1,452 @@
+<?xml version="1.0"?>
+<robot name="phoenix">
+
+<!-- Base footprint -->
+    <link name="base_footprint"/>
+    
+
+<!--Rear Axle Link and Joint-->
+    <link name="rear_axle">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.00001 0.0000001 0.000001"/>
+            </geometry>
+        </visual>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="0.001"/>
+            <inertia
+                ixx="7.6E-07" ixy="0.0" ixz="0.0"
+                iyy="7.6E-07" iyz="0.0"
+                izz="0.000001"/>
+        </inertial>
+    </link>
+
+    <joint name="base_footprint_to_rear_axle" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0.09525"/>
+        <parent link="base_footprint"/>
+        <child link="rear_axle"/>
+    </joint>
+
+
+<!--Chassis link and joint -->    
+    <link name="base_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="1.4812 1.0668 0.1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="1.4812 1.0668 0.1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="90"/>
+            <inertia
+                ixx="0.000315771" ixy="0.0" ixz="0.0"
+                iyy="0.00266963" iyz="0.0"
+                izz="0.0"/>
+        </inertial>
+    </link>
+    
+    <joint name="rear_axle_to_base_link" type="fixed">
+        <origin rpy="0 0 0" xyz="0.78 0 0.09525"/>
+        <parent link="rear_axle"/>
+        <child link="base_link"/>
+    </joint>
+    
+    
+<!-- Wheel links and joints -->
+    
+    <!-- Left wheel link and joint -->
+    <link name="left_front_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1143" radius="0.127"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1143" radius="0.127"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="0.1"/>
+            <inertia
+                ixx="7.6E-05" ixy="0.0" ixz="0.0"
+                iyy="7.6E-05" iyz="0.0"
+                izz="0.000125"/>
+        </inertial>
+    </link>
+
+    <!-- The joint where the left wheel pivots about -->
+    <link name="left_front_wheel_rack">
+    <!-- These visuals are needed, else gazebo crashes -->
+    <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.00001 0.0000001 0.000001"/>
+            </geometry>
+        </visual>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="0.001"/>
+            <inertia
+                ixx="7.6E-07" ixy="0.0" ixz="0.0"
+                iyy="7.6E-07" iyz="0.0"
+                izz="0.000001"/>
+        </inertial>
+    </link>
+
+    <joint name="left_front_wheel_steer" type="revolute">
+        <origin rpy="0 0 0" xyz="0.619075 0.6477 -0.054"/>
+        <parent link="base_link"/>
+        <child link="left_front_wheel_rack"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-0.3499" upper="+0.5236" velocity="3.0" effort="0.88269"/>
+    </joint>
+    
+    <joint name="left_front_wheel_rack_to_wheel" type="continuous">
+        <origin rpy="0 0 0" xyz="0 -0.00001 0"/>
+        <parent link="left_front_wheel_rack"/>
+        <child link="left_front_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    
+    <!-- Right wheel link and joint -->
+    <link name="right_front_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+               <cylinder length="0.1143" radius="0.127"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1143" radius="0.127"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="0.1"/>
+            <inertia
+                ixx="7.6E-05" ixy="0.0" ixz="0.0"
+                iyy="7.6E-05" iyz="0.0"
+                izz="0.000125"/>
+        </inertial>
+    </link>
+
+    <!-- The joint where the right wheel pivots about -->
+    <link name="right_front_wheel_rack">
+    <!-- These visuals are needed, else gazebo crashes -->
+    <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.00001 0.0000001 0.000001"/>
+            </geometry>
+        </visual>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="0.001"/>
+            <inertia
+                ixx="7.6E-07" ixy="0.0" ixz="0.0"
+                iyy="7.6E-07" iyz="0.0"
+                izz="0.000001"/>
+        </inertial>
+    </link>
+    
+    <joint name="right_front_wheel_steer" type="revolute">
+        <origin rpy="0 0 0" xyz=" 0.619075 -0.6477 -0.054"/>
+        <parent link="base_link"/>
+        <child link="right_front_wheel_rack"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-0.3499" upper="+0.5236" velocity="3.0" effort="0.88269"/>
+    </joint> 
+    
+    <joint name="right_front_wheel_rack_to_wheel" type="continuous">
+        <origin rpy="0 0 0" xyz="0 -0.00001 0"/>
+        <parent link="right_front_wheel_rack"/>
+        <child link="right_front_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint> 
+
+    <!--Rear Wheels -->
+    <link name="rear_wheels">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="1.3716" radius="0.13335"/>
+            </geometry>
+        </visual>
+        <collision>
+            <cylinder length="1.3716" radius="0.13335"/>
+        </collision>
+        <inertia>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="0.1"/>
+            <inertia
+                ixx="7.6E-05" ixy="0.0" ixz="0.0"
+                iyy="7.6E-05" iyz="0.0"
+                izz="0.000125"/>
+        </inertia>
+    </link>
+
+    <joint name="rear_wheels_to_rear_axle" type="continuous">
+        <origin rpy="0 0 0" xyz="0 0 0.09525"/>
+        <parent link="rear_axle"/>
+        <child link="rear_wheels"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    
+    <!-- Right rear wheel link and joint
+    <link name="right_rear_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.04" radius="0.05"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.04" radius="0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="0.1"/>
+            <inertia
+                ixx="7.6E-05" ixy="0.0" ixz="0.0"
+                iyy="7.6E-05" iyz="0.0"
+                izz="0.000125"/>
+        </inertial>
+    </link>
+    
+    <joint name="right_rear_wheel_to_base_link" type="continuous">
+        <origin rpy="0 0 0" xyz="-0.140575 -0.095 -0.054"/>
+        <parent link="base_link"/>
+        <child link="right_rear_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint>-->
+    
+    <!-- Left rear wheel link and joint 
+    <link name="left_rear_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.04" radius="0.05"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.04" radius="0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="0.1"/>
+            <inertia
+                ixx="7.6E-05" ixy="0.0" ixz="0.0"
+                iyy="7.6E-05" iyz="0.0"
+                izz="0.000125"/>
+        </inertial>
+    </link>
+    
+    <joint name="left_rear_wheel_to_base_link" type="continuous">
+        <origin rpy="0 0 0" xyz="-0.140575 0.095 -0.054"/>
+        <parent link="base_link"/>
+        <child link="left_rear_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint>-->
+    
+<!-- Sensors -->
+
+<link name="mid_cam_link">
+    <visual>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+            <box size="0.02 0.05 0.02"/>
+        </geometry>
+    </visual>
+    <collision>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+            <box size="0.02 0.05 0.02"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="90"/>
+        <inertia
+            ixx="0.000315771" ixy="0.0" ixz="0.0"
+            iyy="0.00266963" iyz="0.0"
+            izz="0.0"/>
+    </inertial>
+</link>
+<joint name="mid_cam_to_rear_axle" type="fixed">
+    <origin rpy="0 0 0" xyz="1.05 0 0.4"/>
+    <parent link="rear_axle"/>
+    <child link="mid_cam_link"/>
+</joint>
+
+
+<link name="right_cam_link">
+    <visual>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+            <box size="0.02 0.05 0.02"/>
+        </geometry>
+    </visual>
+    <collision>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+            <box size="0.02 0.05 0.02"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="90"/>
+        <inertia
+            ixx="0.000315771" ixy="0.0" ixz="0.0"
+            iyy="0.00266963" iyz="0.0"
+            izz="0.0"/>
+    </inertial>
+</link>
+<joint name="right_cam_to_rear_axle" type="fixed">
+    <origin rpy="0 0 0.785" xyz="1.05 0.17 0.4"/>
+    <parent link="rear_axle"/>
+    <child link="right_cam_link"/>
+</joint>
+
+
+<link name="left_cam_link">
+    <visual>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+            <box size="0.02 0.05 0.02"/>
+        </geometry>
+    </visual>
+    <collision>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+            <box size="0.02 0.05 0.02"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="90"/>
+        <inertia
+            ixx="0.000315771" ixy="0.0" ixz="0.0"
+            iyy="0.00266963" iyz="0.0"
+            izz="0.0"/>
+    </inertial>
+</link>
+<joint name="left_cam_to_rear_axle" type="fixed">
+    <origin rpy="0 0 -0.785" xyz="1.05 -0.17 0.4"/>
+    <parent link="rear_axle"/>
+    <child link="left_cam_link"/>
+</joint>
+<!-- Gazebo Plugins -->
+    
+  <gazebo>
+    <plugin filename="libignition-gazebo-ackermann-steering-system.so"
+              name="ignition::gazebo::systems::AckermannSteering">
+      <left_steering_joint>left_front_wheel_steer</left_steering_joint>
+      <left_joint>left_rear_wheel_to_base_link</left_joint>
+
+      <right_steering_joint>right_front_wheel_steer</right_steering_joint>
+      <right_joint>right_rear_wheel_to_base_link</right_joint>
+
+      <wheel_separation>0.19</wheel_separation>
+      <wheel_radius>0.053975</wheel_radius>
+      <odom_publish_frequency>20</odom_publish_frequency>
+
+      <min_velocity>-13</min_velocity>
+      <max_velocity>13</max_velocity>
+      <min_acceleration>-5</min_acceleration>
+      <max_acceleration>5</max_acceleration>
+
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
+    </plugin>
+  </gazebo> 
+  
+    <gazebo reference="mid_cam_link">
+        <sensor name="mid_cam_link" type="rgbd_camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>mid_rgbd_camera</topic>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+  </gazebo>
+  
+      <gazebo reference="right_cam_link">
+        <sensor name="right_cam_link" type="rgbd_camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>right_rgbd_camera</topic>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+  </gazebo>
+  
+      <gazebo reference="left_cam_link">
+        <sensor name="left_cam_link" type="rgbd_camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>left_rgbd_camera</topic>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+  </gazebo>
+
+  <!--Gets joint states from gazebo model so that they can be sent to ros2 over ign_bridge
+  <gazebo>
+    <plugin filename="libignition-gazebo-joint-state-publisher-system.so" name="ignition::gazebo::systems::JointStatePublisher"/>
+  </gazebo> -->
+</robot>
+            
