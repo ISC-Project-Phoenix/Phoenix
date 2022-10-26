@@ -16,7 +16,7 @@ def generate_launch_description():
 
     # Config
     joy_config = os.path.join(pkg_phoenix_gazebo, 'config/joystick',
-                              'wii-wheel.config.yaml')
+                              'xbone.config.yaml')
 
     # Launch arguments
     drive_mode_switch_button = LaunchConfiguration(

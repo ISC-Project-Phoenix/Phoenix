@@ -19,7 +19,7 @@ find_package(teleop_twist_joy REQUIRED)
 
 #INSTALL
 install(
-    DIRECTORY launch worlds models
+    DIRECTORY launch worlds models config
     DESTINATION share/${PROJECT_NAME}/
     )
 
