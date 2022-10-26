@@ -1,5 +1,5 @@
 <sdf version='1.9'>
-  <world name='tinykarts_world'>
+  <world name='phoenix_world'>
     <physics name='1ms' type='ignored'>
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1.0</real_time_factor>
@@ -28,14 +28,14 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file://../models/track.dae</uri>
+            	<uri>../models/purdue_track/track.dae</uri>
             </mesh>
           </geometry>
         </visual>
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file://../models/track.dae</uri>
+            	<uri>../models/purdue_track/track.dae</uri>
             </mesh>
           </geometry>
         </collision>
