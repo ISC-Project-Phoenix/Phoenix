@@ -106,7 +106,7 @@
   </library_effects>
   <library_images>
     <image id="EXPORT_GOOGLE_SAT_WM" name="EXPORT_GOOGLE_SAT_WM">
-      <init_from>EXPORT_GOOGLE_SAT_WM.tif</init_from>
+      <init_from>EXPORT_GOOGLE_SAT_WM_PNG.png</init_from>
     </image>
   </library_images>
   <library_materials>
