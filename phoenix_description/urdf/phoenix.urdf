@@ -23,7 +23,7 @@
     </link>
 
     <joint name="base_footprint_to_rear_axle" type="fixed">
-        <origin rpy="3.14159 0 0" xyz="0 0 0.127"/>
+        <origin rpy="0 0 0" xyz="0 0 0.127"/>
         <parent link="base_footprint"/>
         <child link="rear_axle"/>
     </joint>
@@ -46,7 +46,7 @@
     </link>
 
     <joint name="rear_axle_to_physical_rear_axle" type="continuous">
-        <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+        <origin rpy="1.5708 0 3.14159" xyz="0 0 0"/>
         <parent link="rear_axle"/>
         <child link="physical_rear_axle"/>
         <axis xyz="0 0 1"/>
