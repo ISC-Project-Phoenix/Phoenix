@@ -13,6 +13,8 @@ def generate_launch_description():
     # ROS packages
     pkg_phoenix_gazebo = get_package_share_directory('phoenix_gazebo')
     pkg_teleop_twist_joy = get_package_share_directory('teleop_twist_joy')
+    pkg_robot_state_controller = get_package_share_directory(
+        'robot_state_controller')
 
     # Config
     joy_config = os.path.join(pkg_phoenix_gazebo, 'config/joystick',
@@ -65,6 +67,17 @@ def generate_launch_description():
         }.items(),
     )
 
+    robot_state_controller = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_robot_state_controller, 'launch'),
+            '/rsc_with_ipp.launch.py'
+        ]),
+        launch_arguments={
+            'switch_button': drive_mode_switch_button,
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument(
@@ -90,5 +103,6 @@ def generate_launch_description():
         state_publishers,
         ign_gazebo,
         joy_with_teleop_twist,
-        #rviz,
+        robot_state_controller,
+        rviz,
     ])

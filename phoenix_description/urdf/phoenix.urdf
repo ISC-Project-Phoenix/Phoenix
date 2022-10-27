@@ -37,7 +37,7 @@
         </visual>
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1"/>
+            <mass value="10"/>
             <inertia
                 ixx="7.6E-07" ixy="0.0" ixz="0.0"
                 iyy="7.6E-07" iyz="0.0"
@@ -49,7 +49,7 @@
         <origin rpy="1.5708 0 0" xyz="0 0 0"/>
         <parent link="rear_axle"/>
         <child link="physical_rear_axle"/>
-        <axis xyz="0 1 0"/>
+        <axis xyz="0 0 1"/>
     </joint>
 
 
@@ -130,7 +130,7 @@
     </link>
 
     <joint name="left_front_wheel_steer" type="revolute">
-        <origin rpy="0 0 0" xyz="1.03505 0.6477 -0.054"/>
+        <origin rpy="0 0 0" xyz="1.03505 0.6477 0"/>
         <parent link="rear_axle"/>
         <child link="left_front_wheel_rack"/>
         <axis xyz="0 0 1"/>
@@ -149,13 +149,13 @@
         <visual>
             <origin rpy="1.5708 0 0" xyz="0 0 0" />
             <geometry>
-               <cylinder length="0.1143" radius="0.127"/>
+               <cylinder length="0.1143" radius="0.12065"/>
             </geometry>
         </visual>
         <collision>
             <origin rpy="1.5708 0 0" xyz="0 0 0" />
             <geometry>
-                <cylinder length="0.1143" radius="0.127"/>
+                <cylinder length="0.1143" radius="0.12065"/>
             </geometry>
         </collision>
         <inertial>
@@ -188,7 +188,7 @@
     </link>
     
     <joint name="right_front_wheel_steer" type="revolute">
-        <origin rpy="0 0 0" xyz="1.03505 -0.6477 -0.054"/>
+        <origin rpy="0 0 0" xyz="1.03505 -0.6477 0"/>
         <parent link="rear_axle"/>
         <child link="right_front_wheel_rack"/>
         <axis xyz="0 0 1"/>
@@ -278,7 +278,7 @@
     </collision>
     <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="90"/>
+        <mass value="0.1"/>
         <inertia
             ixx="0.000315771" ixy="0.0" ixz="0.0"
             iyy="0.00266963" iyz="0.0"
@@ -307,7 +307,7 @@
     </collision>
     <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="90"/>
+        <mass value="0.1"/>
         <inertia
             ixx="0.000315771" ixy="0.0" ixz="0.0"
             iyy="0.00266963" iyz="0.0"
@@ -336,7 +336,7 @@
     </collision>
     <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="90"/>
+        <mass value="0.1"/>
         <inertia
             ixx="0.000315771" ixy="0.0" ixz="0.0"
             iyy="0.00266963" iyz="0.0"
