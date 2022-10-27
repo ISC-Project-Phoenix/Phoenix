@@ -12,8 +12,8 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     # ROS packages
-    pkg_tinykart_description = get_package_share_directory(
-        'tinykart_description')
+    pkg_phoenix_description = get_package_share_directory(
+        'phoenix_description')
 
     # launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
@@ -24,8 +24,8 @@ def generate_launch_description():
                 executable='rviz2',
                 arguments=[
                     '-d',
-                    os.path.join(pkg_tinykart_description, 'rviz',
-                                 'tinykart_gazebo.rviz')
+                    os.path.join(pkg_phoenix_description, 'rviz',
+                                 'phoenix_gazebo.rviz')
                 ],
                 parameters=[{
                     'use_sim_time': use_sim_time
