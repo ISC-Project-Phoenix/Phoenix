@@ -23,7 +23,7 @@
     </link>
 
     <joint name="base_footprint_to_rear_axle" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0.127"/>
+        <origin rpy="3.14159 0 0" xyz="0 0 0.127"/>
         <parent link="base_footprint"/>
         <child link="rear_axle"/>
     </joint>
@@ -71,8 +71,8 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="90"/>
             <inertia
-                ixx="14.705783" ixy="0.0" ixz="0.0"
-                iyy="5.3443437" iyz="0.0"
+                ixx="5.3443437" ixy="0.0" ixz="0.0"
+                iyy="14.705783" iyz="0.0"
                 izz="19.900126"/>
         </inertial>
     </link>
@@ -359,17 +359,17 @@
       <right_steering_joint>right_front_wheel_steer</right_steering_joint>
       <right_joint>rear_axle_to_physical_rear_axle</right_joint>
 
-      <wheel_separation>0.19</wheel_separation>
-      <wheel_radius>0.053975</wheel_radius>
+      <wheel_separation>0.94</wheel_separation>
+      <wheel_radius>0.12065</wheel_radius>
       <odom_publish_frequency>20</odom_publish_frequency>
 
-      <min_velocity>-13</min_velocity>
+      <min_velocity>0</min_velocity>
       <max_velocity>13</max_velocity>
       <min_acceleration>-5</min_acceleration>
-      <max_acceleration>5</max_acceleration>
+      <max_acceleration>10</max_acceleration>
 
       <frame_id>odom</frame_id>
-      <child_frame_id>rear_axle</child_frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
     </plugin>
   </gazebo> 
   
