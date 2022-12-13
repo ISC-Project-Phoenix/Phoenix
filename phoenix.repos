@@ -7,7 +7,3 @@ repositories:
       type: git 
       url: git@github.com:iscumd/twist_to_ackermann.git
       version: master
-    wii_wheel:
-      type: git
-      url: git@github.com:andyblarblar/ros2_wii_wheel.git
-      version: master
