@@ -7,3 +7,7 @@ repositories:
       type: git 
       url: git@github.com:iscumd/twist_to_ackermann.git
       version: master
+    robot_state_controller:
+      type: git
+      url: git@github.com:iscumd/robot_state_controller.git
+      version: ros2

@@ -28,7 +28,6 @@ def generate_launch_description():
     gazebo_world = LaunchConfiguration(
         'gazebo_world', default='purdue_gp_track.sdf')
 
-
     state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
@@ -70,7 +69,7 @@ def generate_launch_description():
     robot_state_controller = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_robot_state_controller, 'launch'),
-            '/rsc_with_ipp.launch.py'
+            '/robot_state_controller.launch.py'
         ]),
         launch_arguments={
             'switch_button': drive_mode_switch_button,
