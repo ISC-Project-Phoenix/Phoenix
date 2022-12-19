@@ -15,6 +15,7 @@ jobs:
     name: ROS ${{ matrix.ROS_DISTRO }} (${{ matrix.ROS_REPO }})
     steps:
       - uses: actions/checkout@v3
+      - run: sed -i 's/git@github.com:/https:\/\/github.com\//g' phoenix.repos
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{ matrix.env }}
   
