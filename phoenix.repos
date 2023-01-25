@@ -11,3 +11,7 @@ repositories:
       type: git
       url: git@github.com:iscumd/robot_state_controller.git
       version: ros2
+    data_logger:
+      type: git
+      url: git@github.com:ISC-Project-Phoenix/data_logger.git
+      version: main
