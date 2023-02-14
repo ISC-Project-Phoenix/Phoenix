@@ -77,9 +77,10 @@
             </mesh>
           </geometry>
         </collision>
-        <pose>0 0 20 0 -0 0</pose>
+        <!-- Offset the pose slightly cause it doesn't line up otherwise for some reason-->
+        <pose>5 2.77 20 0 -0 0</pose>
         <inertial>
-          <pose>0 0 0 0 -0 0</pose>
+          <pose>0 0 0 0 0 0</pose>
           <mass>1</mass>
           <inertia>
             <ixx>1</ixx>
