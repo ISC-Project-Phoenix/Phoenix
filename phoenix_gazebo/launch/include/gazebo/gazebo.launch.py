@@ -43,10 +43,6 @@ def generate_launch_description():
             '/model/phoenix/joint_state@sensor_msgs/msg/JointState[ignition.msgs.Model',
             '/mid_rgbd_camera/image@sensor_msgs/msg/Image[ignition.msgs.Image',
             '/mid_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo',
-            '/right_rgbd_camera/image@sensor_msgs/msg/Image[ignition.msgs.Image',
-            '/right_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo',
-            '/left_rgbd_camera/image@sensor_msgs/msg/Image[ignition.msgs.Image',
-            '/left_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo',
             '/sky_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo',
             '/sky_rgbd_camera/image@sensor_msgs/msg/Image[ignition.msgs.Image',
         ],
@@ -56,7 +52,12 @@ def generate_launch_description():
             ('/model/phoenix/tf', '/tf'),
             ('/model/phoenix/cmd_vel', '/robot/cmd_vel'),
             ('/model/phoenix/odometry', '/odom'),
-            ('/model/phoenix/joint_state', 'joint_states') #TODO remap the camera topics
+            ('/model/phoenix/joint_state', 'joint_states'),
+            # Remap our cameras to match design docs
+            ('/mid_rgbd_camera/image', '/camera/mid/rgb'),
+            ('/mid_rgbd_camera/camera_info', '/camera/mid/camera_info'),
+            ('/sky_rgbd_camera/image', '/camera/score/rgb'),
+            ('/sky_rgbd_camera/camera_info', '/camera/score/camera_info'),
         ])
         
     ign_spawn_robot = Node(package='ros_ign_gazebo',
