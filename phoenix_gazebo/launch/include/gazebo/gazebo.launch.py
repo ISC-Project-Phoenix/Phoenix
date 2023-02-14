@@ -47,6 +47,8 @@ def generate_launch_description():
             '/right_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo',
             '/left_rgbd_camera/image@sensor_msgs/msg/Image[ignition.msgs.Image',
             '/left_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo',
+            '/sky_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo',
+            '/sky_rgbd_camera/image@sensor_msgs/msg/Image[ignition.msgs.Image',
         ],
         output='screen',
         remappings=[
@@ -54,7 +56,7 @@ def generate_launch_description():
             ('/model/phoenix/tf', '/tf'),
             ('/model/phoenix/cmd_vel', '/robot/cmd_vel'),
             ('/model/phoenix/odometry', '/odom'),
-            ('/model/phoenix/joint_state', 'joint_states')
+            ('/model/phoenix/joint_state', 'joint_states') #TODO remap the camera topics
         ])
         
     ign_spawn_robot = Node(package='ros_ign_gazebo',
