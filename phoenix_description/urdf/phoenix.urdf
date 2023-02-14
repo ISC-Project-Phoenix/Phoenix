@@ -328,6 +328,7 @@
       <wheel_separation>0.94</wheel_separation>
       <wheel_radius>0.12065</wheel_radius>
       <odom_publish_frequency>20</odom_publish_frequency>
+      <!-- TODO add wheelbase -->
 
       <min_velocity>0</min_velocity>
       <max_velocity>13</max_velocity>
@@ -374,7 +375,7 @@
             </clip>
           </camera>
           <always_on>1</always_on>
-          <update_rate>30</update_rate>
+          <update_rate>1</update_rate>
           <visualize>true</visualize>
           <topic>sky_rgbd_camera</topic>
           <enable_metrics>true</enable_metrics>
