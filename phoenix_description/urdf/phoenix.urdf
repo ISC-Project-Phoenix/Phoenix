@@ -134,7 +134,7 @@
         <parent link="rear_axle"/>
         <child link="left_front_wheel_rack"/>
         <axis xyz="0 0 1"/>
-        <limit lower="-0.3499" upper="+0.5236" velocity="3.0" effort="0.88269"/>
+        <limit lower="-0.3499" upper="+0.5236" velocity="3.141" effort="25"/>
     </joint>
     
     <joint name="left_front_wheel_rack_to_wheel" type="continuous">
@@ -192,7 +192,7 @@
         <parent link="rear_axle"/>
         <child link="right_front_wheel_rack"/>
         <axis xyz="0 0 1"/>
-        <limit lower="-0.3499" upper="+0.5236" velocity="3.0" effort="0.88269"/>
+        <limit lower="-0.3499" upper="+0.5236" velocity="3.141" effort="25"/>
     </joint> 
     
     <joint name="right_front_wheel_rack_to_wheel" type="continuous">
@@ -317,8 +317,8 @@
 <!-- Gazebo Plugins -->
     
   <gazebo>
-    <plugin filename="libignition-gazebo-ackermann-steering-system.so"
-              name="ignition::gazebo::systems::AckermannSteering">
+    <plugin filename="gz-sim-ackermann-steering-system"
+    name="gz::sim::systems::AckermannSteering">
       <left_steering_joint>left_front_wheel_steer</left_steering_joint>
       <left_joint>rear_axle_to_physical_rear_axle</left_joint>
 
