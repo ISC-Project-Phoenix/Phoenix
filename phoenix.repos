@@ -15,3 +15,7 @@ repositories:
       type: git
       url: git@github.com:ISC-Project-Phoenix/data_logger.git
       version: main
+    ros_gz:
+      type: git
+      url: git@github.com:gazebosim/ros_gz.git
+      version: humble
