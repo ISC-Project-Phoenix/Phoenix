@@ -328,9 +328,10 @@
       <wheel_separation>0.94</wheel_separation>
       <wheel_radius>0.12065</wheel_radius>
       <odom_publish_frequency>20</odom_publish_frequency>
-      <!-- TODO add wheelbase -->
+      <wheel_base>1.0</wheel_base>
+      <kingpin_width>1.2954</kingpin_width>
 
-      <min_velocity>0</min_velocity>
+      <min_velocity>-13</min_velocity>
       <max_velocity>13</max_velocity>
       <min_acceleration>-5</min_acceleration>
       <max_acceleration>10</max_acceleration>
