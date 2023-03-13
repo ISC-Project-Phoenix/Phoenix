@@ -19,3 +19,8 @@ repositories:
       type: git
       url: git@github.com:gazebosim/ros_gz.git
       version: humble
+    phnx_io_ros:
+      type: git
+      url: git@github.com:ISC-Project-Phoenix/phnx_io_ros.git
+      version: main
+    

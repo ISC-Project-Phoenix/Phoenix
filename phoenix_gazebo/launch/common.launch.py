@@ -28,6 +28,11 @@ def generate_launch_description():
     gazebo_world = LaunchConfiguration(
         'gazebo_world', default='purdue_gp_track.sdf')
 
+    max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
+    max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
+    max_steering_rad = LaunchConfiguration('max_steering_rad', default='0.34')
+    wheelbase = LaunchConfiguration('wheelbase', default='1.8')
+
     state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
@@ -77,6 +82,19 @@ def generate_launch_description():
         }.items(),
     )
 
+    gz_io_ros = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/gz_io_ros/gz_io_ros.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+            'max_braking_speed': max_braking_speed,
+            'max_throttle_speed': max_throttle_speed,
+            'wheelbase': wheelbase
+        }.items(),
+    )
+
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument(
@@ -97,6 +115,18 @@ def generate_launch_description():
         DeclareLaunchArgument('gazebo_world',
                               default_value='purdue_gp_track.sdf',
                               description='gazebo world to load'),
+        DeclareLaunchArgument('max_braking_speed',
+                              default_value='-10.0',
+                              description='Maximum braking speed'),
+        DeclareLaunchArgument('max_throttle_speed',
+                              default_value='10.0',
+                              description='Maximum throttle speed'),
+        DeclareLaunchArgument('wheelbase',
+                              default_value='1.8',
+                              description='Maximum throttle speed'),
+        DeclareLaunchArgument('max_steering_rad',
+                              default_value='0.34',
+                              description='Maximum wheel angle'),
 
         # Nodes
         state_publishers,
@@ -104,4 +134,5 @@ def generate_launch_description():
         joy_with_teleop_twist,
         robot_state_controller,
         rviz,
+        gz_io_ros
     ])
