@@ -28,7 +28,6 @@ def generate_launch_description():
     gazebo_world = LaunchConfiguration(
         'gazebo_world', default='purdue_gp_track.sdf')
 
-    # TODO make these correct in the top level
     max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
     max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
     max_steering_rad = LaunchConfiguration('max_steering_rad', default='0.34')

@@ -34,6 +34,8 @@ def generate_launch_description():
     max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
     max_steering_rad = LaunchConfiguration('max_steering_rad', default='0.34')
 
+    data_path = LaunchConfiguration('data_path', default='./training_data')
+
     data = Node(
         package='data_logger',
         executable='data_logger',
@@ -43,7 +45,8 @@ def generate_launch_description():
             'use_sim_time': use_sim_time,
             'max_braking_speed': max_braking_speed,
             'max_throttle_speed': max_throttle_speed,
-            'max_steering_rad': max_steering_rad
+            'max_steering_rad': max_steering_rad,
+            'data_path': data_path
         }])
 
     return LaunchDescription([
@@ -60,6 +63,9 @@ def generate_launch_description():
         DeclareLaunchArgument('max_steering_rad',
                               default_value='0.34',
                               description='Maximum wheel angle'),
+        DeclareLaunchArgument('data_path',
+                              default_value='./training_data',
+                              description='Path the write data to'),
 
         # Nodes
         data,
