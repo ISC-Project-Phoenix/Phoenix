@@ -14,6 +14,8 @@ find_package(ros_gz_sim REQUIRED)
 find_package(ros_gz_bridge REQUIRED)
 find_package(joy REQUIRED)
 find_package(teleop_twist_joy REQUIRED)
+find_package(gz_io_ros REQUIRED)
+find_package(data_logger REQUIRED)
 
 #INSTALL
 install(

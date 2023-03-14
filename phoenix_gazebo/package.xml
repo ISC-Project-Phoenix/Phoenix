@@ -18,6 +18,8 @@
   <exec_depend>teleop_twist_joy</exec_depend>
   <exec_depend>joy</exec_depend>
   <exec_depend>phoenix_description</exec_depend>
+  <exec_depend>data_logger</exec_depend>
+  <exec_depend>gz_io_ros</exec_depend>
 
   <exec_depend>ros2launch</exec_depend>
   <exec_depend>launch</exec_depend>
