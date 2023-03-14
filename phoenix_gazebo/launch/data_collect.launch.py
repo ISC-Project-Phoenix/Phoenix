@@ -8,7 +8,7 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 
-
+# Launches common alongside data logging utilities
 def generate_launch_description():
     # ROS packages
     pkg_phoenix_gazebo = get_package_share_directory('phoenix_gazebo')

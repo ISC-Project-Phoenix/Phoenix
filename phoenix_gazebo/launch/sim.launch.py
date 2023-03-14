@@ -9,93 +9,58 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 
 
-# Launches sim as well as rviz and joy stuff
+# Launches gazebo and core phnx nodes. This file does not assume any user display or input
 def generate_launch_description():
     # ROS packages
     pkg_phoenix_gazebo = get_package_share_directory('phoenix_gazebo')
-    pkg_teleop_twist_joy = get_package_share_directory('teleop_twist_joy')
-    pkg_robot_state_controller = get_package_share_directory(
-        'robot_state_controller')
-
-    # Config
-    joy_config = os.path.join(pkg_phoenix_gazebo, 'config/joystick',
-                              'xbone.config.yaml')
 
     # Launch arguments
-    drive_mode_switch_button = LaunchConfiguration(
-        'drive_mode_switch_button', default='7')
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
-    use_rviz = LaunchConfiguration('use_rviz', default='true')
     gazebo_world = LaunchConfiguration(
         'gazebo_world', default='purdue_gp_track.sdf')
 
-    #TODO make these correct
     max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
     max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
     max_steering_rad = LaunchConfiguration('max_steering_rad', default='0.34')
     wheelbase = LaunchConfiguration('wheelbase', default='1.8')
 
-    joy_with_teleop_twist = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(pkg_teleop_twist_joy, 'launch', 'teleop-launch.py')),
-        launch_arguments={
-            'joy_dev': '/dev/input/js0',
-            'config_filepath': joy_config
-        }.items(),
-    )
-
-    rviz = IncludeLaunchDescription(
+    state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            '/include/rviz/rviz.launch.py'
+            '/include/state_publishers/state_publishers.launch.py'
+        ]),
+        launch_arguments={'use_sim_time': use_sim_time}.items(),
+    )
+
+    ign_gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/gazebo/gazebo.launch.py'
         ]),
         launch_arguments={
-            'use_rviz': use_rviz,
-            'use_sim_time': use_sim_time
-        }.items(),
+            'gazebo_world': gazebo_world
+        }.items()
     )
 
-    sim = IncludeLaunchDescription(
+    gz_io_ros = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            '/sim.launch.py'
+            '/include/gz_io_ros/gz_io_ros.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
             'max_braking_speed': max_braking_speed,
             'max_throttle_speed': max_throttle_speed,
-            'max_steering_rad': max_steering_rad,
-            'wheelbase': wheelbase,
-            'gazebo_world': gazebo_world
-        }.items(),
-    )
-
-    # Launch here since this is only used for Joy stuff
-    robot_state_controller = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([
-            os.path.join(pkg_robot_state_controller, 'launch'),
-            '/robot_state_controller.launch.py'
-        ]),
-        launch_arguments={
-            'switch_button': drive_mode_switch_button,
-            'use_sim_time': use_sim_time
+            'wheelbase': wheelbase
         }.items(),
     )
 
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument(
-            'drive_mode_switch_button',
-            default_value='10',
-            description='Which button is used on the joystick to switch drive mode. (In joy message)'
-        ),
-        DeclareLaunchArgument(
             'use_sim_time',
             default_value='true',
             description='Use simulation (Gazebo) clock if true'),
-        DeclareLaunchArgument('use_rviz',
-                              default_value='true',
-                              description='Open rviz if true'),
         DeclareLaunchArgument('gazebo_world',
                               default_value='purdue_gp_track.sdf',
                               description='gazebo world to load'),
@@ -113,8 +78,7 @@ def generate_launch_description():
                               description='Maximum wheel angle'),
 
         # Nodes
-        sim,
-        joy_with_teleop_twist,
-        rviz,
-        robot_state_controller
+        state_publishers,
+        ign_gazebo,
+        gz_io_ros
     ])

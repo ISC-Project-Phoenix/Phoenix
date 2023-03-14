@@ -59,7 +59,8 @@ def generate_launch_description():
             ('/sky_rgbd_camera/image', '/camera/score/rgb'),
             ('/sky_rgbd_camera/camera_info', '/camera/score/camera_info'),
         ])
-        
+
+        # TODO spawn at the starting line, and start immediatly
     ign_spawn_robot = Node(package='ros_gz_sim',
                            executable='create',
                            arguments=[
