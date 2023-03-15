@@ -28,7 +28,8 @@ def generate_launch_description():
             os.path.join(pkg_ros_ign_gazebo, 'launch',
                          'gz_sim.launch.py')),
         launch_arguments={
-            'gz_args': launch.substitutions.PathJoinSubstitution([pkg_phoenix_gazebo + '/worlds/', gazebo_world])
+            'gz_args': [launch.substitutions.PathJoinSubstitution([pkg_phoenix_gazebo + '/worlds/', gazebo_world]),
+                        launch.substitutions.TextSubstitution(text=" -r")]
         }.items()
     )
 
@@ -60,12 +61,11 @@ def generate_launch_description():
             ('/sky_rgbd_camera/camera_info', '/camera/score/camera_info'),
         ])
 
-        # TODO spawn at the starting line, and start immediatly
     ign_spawn_robot = Node(package='ros_gz_sim',
                            executable='create',
                            arguments=[
-                               '-name', 'phoenix', '-x', '0', '-z', '0', '-Y',
-                               '0', '-topic', 'robot_description'
+                               '-name', 'phoenix', '-x', '-24.6', '-y', '-45.1', '-z', '0', '-Y',
+                               '-0.556156', '-topic', 'robot_description'
                            ],
                            output='screen')
 
