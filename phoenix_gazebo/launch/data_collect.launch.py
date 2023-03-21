@@ -2,6 +2,7 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 
+from launch.conditions import IfCondition
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
@@ -15,6 +16,7 @@ def generate_launch_description():
 
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+    use_wheel = LaunchConfiguration('use_wheel', default='false')
 
     # TODO make these correct
     max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
@@ -35,7 +37,8 @@ def generate_launch_description():
             'max_braking_speed': max_braking_speed,
             'max_throttle_speed': max_throttle_speed,
             'max_steering_rad': max_steering_rad,
-            'wheelbase': wheelbase
+            'wheelbase': wheelbase,
+            'use_wheel': use_wheel
         }.items()
     )
 
@@ -58,6 +61,11 @@ def generate_launch_description():
             'use_sim_time',
             default_value='true',
             description='Use simulation (Gazebo) clock if true'),
+
+         # Set true if using logitech wheel
+        DeclareLaunchArgument('use_wheel',
+                              default_value='false',
+                              description='Use logitech wheel'),
 
         # Nodes
         common,

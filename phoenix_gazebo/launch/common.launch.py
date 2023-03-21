@@ -2,6 +2,7 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 
+from launch.conditions import IfCondition, UnlessCondition
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
@@ -29,7 +30,9 @@ def generate_launch_description():
     gazebo_world = LaunchConfiguration(
         'gazebo_world', default='purdue_gp_track.sdf')
 
-    #TODO make these correct
+    use_wheel = LaunchConfiguration('use_wheel', default='false')
+
+    # TODO make these correct
     max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
     max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
     max_steering_rad = LaunchConfiguration('max_steering_rad', default='0.34')
@@ -42,6 +45,19 @@ def generate_launch_description():
             'joy_dev': '/dev/input/js0',
             'config_filepath': joy_config
         }.items(),
+        condition=UnlessCondition(use_wheel)
+    )
+
+    logi_g29 = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'logi_g29/logi_g29.launch.py')),
+        launch_arguments={
+            'max_braking_speed': max_braking_speed,
+            'max_throttle_speed': max_throttle_speed,
+            'max_steering_rad': max_steering_rad,
+            'wheelbase': wheelbase
+        }.items(),
+        condition=IfCondition(use_wheel)
     )
 
     rviz = IncludeLaunchDescription(
@@ -112,9 +128,15 @@ def generate_launch_description():
                               default_value='0.34',
                               description='Maximum wheel angle'),
 
+        # Set true if using logitech wheel
+        DeclareLaunchArgument('use_wheel',
+                              default_value='false',
+                              description='Use logitech wheel'),
+
         # Nodes
         sim,
         joy_with_teleop_twist,
+        logi_g29,
         rviz,
         robot_state_controller
     ])
