@@ -21,8 +21,8 @@ def generate_launch_description():
     # TODO make these correct
     max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
     max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
-    max_steering_rad = LaunchConfiguration('max_steering_rad', default='0.34')
-    wheelbase = LaunchConfiguration('wheelbase', default='1.8')
+    max_steering_rad = LaunchConfiguration('max_steering_rad', default='2.0')
+    wheelbase = LaunchConfiguration('wheelbase', default='1.08')
 
     # path we write run data to
     data_path = LaunchConfiguration('data_path', default='./training_data')

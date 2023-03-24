@@ -21,8 +21,8 @@ def generate_launch_description():
 
     max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
     max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
-    max_steering_rad = LaunchConfiguration('max_steering_rad', default='0.34')
-    wheelbase = LaunchConfiguration('wheelbase', default='1.8')
+    max_steering_rad = LaunchConfiguration('max_steering_rad', default='2.0')
+    wheelbase = LaunchConfiguration('wheelbase', default='1.08')
 
     state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -71,10 +71,10 @@ def generate_launch_description():
                               default_value='10.0',
                               description='Maximum throttle speed'),
         DeclareLaunchArgument('wheelbase',
-                              default_value='1.8',
+                              default_value='1.08',
                               description='Maximum throttle speed'),
         DeclareLaunchArgument('max_steering_rad',
-                              default_value='0.34',
+                              default_value='2.0',
                               description='Maximum wheel angle'),
 
         # Nodes
