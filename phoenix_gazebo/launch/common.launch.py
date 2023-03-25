@@ -38,6 +38,7 @@ def generate_launch_description():
     max_steering_rad = LaunchConfiguration('max_steering_rad', default='2.0')
     wheelbase = LaunchConfiguration('wheelbase', default='1.08')
 
+    # TODO add twist to ackermann alongside telop twist so that controllers can still work in sim
     joy_with_teleop_twist = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_teleop_twist_joy, 'launch', 'teleop-launch.py')),

@@ -40,6 +40,7 @@ def generate_launch_description():
             '/world/phoenix_world/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
             '/model/phoenix/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
             '/model/phoenix/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist',
+            '/model/phoenix/steer_angle@std_msgs/msg/Float64]gz.msgs.Double',
             '/model/phoenix/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             '/model/phoenix/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model',
             '/mid_rgbd_camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
@@ -52,6 +53,7 @@ def generate_launch_description():
             ('/world/phoenix_world/clock', '/clock'),
             ('/model/phoenix/tf', '/tf'),
             ('/model/phoenix/cmd_vel', '/robot/cmd_vel'),
+            ('/model/phoenix/steer_angle', '/robot/steering_angle'),
             ('/model/phoenix/odometry', '/odom'),
             ('/model/phoenix/joint_state', 'joint_states'),
             # Remap our cameras to match design docs

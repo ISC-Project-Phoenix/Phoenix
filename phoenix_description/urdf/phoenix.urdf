@@ -317,29 +317,36 @@
 <!-- Gazebo Plugins -->
     
   <gazebo>
+
+    <!-- Use diff drive for going forward only (THIS MUST BE FIRST!) -->
+    <plugin
+        filename="gz-sim-diff-drive-system"
+        name="gz::sim::systems::DiffDrive">
+        <left_joint>rear_axle_to_physical_rear_axle</left_joint>
+        <right_joint>rear_axle_to_physical_rear_axle</right_joint>
+
+        <min_velocity>-13</min_velocity>
+        <max_velocity>13</max_velocity>
+        <min_acceleration>-3</min_acceleration>
+        <max_acceleration>4</max_acceleration>
+
+        <wheel_separation>0.94</wheel_separation>
+        <wheel_radius>0.12065</wheel_radius>
+        <odom_publish_frequency>20</odom_publish_frequency>
+    </plugin>
+
+    <!-- Use ackermann steering for steering only -->
     <plugin filename="gz-sim-ackermann-steering-system"
     name="gz::sim::systems::AckermannSteering">
+      <steering_only>true</steering_only>
       <left_steering_joint>left_front_wheel_steer</left_steering_joint>
-      <left_joint>rear_axle_to_physical_rear_axle</left_joint>
-
       <right_steering_joint>right_front_wheel_steer</right_steering_joint>
-      <right_joint>rear_axle_to_physical_rear_axle</right_joint>
 
       <wheel_separation>0.94</wheel_separation>
       <wheel_radius>0.12065</wheel_radius>
-      <odom_publish_frequency>20</odom_publish_frequency>
-      <wheel_base>1.0</wheel_base>
-      <kingpin_width>1.2954</kingpin_width>
-
-      <min_velocity>-13</min_velocity>
-      <max_velocity>13</max_velocity>
-      <min_acceleration>-5</min_acceleration>
-      <max_acceleration>10</max_acceleration>
-
-      <frame_id>odom</frame_id>
-      <child_frame_id>base_footprint</child_frame_id>
+      <wheel_base>1.08</wheel_base>
     </plugin>
-  </gazebo> 
+  </gazebo>
   
     <gazebo reference="mid_cam_link">
         <sensor name="mid_cam_link" type="rgbd_camera">
