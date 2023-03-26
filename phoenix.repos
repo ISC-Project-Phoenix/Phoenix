@@ -27,4 +27,7 @@ repositories:
       type: git
       url: git@github.com:ISC-Project-Phoenix/logi_g29.git
       version: master
-    
+    twist_to_ackermann:
+      type: git
+      url: git@github.com:iscumd/twist_to_ackermann.git
+      version: master

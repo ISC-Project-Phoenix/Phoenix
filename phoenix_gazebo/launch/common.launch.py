@@ -38,13 +38,22 @@ def generate_launch_description():
     max_steering_rad = LaunchConfiguration('max_steering_rad', default='2.0')
     wheelbase = LaunchConfiguration('wheelbase', default='1.08')
 
-    # TODO add twist to ackermann alongside telop twist so that controllers can still work in sim
+    # If wheel is not used, we need to translate joystick commands to ackermann
     joy_with_teleop_twist = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_teleop_twist_joy, 'launch', 'teleop-launch.py')),
         launch_arguments={
             'joy_dev': '/dev/input/js0',
             'config_filepath': joy_config
+        }.items(),
+        condition=UnlessCondition(use_wheel)
+    )
+
+    twist_to_ackermann = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'twist_to_ackermann/twist_to_ackermann.launch.py')),
+        launch_arguments={
+            'wheelbase': wheelbase
         }.items(),
         condition=UnlessCondition(use_wheel)
     )
@@ -137,6 +146,7 @@ def generate_launch_description():
         # Nodes
         sim,
         joy_with_teleop_twist,
+        twist_to_ackermann,
         logi_g29,
         rviz,
         robot_state_controller

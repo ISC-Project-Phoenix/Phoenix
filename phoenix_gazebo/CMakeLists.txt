@@ -16,6 +16,7 @@ find_package(joy REQUIRED)
 find_package(teleop_twist_joy REQUIRED)
 find_package(gz_io_ros REQUIRED)
 find_package(data_logger REQUIRED)
+find_package(twist_to_ackermann REQUIRED)
 
 #INSTALL
 install(
