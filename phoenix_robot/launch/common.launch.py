@@ -31,7 +31,8 @@ def generate_launch_description():
 
     state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
-            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'state_publishers', 'state_publishers.launch.py'),
+            os.path.join(pkg_phoenix_gazebo, 'launch')
+            , '/include/state_publishers/state_publishers.launch.py'
         ]),
         launch_arguments={'use_sim_time': use_sim_time}.items(),
     )
@@ -59,12 +60,12 @@ def generate_launch_description():
             os.path.join(pkg_phoenix_robot, 'launch'),
             '/include/phnx_io_ros/phnx_io_ros.launch.py'
         ]),
-        launch_arguments=[{
+        launch_arguments={
             'max_braking_speed': max_braking_speed,
             'max_throttle_speed': max_throttle_speed,
             'max_steering_rad': max_steering_rad,
             'wheelbase': wheelbase
-        }]
+        }.items()
     )
 
     return LaunchDescription([
