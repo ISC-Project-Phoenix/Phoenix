@@ -31,3 +31,7 @@ repositories:
       type: git
       url: git@github.com:iscumd/twist_to_ackermann.git
       version: master
+    depthai-ros:
+      type: git
+      url: git@github.com:luxonis/depthai-ros.git
+      version: humble

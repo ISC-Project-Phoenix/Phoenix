@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>phoenix_robot</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jkrasan@umich.edu">jordank</maintainer>
+  <maintainer email="avealov@umich.edu">andrew ealovega</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>robot_state_controller</exec_depend>
+  <exec_depend>teleop_twist_joy</exec_depend>
+  <exec_depend>joy</exec_depend>
+  <exec_depend>phoenix_description</exec_depend>
+  <exec_depend>data_logger</exec_depend>
+  <exec_depend>phoenix_gazebo</exec_depend>
+  <exec_depend>depthai_ros_driver</exec_depend>
+  <exec_depend>phnx_io_ros</exec_depend>
+  <exec_depend>twist_to_ackermann</exec_depend>
+
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_cmake_xmllint</test_depend>
+  <test_depend>ament_cmake_clang_format</test_depend>
+  <test_depend>ament_cmake_cppcheck</test_depend>
+  <test_depend>ament_cmake_pep257</test_depend>
+  <test_depend>ament_clang_tidy</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
