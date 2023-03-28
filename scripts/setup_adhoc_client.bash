@@ -10,4 +10,4 @@ iw dev "$device" set type ibss
 ip link set up "$device"
 iw dev "$device" ibss join timebay 5745 HT40+
 
-ip a add 192.168.0.2/24 dev "$device"
+ip a add 192.168.0.2/24 brd + dev "$device"
