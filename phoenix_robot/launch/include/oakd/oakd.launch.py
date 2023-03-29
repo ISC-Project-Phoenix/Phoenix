@@ -31,9 +31,12 @@ def launch_setup(context, *args, **kwargs):
                     plugin="depthai_ros_driver::Camera",
                     name=name,
                     parameters=[params_file],
-                    remappings=[('/oak/rgb/image_raw/compressed', '/camera/mid/rgb'),
-                                ('/oak/rgb/camera_info', '/camera/mid/camera_info'),
-                                ('/oak/imu/data', '/camera/mid/imu')]
+                    remappings=[
+                        ('/oak/rgb/image_raw', '/camera/mid/rgb'),
+                        ('/oak/rgb/image_raw/compressed', '/camera/mid/rgb/compressed'),
+                        ('/oak/rgb/image_raw/theora', '/camera/mid/rgb/compressed/theora'),
+                        ('/oak/rgb/camera_info', '/camera/mid/camera_info'),
+                        ('/oak/imu/data', '/camera/mid/imu')]
                 )
             ],
             arguments=['--ros-args', '--log-level', log_level],
