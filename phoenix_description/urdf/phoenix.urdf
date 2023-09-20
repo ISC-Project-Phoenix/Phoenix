@@ -321,10 +321,10 @@
               name="gz::sim::systems::Imu">
       </plugin>
 
-    <!-- Use diff drive for going forward only (THIS MUST BE FIRST!) -->
-    <plugin
-        filename="gz-sim-diff-drive-system"
-        name="gz::sim::systems::DiffDrive">
+    <plugin filename="gz-sim-ackermann-steering-system"
+    name="gz::sim::systems::AckermannSteering">
+      <left_steering_joint>left_front_wheel_steer</left_steering_joint>
+      <right_steering_joint>right_front_wheel_steer</right_steering_joint>
         <left_joint>rear_axle_to_physical_rear_axle</left_joint>
         <right_joint>rear_axle_to_physical_rear_axle</right_joint>
 
@@ -334,20 +334,9 @@
         <max_acceleration>4</max_acceleration>
 
         <wheel_separation>0.94</wheel_separation>
-        <wheel_radius>0.12065</wheel_radius>
-        <odom_publish_frequency>20</odom_publish_frequency>
-    </plugin>
-
-    <!-- Use ackermann steering for steering only -->
-    <plugin filename="gz-sim-ackermann-steering-system"
-    name="gz::sim::systems::AckermannSteering">
-      <steering_only>true</steering_only>
-      <left_steering_joint>left_front_wheel_steer</left_steering_joint>
-      <right_steering_joint>right_front_wheel_steer</right_steering_joint>
-
-      <wheel_separation>0.94</wheel_separation>
       <wheel_radius>0.12065</wheel_radius>
       <wheel_base>1.08</wheel_base>
+        <odom_publish_frequency>20</odom_publish_frequency>
     </plugin>
   </gazebo>
   
