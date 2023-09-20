@@ -47,6 +47,7 @@ def generate_launch_description():
             '/mid_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
             '/sky_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
             '/sky_rgbd_camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
+            '/mid_rgbd_camera_imu@sensor_msgs/msg/Imu[gz.msgs.IMU',
         ],
         output='screen',
         remappings=[
@@ -59,6 +60,7 @@ def generate_launch_description():
             # Remap our cameras to match design docs
             ('/mid_rgbd_camera/image', '/camera/mid/rgb'),
             ('/mid_rgbd_camera/camera_info', '/camera/mid/camera_info'),
+            ('/mid_rgbd_camera_imu', '/camera/mid/imu'),
             ('/sky_rgbd_camera/image', '/camera/score/rgb'),
             ('/sky_rgbd_camera/camera_info', '/camera/score/camera_info'),
         ])
