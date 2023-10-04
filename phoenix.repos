@@ -35,3 +35,23 @@ repositories:
       type: git
       url: git@github.com:luxonis/depthai-ros.git
       version: humble
+    obj_detector:
+      type: git
+      url: git@github.com:ISC-Project-Phoenix/obj_detector.git
+      version: master
+    obj_planner:
+      type: git
+      url: git@github.com:ISC-Project-Phoenix/obj_planner.git
+      version: master
+    obj_tracker:
+      type: git
+      url: git@github.com:ISC-Project-Phoenix/obj_tracker.git
+      version: master
+    hybrid_pp:
+      type: git
+      url: git@github.com:ISC-Project-Phoenix/hybrid_pp.git
+      version: master
+    phnx_msgs:
+      type: git
+      url: git@github.com:ISC-Project-Phoenix/phnx_msgs.git
+      version: master

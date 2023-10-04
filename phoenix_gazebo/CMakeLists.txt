@@ -13,10 +13,16 @@ find_package(robot_state_controller REQUIRED)
 find_package(ros_gz_sim REQUIRED)
 find_package(ros_gz_bridge REQUIRED)
 find_package(joy REQUIRED)
+find_package(logi_g29 REQUIRED)
 find_package(teleop_twist_joy REQUIRED)
 find_package(gz_io_ros REQUIRED)
 find_package(data_logger REQUIRED)
 find_package(twist_to_ackermann REQUIRED)
+
+find_package(obj_detector REQUIRED)
+find_package(obj_planner REQUIRED)
+find_package(obj_tracker REQUIRED)
+find_package(hybrid_pp REQUIRED)
 
 #INSTALL
 install(

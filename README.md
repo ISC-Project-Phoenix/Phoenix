@@ -8,6 +8,13 @@ Before building phoenix, make sure to set:
 
 This sets ros-gz to target gazebo garden.
 
+### Dependencies
+
+All dependencies for phnx are described in cmake and package files.
+This. This means that if you are missing a package somewhere, it will error for you.
+
+To ensure you have all source nodes, be sure to `vcs import` `pheonix.repos`.
+
 ## Launching
 
 ### Sim

@@ -11,12 +11,18 @@ find_package(phoenix_description REQUIRED)
 find_package(robot_state_publisher REQUIRED)
 find_package(robot_state_controller REQUIRED)
 find_package(joy REQUIRED)
+find_package(logi_g29 REQUIRED)
 find_package(teleop_twist_joy REQUIRED)
 find_package(phoenix_gazebo REQUIRED)
 find_package(depthai_ros_driver REQUIRED)
 find_package(phnx_io_ros REQUIRED)
 find_package(data_logger REQUIRED)
 find_package(twist_to_ackermann REQUIRED)
+
+find_package(obj_detector REQUIRED)
+find_package(obj_planner REQUIRED)
+find_package(obj_tracker REQUIRED)
+find_package(hybrid_pp REQUIRED)
 
 #INSTALL
 install(
