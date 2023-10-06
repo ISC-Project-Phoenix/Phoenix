@@ -32,10 +32,13 @@ def launch_setup(context, *args, **kwargs):
                     name=name,
                     parameters=[params_file],
                     remappings=[
+                        ('/oak/stereo/image_raw', '/camera/mid/depth'),
+                        ('/oak/stereo/camera_info', '/camera/mid/depth/camera_info'),
+                        ('/oak/stereo/image_raw/compressed', '/camera/mid/depth/compressed'),
                         ('/oak/rgb/image_raw', '/camera/mid/rgb'),
                         ('/oak/rgb/image_raw/compressed', '/camera/mid/rgb/compressed'),
                         ('/oak/rgb/image_raw/theora', '/camera/mid/rgb/compressed/theora'),
-                        ('/oak/rgb/camera_info', '/camera/mid/camera_info'),
+                        ('/oak/rgb/camera_info', '/camera/mid/rgb/camera_info'),
                         ('/oak/imu/data', '/camera/mid/imu')]
                 )
             ],

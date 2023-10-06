@@ -8,7 +8,7 @@
       i_laser_dot_brightness: 800
       i_mx_id: ''
       i_nn_type: none
-      i_pipeline_type: RGB
+      i_pipeline_type: RGBD
       i_usb_port_id: ''
       i_usb_speed: SUPER_PLUS
       i_pipeline_dump: false
@@ -98,6 +98,7 @@
       i_enable_threshold_filter: false
       i_extended_disp: false
       i_height: 720
+      # The below two lines can be used to lower quality to speed things up
       i_low_bandwidth: false
       i_low_bandwidth_quality: 50
       i_lr_check: true
