@@ -43,6 +43,7 @@ def generate_launch_description():
             '/model/phoenix/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             '/model/phoenix/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model',
             '/mid_rgbd_camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
+            '/mid_rgbd_camera/depth_image@sensor_msgs/msg/Image[gz.msgs.Image',
             '/mid_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
             '/sky_rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
             '/sky_rgbd_camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
@@ -57,7 +58,8 @@ def generate_launch_description():
             ('/model/phoenix/joint_state', 'joint_states'),
             # Remap our cameras to match design docs
             ('/mid_rgbd_camera/image', '/camera/mid/rgb'),
-            ('/mid_rgbd_camera/camera_info', '/camera/mid/camera_info'),
+            ('/mid_rgbd_camera/depth_image', '/camera/mid/depth'),
+            ('/mid_rgbd_camera/camera_info', '/camera/mid/rgb/camera_info'),
             ('/mid_rgbd_camera_imu', '/camera/mid/imu'),
             ('/sky_rgbd_camera/image', '/camera/score/rgb'),
             ('/sky_rgbd_camera/camera_info', '/camera/score/camera_info'),
