@@ -358,6 +358,7 @@
           <visualize>true</visualize>
           <topic>mid_rgbd_camera</topic>
           <enable_metrics>true</enable_metrics>
+            <gz_frame_id>mid_cam_link</gz_frame_id>
         </sensor>
   </gazebo>
 
@@ -368,6 +369,7 @@
           <update_rate>1</update_rate>
           <visualize>false</visualize>
           <topic>mid_rgbd_camera_imu</topic>
+          <gz_frame_id>mid_cam_link</gz_frame_id>
       </sensor>
   </gazebo>
 
