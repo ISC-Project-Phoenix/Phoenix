@@ -18,6 +18,7 @@ find_package(teleop_twist_joy REQUIRED)
 find_package(gz_io_ros REQUIRED)
 find_package(data_logger REQUIRED)
 find_package(twist_to_ackermann REQUIRED)
+find_package(robot_localization REQUIRED)
 
 find_package(obj_detector REQUIRED)
 find_package(obj_planner REQUIRED)

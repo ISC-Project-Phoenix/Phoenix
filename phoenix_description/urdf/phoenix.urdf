@@ -73,7 +73,7 @@
             <inertia
                 ixx="5.3443437" ixy="0.0" ixz="0.0"
                 iyy="14.705783" iyz="0.0"
-                izz="19.900126"/>
+                izz="14.705781675"/>
         </inertial>
     </link>
     
@@ -366,10 +366,52 @@
   <gazebo reference="mid_cam_link">
       <sensor name="imu_sensor" type="imu">
           <always_on>1</always_on>
-          <update_rate>1</update_rate>
+          <update_rate>60</update_rate>
           <visualize>false</visualize>
           <topic>mid_rgbd_camera_imu</topic>
           <gz_frame_id>mid_cam_link</gz_frame_id>
+<!--          <imu>-->
+<!--              <angular_velocity>-->
+<!--                  <x>-->
+<!--                      <noise type="gaussian">-->
+<!--                          <mean>0.0</mean>-->
+<!--                          <stddev>0.1</stddev>-->
+<!--                      </noise>-->
+<!--                  </x>-->
+<!--                  <y>-->
+<!--                      <noise type="gaussian">-->
+<!--                          <mean>0.0</mean>-->
+<!--                          <stddev>0.1</stddev>-->
+<!--                      </noise>-->
+<!--                  </y>-->
+<!--                  <z>-->
+<!--                      <noise type="gaussian">-->
+<!--                          <mean>0.0</mean>-->
+<!--                          <stddev>0.1</stddev>-->
+<!--                      </noise>-->
+<!--                  </z>-->
+<!--              </angular_velocity>-->
+<!--              <linear_acceleration>-->
+<!--                  <x>-->
+<!--                      <noise type="gaussian">-->
+<!--                          <mean>0.0</mean>-->
+<!--                          <stddev>0.1</stddev>-->
+<!--                      </noise>-->
+<!--                  </x>-->
+<!--                  <y>-->
+<!--                      <noise type="gaussian">-->
+<!--                          <mean>0.0</mean>-->
+<!--                          <stddev>0.1</stddev>-->
+<!--                      </noise>-->
+<!--                  </y>-->
+<!--                  <z>-->
+<!--                      <noise type="gaussian">-->
+<!--                          <mean>0.0</mean>-->
+<!--                          <stddev>0.1</stddev>-->
+<!--                      </noise>-->
+<!--                  </z>-->
+<!--              </linear_acceleration>-->
+<!--          </imu>-->
       </sensor>
   </gazebo>
 

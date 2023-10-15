@@ -54,7 +54,7 @@ def generate_launch_description():
             ('/world/phoenix_world/clock', '/clock'),
             ('/model/phoenix/tf', '/tf'),
             ('/model/phoenix/cmd_vel', '/robot/cmd_vel'),
-            ('/model/phoenix/odometry', '/odom'),
+            ('/model/phoenix/odometry', '/odom_can'),
             ('/model/phoenix/joint_state', 'joint_states'),
             # Remap our cameras to match design docs
             ('/mid_rgbd_camera/image', '/camera/mid/rgb'),

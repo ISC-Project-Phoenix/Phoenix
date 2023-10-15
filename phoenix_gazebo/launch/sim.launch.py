@@ -32,6 +32,14 @@ def generate_launch_description():
         launch_arguments={'use_sim_time': use_sim_time}.items(),
     )
 
+    ekf = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/robot_localization/robot_localization.launch.py'
+        ]),
+        launch_arguments={'use_sim_time': use_sim_time}.items(),
+    )
+
     ign_gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
@@ -79,6 +87,7 @@ def generate_launch_description():
 
         # Nodes
         state_publishers,
+        ekf,
         ign_gazebo,
         gz_io_ros
     ])
