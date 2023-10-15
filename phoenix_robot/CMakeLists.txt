@@ -19,6 +19,7 @@ find_package(phnx_io_ros REQUIRED)
 find_package(data_logger REQUIRED)
 find_package(twist_to_ackermann REQUIRED)
 find_package(robot_localization REQUIRED)
+find_package(rtabmap_odom REQUIRED)
 
 find_package(obj_detector REQUIRED)
 find_package(obj_planner REQUIRED)

@@ -23,6 +23,7 @@
   <exec_depend>phnx_io_ros</exec_depend>
   <exec_depend>twist_to_ackermann</exec_depend>
   <exec_depend>robot_localization</exec_depend>
+  <exec_depend>rtabmap_odom</exec_depend>
 
   <!-- ISC Auton Stack-->
   <exec_depend>obj_detector</exec_depend>
