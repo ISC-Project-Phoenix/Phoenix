@@ -117,12 +117,5 @@
         <falloff>0</falloff>
       </spot>
     </light>
-
-    <plugin filename="Teleop" name="Teleop">
-      <ignition-gui>
-        <property type="string" key="state">docked</property>
-      </ignition-gui>
-      <topic>/model/pheonix/cmd_vel</topic>
-    </plugin>
   </world>
 </sdf>
