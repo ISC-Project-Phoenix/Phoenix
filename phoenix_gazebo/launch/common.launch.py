@@ -104,7 +104,8 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'switch_button': drive_mode_switch_button,
-            'use_sim_time': use_sim_time
+            'use_sim_time': use_sim_time,
+            'init_value': "auton"
         }.items(),
     )
 
@@ -142,6 +143,10 @@ def generate_launch_description():
         DeclareLaunchArgument('use_wheel',
                               default_value='false',
                               description='Use logitech wheel'),
+        # Changes drive mode switch default state
+        DeclareLaunchArgument('drive_mode_start_state',
+                              default_value='auton',
+                              description='Changes drive mode switch default state'),
 
         # Nodes
         sim,
