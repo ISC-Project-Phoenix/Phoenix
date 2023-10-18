@@ -60,25 +60,62 @@
     </model>
 
     <!--Good area overlay in the sky-->
-    <model name='good_area'>
-      <static>1</static>
-      <link name='good_area'>
+<!--    <model name='good_area'>-->
+<!--      <static>1</static>-->
+<!--      <link name='good_area'>-->
+<!--        <visual name='visual'>-->
+<!--          <geometry>-->
+<!--            <mesh>-->
+<!--            	<uri>../models/purdue_track_good_areas/track.dae</uri>-->
+<!--            </mesh>-->
+<!--          </geometry>-->
+<!--        </visual>-->
+<!--        <collision name='collision'>-->
+<!--          <geometry>-->
+<!--            <mesh>-->
+<!--            	<uri>../models/purdue_track_good_areas/track.dae</uri>-->
+<!--            </mesh>-->
+<!--          </geometry>-->
+<!--        </collision>-->
+<!--        &lt;!&ndash; Offset the pose slightly cause it doesn't line up otherwise for some reason&ndash;&gt;-->
+<!--        <pose>5 2.77 20 0 -0 0</pose>-->
+<!--        <inertial>-->
+<!--          <pose>0 0 0 0 0 0</pose>-->
+<!--          <mass>1</mass>-->
+<!--          <inertia>-->
+<!--            <ixx>1</ixx>-->
+<!--            <ixy>0</ixy>-->
+<!--            <ixz>0</ixz>-->
+<!--            <iyy>1</iyy>-->
+<!--            <iyz>0</iyz>-->
+<!--            <izz>1</izz>-->
+<!--          </inertia>-->
+<!--        </inertial>-->
+<!--        <enable_wind>false</enable_wind>-->
+<!--      </link>-->
+<!--      <pose>-2.79814 -3.76845 0 0 -0 0</pose>-->
+<!--      <static>false</static>-->
+<!--      <self_collide>false</self_collide>-->
+<!--    </model>-->
+
+    <model name='cone1'>
+      <static>0</static>
+      <link name='cone'>
         <visual name='visual'>
           <geometry>
             <mesh>
-            	<uri>../models/purdue_track_good_areas/track.dae</uri>
+            	<uri>../models/isc_cone/cone.dae</uri>
             </mesh>
           </geometry>
         </visual>
         <collision name='collision'>
           <geometry>
             <mesh>
-            	<uri>../models/purdue_track_good_areas/track.dae</uri>
+            	<uri>../models/isc_cone/Cone.STL</uri>
             </mesh>
           </geometry>
         </collision>
-        <!-- Offset the pose slightly cause it doesn't line up otherwise for some reason-->
-        <pose>5 2.77 20 0 -0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <inertial>
           <pose>0 0 0 0 0 0</pose>
           <mass>1</mass>
@@ -93,7 +130,7 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-2.79814 -3.76845 0 0 -0 0</pose>
+      <pose>0 0 0 0 -0 0</pose>
       <static>false</static>
       <self_collide>false</self_collide>
     </model>
