@@ -9,7 +9,7 @@
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <box size="0.00001 0.0000001 0.000001"/>
+                <box size="0.001 0.001 0.001"/>
             </geometry>
         </visual>
         <inertial>
@@ -116,7 +116,7 @@
     <visual>
             <origin rpy="1.5708 0 0" xyz="0 0 0" />
             <geometry>
-                <box size="0.00001 0.0000001 0.000001"/>
+                <box size="0.001 0.001 0.001"/>
             </geometry>
         </visual>
         <inertial>
@@ -174,7 +174,7 @@
     <visual>
         <origin rpy="1.5708 0 0" xyz="0 0 0" />
             <geometry>
-                <box size="0.00001 0.0000001 0.000001"/>
+                <box size="0.001 0.001 0.001"/>
             </geometry>
         </visual>
         <inertial>
@@ -292,27 +292,27 @@
 </joint>
 
 <!-- Camera in the sky for analysing the good areas -->
-<link name="sky_cam_link">
-    <visual>
-        <origin rpy="0 0 0" xyz="0 0 0" />
-        <geometry>
-            <box size="0.02 0.05 0.02"/>
-        </geometry>
-    </visual>
-    <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="0.1"/>
-        <inertia
-            ixx="0.000315771" ixy="0.0" ixz="0.0"
-            iyy="0.00266963" iyz="0.0"
-            izz="0.0"/>
-    </inertial>
-</link>
-<joint name="sky_cam_to_base_link" type="fixed">
-    <origin rpy="0 1.57 0" xyz="0 0 20.5"/>
-    <parent link="base_footprint"/>
-    <child link="sky_cam_link"/>
-</joint>
+<!--<link name="sky_cam_link">-->
+<!--    <visual>-->
+<!--        <origin rpy="0 0 0" xyz="0 0 0" />-->
+<!--        <geometry>-->
+<!--            <box size="0.02 0.05 0.02"/>-->
+<!--        </geometry>-->
+<!--    </visual>-->
+<!--    <inertial>-->
+<!--        <origin xyz="0 0 0" rpy="0 0 0"/>-->
+<!--        <mass value="0.1"/>-->
+<!--        <inertia-->
+<!--            ixx="0.000315771" ixy="0.0" ixz="0.0"-->
+<!--            iyy="0.00266963" iyz="0.0"-->
+<!--            izz="0.0"/>-->
+<!--    </inertial>-->
+<!--</link>-->
+<!--<joint name="sky_cam_to_base_link" type="fixed">-->
+<!--    <origin rpy="0 1.57 0" xyz="0 0 20.5"/>-->
+<!--    <parent link="base_footprint"/>-->
+<!--    <child link="sky_cam_link"/>-->
+<!--</joint>-->
 
 <!-- Gazebo Plugins -->
     
@@ -441,5 +441,43 @@
 <!--          <enable_metrics>true</enable_metrics>-->
 <!--        </sensor>-->
 <!--  </gazebo>-->
+
+    <!-- Webots Plugins -->
+
+    <!-- Camera -->
+    <webots>
+        <device reference="mid_cam_link" type="Camera">
+            <ros>
+                <topicName>/camera/mid/rgb</topicName>
+                <updateRate>30</updateRate>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
+    </webots>
+
+    <!-- Depth camera -->
+    <webots>
+        <device reference="mid_cam_link" type="RangeFinder">
+            <ros>
+                <topicName>/camera/mid/depth</topicName>
+                <updateRate>30</updateRate>
+            </ros>
+        </device>
+    </webots>
+
+    <!-- Oak-d IMU TODO may not work-->
+    <webots>
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <topicName>/camera/mid/imu</topicName>
+            <frameName>mid_cam_link</frameName>
+
+            <!-- Indicates the name of the inertial unit device. -->
+            <inertialUnitName>inertial_unit</inertialUnitName>
+            <!-- Indicates the name of the gyro device. -->
+            <gyroName>gyro</gyroName>
+            <!-- Indicates the name of the accelerometer device. -->
+            <accelerometerName>accelerometer</accelerometerName>
+        </plugin>
+    </webots>
 </robot>
             
