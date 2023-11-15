@@ -9,6 +9,7 @@ Panels:
         - /RobotModel1
         - /Image1
         - /Image2
+        - /PoseArray1
       Splitter Ratio: 0.5
     Tree Height: 507
   - Class: rviz_common/Selection
@@ -231,7 +232,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        {}
+        obj_tracker: true
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -259,6 +260,27 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /goal_pose
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz_default_plugins/PoseArray
+      Color: 0; 0; 255
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: PoseArray
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.20000000298023224
+      Shape: Arrow (3D)
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /tracks
       Value: true
   Enabled: true
   Global Options:
@@ -306,7 +328,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 53.02679443359375
+      Distance: 12.539661407470703
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -321,10 +343,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7553978562355042
+      Pitch: 0.6147972345352173
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.0503902435302734
+      Yaw: 3.1003944873809814
     Saved: ~
 Window Geometry:
   Displays:

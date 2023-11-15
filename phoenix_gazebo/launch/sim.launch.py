@@ -64,6 +64,26 @@ def generate_launch_description():
         }.items(),
     )
 
+    obj_detector = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/obj_detector/obj_detector.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+    )
+
+    obj_tracker = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/obj_tracker/obj_tracker.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+    )
+
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument(
@@ -90,5 +110,7 @@ def generate_launch_description():
         state_publishers,
         ekf,
         ign_gazebo,
-        gz_io_ros
+        gz_io_ros,
+        obj_detector,
+        obj_tracker
     ])
