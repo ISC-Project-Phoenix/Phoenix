@@ -483,5 +483,10 @@
             <accelerometerName>mid_camera_accel</accelerometerName>
         </plugin>
     </webots>
+
+    <!-- Custom driver -->
+    <webots>
+        <plugin type="wb_io_ros::WbIoRos" />
+    </webots>
 </robot>
             
