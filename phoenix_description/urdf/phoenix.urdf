@@ -446,8 +446,9 @@
 
     <!-- Camera -->
     <webots>
-        <device reference="mid_cam_link" type="Camera">
+        <device reference="mid_camera" type="Camera">
             <ros>
+                <frameName>mid_cam_link</frameName>
                 <topicName>/camera/mid/rgb</topicName>
                 <updateRate>30</updateRate>
                 <alwaysOn>true</alwaysOn>
@@ -457,26 +458,29 @@
 
     <!-- Depth camera -->
     <webots>
-        <device reference="mid_cam_link" type="RangeFinder">
+        <device reference="mid_camera_depth" type="RangeFinder">
             <ros>
+                <frameName>mid_cam_link</frameName>
                 <topicName>/camera/mid/depth</topicName>
                 <updateRate>30</updateRate>
+                <alwaysOn>true</alwaysOn>
             </ros>
         </device>
     </webots>
 
-    <!-- Oak-d IMU TODO may not work-->
+    <!-- Oak-d IMU -->
     <webots>
         <plugin type="webots_ros2_driver::Ros2IMU">
             <topicName>/camera/mid/imu</topicName>
             <frameName>mid_cam_link</frameName>
+            <alwaysOn>true</alwaysOn>
 
             <!-- Indicates the name of the inertial unit device. -->
-            <inertialUnitName>inertial_unit</inertialUnitName>
+            <inertialUnitName>mid_camera_inert</inertialUnitName>
             <!-- Indicates the name of the gyro device. -->
-            <gyroName>gyro</gyroName>
+            <gyroName>mid_camera_gyro</gyroName>
             <!-- Indicates the name of the accelerometer device. -->
-            <accelerometerName>accelerometer</accelerometerName>
+            <accelerometerName>mid_camera_accel</accelerometerName>
         </plugin>
     </webots>
 </robot>

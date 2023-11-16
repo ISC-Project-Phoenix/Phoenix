@@ -12,6 +12,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/geometries/protos/Extrusion.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Forest.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/ParkingLines.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/PedestrianCrossing.proto"
 EXTERNPROTO "../protos/Phoenix.proto"
 
 WorldInfo {
@@ -29,9 +30,6 @@ WorldInfo {
           8
         ]
         softCFM 1e-05
-        bumpSound ""
-        rollSound ""
-        slideSound ""
       }
   ]
 }
