@@ -29,7 +29,7 @@ find_package(hybrid_pp REQUIRED)
 
 #INSTALL
 install(
-        DIRECTORY launch worlds models config
+        DIRECTORY launch worlds models config webots_project
         DESTINATION share/${PROJECT_NAME}/
 )
 

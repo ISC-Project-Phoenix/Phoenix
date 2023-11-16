@@ -1,0 +1,392 @@
+#VRML_SIM R2023b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Phoenix
+# Extracted from: /home/andy/Documents/dev/phoenix/src/Phoenix/phoenix_description/urdf/phoenix.urdf
+
+# TODO time stops when this is added
+PROTO Phoenix [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Phoenix"  # Is `Robot.name`.
+  field  SFString    controller      "<extern>"     # Is `Robot.controller`.
+  field  MFString    controllerArgs  []         # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""         # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE      # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE       # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE      # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Solid {
+        translation 0.000000 0.000000 0.127000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.001000 0.001000 0.001000
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000003 1.000000 -0.000004
+            }
+            device [
+              RotationalMotor {
+                name "rear_axle_to_physical_rear_axle"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "rear_axle_to_physical_rear_axle_sensor"
+              }
+            ]
+            endPoint Solid {
+              rotation 0.000001 0.707108 0.707105 3.141591
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.500000 0.500000 0.500000
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    radius 0.05
+                    height 0.9398
+                  }
+                }
+                Solid {
+                  translation 0.000000 0.000000 -0.637100
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.500000 0.500000 0.500000
+                        roughness 1.000000
+                        metalness 0
+                      }
+                      geometry Cylinder {
+                        radius 0.127
+                        height 0.2032
+                      }
+                    }
+                  ]
+                  name "left_rear_wheel"
+                  boundingObject Cylinder {
+                    radius 0.127
+                    height 0.2032
+                  }
+                  physics Physics {
+                  }
+                }
+                Solid {
+                  translation 0.000000 0.000000 0.637100
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.500000 0.500000 0.500000
+                        roughness 1.000000
+                        metalness 0
+                      }
+                      geometry Cylinder {
+                        radius 0.127
+                        height 0.2032
+                      }
+                    }
+                  ]
+                  name "right_rear_wheel"
+                  boundingObject Cylinder {
+                    radius 0.127
+                    height 0.2032
+                  }
+                  physics Physics {
+                  }
+                }
+              ]
+              name "physical_rear_axle"
+              physics Physics {
+                density -1
+                mass 10.000000
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+                inertiaMatrix [
+                  7.422701e-01 7.422701e-01 1.250000e-02
+                  0.000000e+00 0.000000e+00 0.000000e+00
+                ]
+              }
+            }
+          }
+          Solid {
+            translation 0.825350 0.000000 0.000000
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.500000 0.500000 0.500000
+                  roughness 1.000000
+                  metalness 0
+                }
+                geometry Box {
+                   size 1.396700 0.838200 0.100000
+                }
+              }
+            ]
+            name "base_link"
+            boundingObject Box {
+               size 1.396700 0.838200 0.100000
+            }
+            physics Physics {
+              density -1
+              mass 90.000000
+              centerOfMass [ 0.000000 0.000000 0.000000 ]
+              inertiaMatrix [
+                5.344344e+00 1.470578e+01 1.470578e+01
+                0.000000e+00 0.000000e+00 0.000000e+00
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 0.000000 1.000000
+              anchor 1.035050 0.647700 0.000000
+            }
+            device [
+              RotationalMotor {
+                name "left_front_wheel_steer"
+                maxVelocity 3.141
+                minPosition -0.3499
+                maxPosition 0.5236
+                maxTorque 25.0
+              }
+              PositionSensor {
+                name "left_front_wheel_steer_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 1.035050 0.647700 0.000000
+              children [
+                Pose {
+                  rotation 1.000000 0.000000 0.000000 1.570800
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.500000 0.500000 0.500000
+                        roughness 1.000000
+                        metalness 0
+                      }
+                      geometry Box {
+                         size 0.001000 0.001000 0.001000
+                      }
+                    }
+                  ]
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0.000000 1.000000 0.000000
+                    anchor 0.000000 -0.000010 0.000000
+                  }
+                  device [
+                    RotationalMotor {
+                      name "left_front_wheel_rack_to_wheel"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "left_front_wheel_rack_to_wheel_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.000000 -0.000010 0.000000
+                    children [
+                      Pose {
+                        rotation 1.000000 0.000000 0.000000 1.570800
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.500000 0.500000 0.500000
+                              roughness 1.000000
+                              metalness 0
+                            }
+                            geometry Cylinder {
+                              radius 0.12065
+                              height 0.1143
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                    name "left_front_wheel"
+                    boundingObject Cylinder {
+                      radius 0.12065
+                      height 0.1143
+                    }
+                    physics Physics {
+                      density -1
+                      mass 1.100000
+                      centerOfMass [ 0.000000 0.000000 0.000000 ]
+                      inertiaMatrix [
+                        5.200595e-03 8.006033e-03 5.200595e-03
+                        0.000000e+00 0.000000e+00 -1.030495e-08
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "left_front_wheel_rack"
+              physics Physics {
+                density -1
+                mass 0.001000
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+                inertiaMatrix [
+                  7.600000e-07 1.000000e-06 7.600000e-07
+                  0.000000e+00 0.000000e+00 -8.815692e-13
+                ]
+              }
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 0.000000 1.000000
+              anchor 1.035050 -0.647700 0.000000
+            }
+            device [
+              RotationalMotor {
+                name "right_front_wheel_steer"
+                maxVelocity 3.141
+                minPosition -0.3499
+                maxPosition 0.5236
+                maxTorque 25.0
+              }
+              PositionSensor {
+                name "right_front_wheel_steer_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 1.035050 -0.647700 0.000000
+              children [
+                Pose {
+                  rotation 1.000000 0.000000 0.000000 1.570800
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.500000 0.500000 0.500000
+                        roughness 1.000000
+                        metalness 0
+                      }
+                      geometry Box {
+                         size 0.001000 0.001000 0.001000
+                      }
+                    }
+                  ]
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0.000000 1.000000 0.000000
+                    anchor 0.000000 -0.000010 0.000000
+                  }
+                  device [
+                    RotationalMotor {
+                      name "right_front_wheel_rack_to_wheel"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "right_front_wheel_rack_to_wheel_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.000000 -0.000010 0.000000
+                    children [
+                      Pose {
+                        rotation 1.000000 0.000000 0.000000 1.570800
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.500000 0.500000 0.500000
+                              roughness 1.000000
+                              metalness 0
+                            }
+                            geometry Cylinder {
+                              radius 0.12065
+                              height 0.1143
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                    name "right_front_wheel"
+                    boundingObject Cylinder {
+                      radius 0.12065
+                      height 0.1143
+                    }
+                    physics Physics {
+                      density -1
+                      mass 1.100000
+                      centerOfMass [ 0.000000 0.000000 0.000000 ]
+                      inertiaMatrix [
+                        5.200595e-03 8.006033e-03 5.200595e-03
+                        0.000000e+00 0.000000e+00 -1.030495e-08
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "right_front_wheel_rack"
+              physics Physics {
+                density -1
+                mass 0.001000
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+                inertiaMatrix [
+                  7.600000e-07 1.000000e-06 7.600000e-07
+                  0.000000e+00 0.000000e+00 -8.815692e-13
+                ]
+              }
+            }
+          }
+          Solid {
+            translation 1.050000 0.000000 0.400000
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.500000 0.500000 0.500000
+                  roughness 1.000000
+                  metalness 0
+                }
+                geometry Box {
+                   size 0.020000 0.050000 0.020000
+                }
+              }
+            ]
+            name "mid_cam_link"
+            boundingObject Box {
+               size 0.020000 0.050000 0.020000
+            }
+            physics Physics {
+              density -1
+              mass 0.100000
+              centerOfMass [ 0.000000 0.000000 0.000000 ]
+            }
+          }
+        ]
+        name "rear_axle"
+        physics Physics {
+          density -1
+          mass 0.001000
+          centerOfMass [ 0.000000 0.000000 0.000000 ]
+          inertiaMatrix [
+            7.600000e-07 7.600000e-07 1.000000e-06
+            0.000000e+00 0.000000e+00 0.000000e+00
+          ]
+        }
+      }
+    ]
+    name IS name
+  }
+}
