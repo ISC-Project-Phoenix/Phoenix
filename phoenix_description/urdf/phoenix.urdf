@@ -442,10 +442,9 @@
 <!--        </sensor>-->
 <!--  </gazebo>-->
 
-    <!-- Webots Plugins -->
-
-    <!-- Camera -->
+    <!-- Webots Plugins NOTE: These must be all in one webots tag -->
     <webots>
+        <!-- Camera -->
         <device reference="mid_camera" type="Camera">
             <ros>
                 <frameName>mid_cam_link</frameName>
@@ -454,10 +453,8 @@
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
-    </webots>
 
-    <!-- Depth camera -->
-    <webots>
+        <!-- Depth camera -->
         <device reference="mid_camera_depth" type="RangeFinder">
             <ros>
                 <frameName>mid_cam_link</frameName>
@@ -466,10 +463,8 @@
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
-    </webots>
 
-    <!-- Oak-d IMU -->
-    <webots>
+        <!-- IMU -->
         <plugin type="webots_ros2_driver::Ros2IMU">
             <topicName>/camera/mid/imu</topicName>
             <frameName>mid_cam_link</frameName>
@@ -482,10 +477,8 @@
             <!-- Indicates the name of the accelerometer device. -->
             <accelerometerName>mid_camera_accel</accelerometerName>
         </plugin>
-    </webots>
 
-    <!-- Custom driver -->
-    <webots>
+        <!-- Custom driver for odom and actuation-->
         <plugin type="wb_io_ros::WbIoRos" />
     </webots>
 </robot>
