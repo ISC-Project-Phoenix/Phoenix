@@ -18,6 +18,7 @@ def generate_launch_description():
     phnx_gazebo = get_package_share_directory("phoenix_gazebo")
     urdf_path = os.path.join(phnx_desc, 'urdf', 'phoenix.urdf')
 
+    # Starts webots driver with our plugins loaded via the URDF
     robot_driver = WebotsController(
         robot_name='Phoenix',
         parameters=[
