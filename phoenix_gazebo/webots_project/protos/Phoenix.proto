@@ -104,9 +104,18 @@ PROTO Phoenix [
             # Mid camera
             Camera {
               name "mid_camera"
+              fieldOfView 1.65806
+              width 640
+              height 360
             }
             RangeFinder {
               name "mid_camera_depth"
+              fieldOfView 1.65806
+              width 640
+              height 360
+              near 0.2
+              minRange 0.2
+              maxRange 10.0
             }
             # IMU part
             Gyro {
