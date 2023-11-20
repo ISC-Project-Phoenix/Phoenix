@@ -7,7 +7,7 @@ centralWidgetVisible: 1
 renderingMode: PLAIN
 orthographicViewHeight: 1
 textFiles: -1
-globalOptionalRendering: RangeFinderFrustums::CameraFrustums
+globalOptionalRendering: CameraFrustums
 consoles: Console:All:All
 renderingDevicePerspectives: Phoenix:mid_camera;1;0.332407;0.120627;0.152955
-renderingDevicePerspectives: Phoenix:mid_camera_depth;0;2.40278;0;0
+renderingDevicePerspectives: Phoenix:mid_camera_depth;0;1.19687;0;0
