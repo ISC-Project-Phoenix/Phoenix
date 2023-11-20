@@ -149,12 +149,13 @@ PROTO Phoenix [
 
       ]
 
-      # The actual physics TODO may want to tweak to make a tad more accurate
+      # The actual physics
       boundingObject Group {
         children [
           Pose {
             translation 0.82535 0 0
             children [
+              # This is the base link box in the urdf
               Box {
                  size 1.396700 0.838200 0.100000
               }
@@ -164,10 +165,10 @@ PROTO Phoenix [
        }
        physics Physics {
          density -1
-         mass 90.000000
+         mass 200.000000 # TODO make accurate
          centerOfMass [ 0.000000 0.000000 0.000000 ]
          inertiaMatrix [
-             5.344344e+00 1.470578e+01 1.470578e+01
+             5.344344e+00 1.470578e+01 1.470578e+01 #TODO make accurate to box above
              0.000000e+00 0.000000e+00 0.000000e+00
          ]
        }

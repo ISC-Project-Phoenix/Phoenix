@@ -1,0 +1,22 @@
+#VRML_SIM R2023b utf8
+# Orange cone, non-collideable
+
+PROTO Isc_Cone [
+  field MFString url "../../models/isc_cone/cone.dae"
+  field SFBool isPickable TRUE
+  # These are required to allow for moving in sim
+  field  SFVec3f translation 0 0 0
+  field  SFRotation  rotation 0 0 1 0
+]
+{
+  Pose {
+    translation IS translation
+    rotation IS rotation
+    children [
+        CadShape {
+            url IS url
+            isPickable IS isPickable
+        }
+    ]
+  }
+}
