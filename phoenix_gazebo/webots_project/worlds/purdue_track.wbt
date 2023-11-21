@@ -11,6 +11,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/PedestrianCrossing.proto"
 EXTERNPROTO "../protos/Phoenix.proto"
 EXTERNPROTO "../protos/Isc_Cone.proto"
+EXTERNPROTO "../protos/homedepotbox.proto"
 
 WorldInfo {
   info [
@@ -31,8 +32,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.24367719246243555 0.3705021697752542 0.8962977005802557 1.2661101024455086
-  position -62.0181101275247 -145.91141972637743 104.86613627213018
+  orientation 0.19554125417852308 -0.18864175613390988 -0.962381372303623 4.638167989220186
+  position 47.058738082703734 15.921872580481136 11.005666993388196
   near 3
   follow "Phoenix"
   followType "Mounted Shot"
@@ -2938,4 +2939,16 @@ Isc_Cone {
 Isc_Cone {
   translation 43.3829 39.3433 0.01
   rotation 0 0 1 2.85387e-06
+}
+homedepotbox {
+  translation 44.31 42.75 0.22
+  name "home depot box left"
+}
+homedepotbox {
+  translation 45 42.75 0.22
+  name "home depot box right"
+}
+homedepotbox {
+  translation 44.65 42.75 0.63
+  name "home depot box top"
 }
