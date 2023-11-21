@@ -291,6 +291,36 @@
     <child link="mid_cam_link"/>
 </joint>
 
+    <!-- TODO finalize location -->
+    <link name="lidar_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 -0.0671" />
+            <geometry>
+                <cylinder length="0.1636" radius="0.0498"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 -0.0671" />
+            <geometry>
+                <cylinder length="0.1636" radius="0.0498"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="2.2"/>
+            <inertia
+                    ixx="0.000315771" ixy="0.0" ixz="0.0"
+                    iyy="0.00266963" iyz="0.0"
+                    izz="0.0"/>
+        </inertial>
+    </link>
+
+    <joint name="lidar_to_rear_axel" type="fixed">
+        <origin rpy="0 0 0" xyz="1.4 0 0.25"/>
+        <parent link="rear_axle"/>
+        <child link="lidar_link"/>
+    </joint>
+
 <!-- Camera in the sky for analysing the good areas -->
 <!--<link name="sky_cam_link">-->
 <!--    <visual>-->
@@ -477,6 +507,16 @@
             <!-- Indicates the name of the accelerometer device. -->
             <accelerometerName>mid_camera_accel</accelerometerName>
         </plugin>
+
+        <!-- Lidar -->
+        <device reference="Sick S300" type="Lidar">
+            <ros>
+                <frameName>lidar_link</frameName>
+                <topicName>/scan</topicName>
+                <updateRate>20</updateRate>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
 
         <!-- Custom driver for odom and actuation-->
         <plugin type="wb_io_ros::WbIoRos" />

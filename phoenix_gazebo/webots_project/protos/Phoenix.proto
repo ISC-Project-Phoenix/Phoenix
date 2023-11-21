@@ -6,6 +6,7 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/abstract/Car.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/abstract/VehicleWheel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/devices/sick/protos/SickS300.proto"
 
 PROTO Phoenix [
   field  SFVec3f     translation     0 0 0
@@ -86,7 +87,7 @@ PROTO Phoenix [
         centralOuterRadius 0.09
       }
 
-      # Sensors
+      # Camera
       extensionSlot [
       Solid {
           translation 1.050000 0.000000 0.400000
@@ -137,6 +138,14 @@ PROTO Phoenix [
             mass 0.100000
             centerOfMass [ 0.000000 0.000000 0.000000 ]
           }
+        }
+
+        # Lidar
+        Solid {
+          translation 1.40000 0.000000 0.250000
+          children [
+             SickS300 { enablePhysics FALSE noise 0.05 }
+          ]
         }
 
         # Main body visual
