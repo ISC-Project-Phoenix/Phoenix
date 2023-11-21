@@ -7,6 +7,7 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/abstract/Car.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/abstract/VehicleWheel.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/devices/sick/protos/SickS300.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/appearances/protos/GlossyPaint.proto"
 
 PROTO Phoenix [
   field  SFVec3f     translation     0 0 0
@@ -153,14 +154,12 @@ PROTO Phoenix [
         translation 0.82535 0 0
         children [
           Shape {
-              appearance PBRAppearance {
-                baseColor 0.500000 0.500000 0.500000
-                roughness 1.000000
-                metalness 0
+              appearance GlossyPaint {
+                 baseColor 0.0196078431372549 0.0784313725490196 0.9019607843137255
               }
               geometry Box {
                  size 1.396700 0.838200 0.100000
-            }
+              }
             }
            ]
         }
