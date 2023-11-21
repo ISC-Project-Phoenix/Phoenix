@@ -31,8 +31,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.1456186595136387 0.7587774501162159 -0.6348637548297938 0.5870796259036176
-  position -9.51939898429719 7.658619431414172 8.060477214415034
+  orientation -0.24367719246243555 0.3705021697752542 0.8962977005802557 1.2661101024455086
+  position -62.0181101275247 -145.91141972637743 104.86613627213018
   near 3
   follow "Phoenix"
   followType "Mounted Shot"
@@ -1916,6 +1916,26 @@ Isc_Cone {
   rotation 0 0 1 0.785401
 }
 Isc_Cone {
+  translation 35.8377 -2.54188 0.01
+  rotation 0 0 1 0.785401
+}
+Isc_Cone {
+  translation 38.382 0.00374462 0.01
+  rotation 0 0 1 0.785401
+}
+Isc_Cone {
+  translation 41.0679 2.39372 0.01
+  rotation 0 0 1 0.785401
+}
+Isc_Cone {
+  translation 43.7329 5.05919 0.01
+  rotation 0 0 1 0.785401
+}
+Isc_Cone {
+  translation 46.1295 7.45604 0.01
+  rotation 0 0 1 0.785401
+}
+Isc_Cone {
   translation 4.3218 2.8856 0.01
   rotation 0 0 1 -0.523595307179586
 }
@@ -1966,4 +1986,956 @@ Isc_Cone {
 Isc_Cone {
   translation 27.2638 -3.46397 0.01
   rotation 0 0 1 -0.785395307179586
+}
+Isc_Cone {
+  translation 30.0198 -1.10238 0.01
+  rotation 0 0 1 -0.785395307179586
+}
+Isc_Cone {
+  translation 32.8899 1.49973 0.01
+  rotation 0 0 1 -0.785395307179586
+}
+Isc_Cone {
+  translation 36.035 4.08063 0.01
+  rotation 0 0 1 -0.785395307179586
+}
+Isc_Cone {
+  translation 39.1182 7.13532 0.01
+  rotation 0 0 1 -0.785395307179586
+}
+Isc_Cone {
+  translation 41.5509 9.5676 0.01
+  rotation 0 0 1 -0.785395307179586
+}
+Isc_Cone {
+  translation 43.6229 12.8133 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.6229 16.1133 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.6229 19.5033 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 47.5029 9.6633 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3829 12.9533 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3829 16.3833 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3829 20.3733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3829 23.2233 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3829 26.8833 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3829 30.3733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3829 33.5833 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3129 36.8633 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.3429 43.1733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.3429 46.6333 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.3429 50.0533 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.3429 53.3333 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 42.9629 56.4233 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 42.9629 59.8033 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 42.9629 63.1533 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 42.9629 66.2933 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 42.9629 69.5833 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 42.9629 72.9033 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 42.9629 76.0933 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 41.8529 79.3233 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 39.7329 81.8733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 37.1529 82.9933 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 34.3329 82.4933 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 31.8429 80.6133 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 30.1429 78.5433 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 29.8529 74.8933 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 29.8529 71.6333 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 29.8529 68.2333 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 28.9929 65.4333 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 27.1029 62.8233 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 24.4529 60.2533 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 22.615 58.9808 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 20.0823 57.1987 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 17.5372 55.219 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 15.6288 52.2216 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 13.585 59.059 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 11.1596 55.5314 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 10.0707 51.9119 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 10.9903 48.2356 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 12.6456 46.0017 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 15.0141 43.6332 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 16.9589 40.5852 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 19.3211 38.223 0.01
+  rotation 0 0 1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 16.8745 49.2234 0.01
+  rotation 0 0 -1 2.618
+}
+Isc_Cone {
+  translation 18.5298 47.0964 0.01
+  rotation 0 0 -1 2.618
+}
+Isc_Cone {
+  translation 20.5669 44.5887 0.01
+  rotation 0 0 -1 2.618
+}
+Isc_Cone {
+  translation 22.1619 41.8259 0.01
+  rotation 0 0 -1 2.618
+}
+Isc_Cone {
+  translation 23.8169 38.9584 0.01
+  rotation 0 0 -1 2.618
+}
+Isc_Cone {
+  translation 24.4815 36.3864 0.01
+  rotation 0 0 1 3.14159
+}
+Isc_Cone {
+  translation 24.4815 32.8064 0.01
+  rotation 0 0 1 3.14159
+}
+Isc_Cone {
+  translation 20.0415 34.3964 0.01
+  rotation 0 0 -1 -2.6179953071795863
+}
+Isc_Cone {
+  translation 18.3465 31.4607 0.01
+  rotation 0 0 -1 -2.6179953071795863
+}
+Isc_Cone {
+  translation 15.4971 29.8157 0.01
+  rotation 0 0 -1 -2.094395307179586
+}
+Isc_Cone {
+  translation 12.2204 28.2705 0.01
+  rotation 0 0 -1 -2.094395307179586
+}
+Isc_Cone {
+  translation 9.0204 28.2705 0.01
+  rotation 0 0 -1 -1.5707953071795862
+}
+Isc_Cone {
+  translation 5.8204 28.2705 0.01
+  rotation 0 0 -1 -1.5707953071795862
+}
+Isc_Cone {
+  translation 2.89688 29.6466 0.01
+  rotation 0 0 -1 -1.047195307179586
+}
+Isc_Cone {
+  translation 0.098962 31.1009 0.01
+  rotation 0 0 -1 -1.047195307179586
+}
+Isc_Cone {
+  translation -2.47129 32.9891 0.01
+  rotation 0 0 -1 -0.785395307179586
+}
+Isc_Cone {
+  translation -4.85419 35.3719 0.01
+  rotation 0 0 -1 -0.785395307179586
+}
+Isc_Cone {
+  translation -6.47419 38.1777 0.01
+  rotation 0 0 -1 -0.523595307179586
+}
+Isc_Cone {
+  translation -8.40954 32.0497 0.01
+  rotation 0 0 -1 -0.523595307179586
+}
+Isc_Cone {
+  translation -10.0495 34.8903 0.01
+  rotation 0 0 -1 -0.523595307179586
+}
+Isc_Cone {
+  translation -11.3157 37.9233 0.01
+  rotation 0 0 -1 -0.261795307179586
+}
+Isc_Cone {
+  translation -12.5518 40.8321 0.01
+  rotation 0 0 -1 -0.261795307179586
+}
+Isc_Cone {
+  translation -13.0856 43.7542 0.01
+  rotation 0 0 -1 -0.261795307179586
+}
+Isc_Cone {
+  translation -13.4101 47.0535 0.01
+  rotation 0 0 1 -5.307179586466759e-06
+}
+Isc_Cone {
+  translation -13.4101 50.1535 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -12.8717 53.1672 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -12.0573 56.2004 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -11.47 59.3974 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -11.47 59.3974 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -7.49135 41.3936 0.01
+  rotation 0 0 -1 -0.261795307179586
+}
+Isc_Cone {
+  translation -8.21609 44.0988 0.01
+  rotation 0 0 -1 -0.261795307179586
+}
+Isc_Cone {
+  translation -8.41609 46.8588 0.01
+  rotation 0 0 1 -5.307179586466759e-06
+}
+Isc_Cone {
+  translation -8.41609 50.1188 0.01
+  rotation 0 0 1 -5.307179586466759e-06
+}
+Isc_Cone {
+  translation -7.86609 53.5188 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -7.00415 56.7356 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -6.20427 59.7208 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -5.53503 62.8752 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -10.6306 62.7907 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -10.0189 65.9605 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -9.40207 69.4603 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -8.5298 72.715 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -9.44945 78.5948 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -11.9981 81.4008 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -15.3426 83.0541 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -19.0892 84.0603 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -22.345 84.0839 0.01
+  rotation 0 0 1 1.57079
+}
+Isc_Cone {
+  translation -22.345 84.0839 0.01
+  rotation 0 0 1 1.57079
+}
+Isc_Cone {
+  translation -8.6098 75.975 0.01
+  rotation 0 0 -1 5.92017e-06
+}
+Isc_Cone {
+  translation -4.6835 66.0532 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -4.20421 69.3104 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -3.53531 72.7343 0.01
+  rotation 0 0 1 -0.2618053071795865
+}
+Isc_Cone {
+  translation -3.53531 75.9043 0.01
+  rotation 0 0 -1 5.92017e-06
+}
+Isc_Cone {
+  translation -4.36618 79.0045 0.01
+  rotation 0 0 1 0.261793
+}
+Isc_Cone {
+  translation -6.06118 81.9399 0.01
+  rotation 0 0 1 0.523592
+}
+Isc_Cone {
+  translation -7.72118 84.8147 0.01
+  rotation 0 0 1 1.04719
+}
+Isc_Cone {
+  translation -10.7714 86.3911 0.01
+  rotation 0 0 1 1.04719
+}
+Isc_Cone {
+  translation -13.7536 87.584 0.01
+  rotation 0 0 1 1.30899
+}
+Isc_Cone {
+  translation -16.9015 88.4292 0.01
+  rotation 0 0 1 1.30899
+}
+Isc_Cone {
+  translation -20.3115 88.7792 0.01
+  rotation 0 0 1 1.57079
+}
+Isc_Cone {
+  translation -25.5015 84.0192 0.01
+  rotation 0 0 1 1.57079
+}
+Isc_Cone {
+  translation -28.4615 83.5292 0.01
+  rotation 0 0 1 1.57079
+}
+Isc_Cone {
+  translation -31.2015 82.4892 0.01
+  rotation 0 0 1 1.57079
+}
+Isc_Cone {
+  translation -23.5015 88.7792 0.01
+  rotation 0 0 1 1.57079
+}
+Isc_Cone {
+  translation -26.8315 88.4992 0.01
+  rotation 0 0 1 1.57079
+}
+Isc_Cone {
+  translation -29.2715 88.4992 0.01
+  rotation 0 0 1 1.57079
+}
+Isc_Cone {
+  translation -29.2715 88.4992 0.01
+  rotation 0 0 1 1.83259
+}
+Isc_Cone {
+  translation -32.0498 87.2373 0.01
+  rotation 0 0 1 1.83259
+}
+Isc_Cone {
+  translation -35.3052 85.7434 0.01
+  rotation 0 0 1 1.83259
+}
+Isc_Cone {
+  translation -37.6338 83.6181 0.01
+  rotation 0 0 1 2.61799
+}
+Isc_Cone {
+  translation -39.3838 80.5876 0.01
+  rotation 0 0 1 2.61799
+}
+Isc_Cone {
+  translation -40.6399 77.5717 0.01
+  rotation 0 0 1 2.61799
+}
+Isc_Cone {
+  translation -40.6399 74.3417 0.01
+  rotation 0 0 1 3.14159
+}
+Isc_Cone {
+  translation -40.0399 71.1317 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -38.8933 68.2405 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -33.7336 80.2041 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -35.787 76.5883 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -35.652 73.6105 0.01
+  rotation 0 0 -1 2.8798
+}
+Isc_Cone {
+  translation -34.4588 70.4716 0.01
+  rotation 0 0 -1 2.8798
+}
+Isc_Cone {
+  translation -33.1731 67.4509 0.01
+  rotation 0 0 -1 2.8798
+}
+Isc_Cone {
+  translation -31.9812 64.4673 0.01
+  rotation 0 0 -1 2.8798
+}
+Isc_Cone {
+  translation -31.1502 61.3661 0.01
+  rotation 0 0 -1 2.8798
+}
+Isc_Cone {
+  translation -30.3109 58.2355 0.01
+  rotation 0 0 -1 2.8798
+}
+Isc_Cone {
+  translation -29.4957 55.192 0.01
+  rotation 0 0 -1 2.8798
+}
+Isc_Cone {
+  translation -28.6316 51.9649 0.01
+  rotation 0 0 -1 2.8798
+}
+Isc_Cone {
+  translation -29.4879 48.7778 0.01
+  rotation 0 0 1 2.87979
+}
+Isc_Cone {
+  translation -31.6663 46.5994 0.01
+  rotation 0 0 -1 -2.3561953071795863
+}
+Isc_Cone {
+  translation -34.6213 44.7886 0.01
+  rotation 0 0 -1 -1.8325953071795862
+}
+Isc_Cone {
+  translation -37.1928 43.4889 0.01
+  rotation 0 0 -1 -1.8325953071795862
+}
+Isc_Cone {
+  translation -40.1803 41.8903 0.01
+  rotation 0 0 -1 -1.8325953071795862
+}
+Isc_Cone {
+  translation -43.3103 41.0509 0.01
+  rotation 0 0 1 2.61799
+}
+Isc_Cone {
+  translation -45.1453 37.8721 0.01
+  rotation 0 0 1 2.61799
+}
+Isc_Cone {
+  translation -44.2593 34.577 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -43.5155 31.8037 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -40.6494 30.1487 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -37.8809 28.3652 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -35.1964 26.8152 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -32.4083 25.2052 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -29.395 23.4652 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -26.6158 21.8602 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -23.9467 20.0648 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -21.1847 18.4698 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -18.362 16.8398 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -15.5487 15.2148 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -12.778 13.6148 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -9.94688 11.9798 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -7.16748 9.99408 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -4.327 8.35408 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -1.54714 6.74908 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation 0.574597 5.52408 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -37.7743 64.9998 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -36.6116 61.9366 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -35.8301 59.0191 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -34.9649 55.7929 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -34.104 52.5852 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -36.1899 49.5953 0.01
+  rotation 0 0 -1 -2.094395307179586
+}
+Isc_Cone {
+  translation -38.6057 48.2003 0.01
+  rotation 0 0 -1 -2.094395307179586
+}
+Isc_Cone {
+  translation -42.0103 47.2971 0.01
+  rotation 0 0 -1 -2.094395307179586
+}
+Isc_Cone {
+  translation -44.9291 45.6121 0.01
+  rotation 0 0 -1 -2.094395307179586
+}
+Isc_Cone {
+  translation -47.4301 43.3244 0.01
+  rotation 0 0 1 2.61799
+}
+Isc_Cone {
+  translation -49.0951 40.4381 0.01
+  rotation 0 0 1 2.61799
+}
+Isc_Cone {
+  translation -49.9613 37.4166 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -49.1915 34.5378 0.01
+  rotation 0 0 1 -2.8797953071795863
+}
+Isc_Cone {
+  translation -48.2402 31.4901 0.01
+  rotation 0 0 -1 2.618
+}
+Isc_Cone {
+  translation -46.6302 28.7018 0.01
+  rotation 0 0 -1 2.3562
+}
+Isc_Cone {
+  translation -44.0643 26.7005 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -41.0082 24.9355 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -38.3555 23.0918 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -35.5847 21.4918 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -32.6317 19.7868 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -29.8179 18.1618 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -27.0559 16.5668 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -24.3458 15.0018 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -21.5767 13.0795 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -18.6929 11.4145 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -15.9746 9.8445 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -12.9526 8.0995 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -10.2261 6.5245 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -7.50696 4.9545 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -4.69246 3.3295 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation -2.15508 1.8645 0.01
+  rotation 0 0 -1 2.0944
+}
+Isc_Cone {
+  translation 23.5101 29.7637 0.01
+  rotation 0 0 -1 -2.8797953071795863
+}
+Isc_Cone {
+  translation 21.2696 27.5232 0.01
+  rotation 0 0 -1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 18.6731 25.3377 0.01
+  rotation 0 0 -1 -2.3561953071795863
+}
+Isc_Cone {
+  translation 16.1382 24.2858 0.01
+  rotation 0 0 -1 -1.8325953071795862
+}
+Isc_Cone {
+  translation 13.0471 23.4577 0.01
+  rotation 0 0 -1 -1.8325953071795862
+}
+Isc_Cone {
+  translation 10.052 22.6544 0.01
+  rotation 0 0 -1 -1.3089953071795861
+}
+Isc_Cone {
+  translation 6.68133 23.0202 0.01
+  rotation 0 0 -1 -1.3089953071795861
+}
+Isc_Cone {
+  translation 3.57082 23.8565 0.01
+  rotation 0 0 -1 -1.3089953071795861
+}
+Isc_Cone {
+  translation 0.352498 25.3213 0.01
+  rotation 0 0 -1 -1.047195307179586
+}
+Isc_Cone {
+  translation -2.43606 26.9313 0.01
+  rotation 0 0 -1 -1.047195307179586
+}
+Isc_Cone {
+  translation -5.04959 28.8532 0.01
+  rotation 0 0 -1 -0.785395307179586
+}
+Isc_Cone {
+  translation 48.3129 40.0733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3129 43.3333 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3129 46.7533 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3129 50.2733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.3129 53.6933 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.1829 56.9633 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.1829 60.2433 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.1829 63.6133 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.1829 66.5233 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.1829 69.8233 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 48.1829 72.8733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 47.8829 75.5433 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 47.3329 78.5033 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 46.0029 81.2833 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 44.0129 84.2433 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 41.4029 86.2733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 38.3429 87.4033 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 35.3029 87.4033 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 32.3329 86.7433 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 29.8829 85.7033 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 27.3029 83.5733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 25.4329 80.6533 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 24.8429 76.5933 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 24.8429 73.3433 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 24.8429 69.9733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 23.6829 67.3233 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 21.5829 65.5433 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 19.2429 63.5433 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 16.6529 61.2533 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.6229 22.9133 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.6229 26.4733 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.6229 29.6033 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.3829 32.9533 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.3829 36.0833 0.01
+  rotation 0 0 1 2.85387e-06
+}
+Isc_Cone {
+  translation 43.3829 39.3433 0.01
+  rotation 0 0 1 2.85387e-06
 }
