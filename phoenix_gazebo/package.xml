@@ -22,6 +22,7 @@
   <exec_depend>phoenix_description</exec_depend>
   <exec_depend>data_logger</exec_depend>
   <exec_depend>gz_io_ros</exec_depend>
+  <exec_depend>wb_io_ros</exec_depend>
   <exec_depend>twist_to_ackermann</exec_depend>
   <exec_depend>robot_localization</exec_depend>
   <exec_depend>rtabmap_odom</exec_depend>

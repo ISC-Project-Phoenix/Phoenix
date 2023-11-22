@@ -18,15 +18,9 @@ def generate_launch_description():
     phnx_gazebo = get_package_share_directory("phoenix_gazebo")
     urdf_path = os.path.join(phnx_desc, 'urdf', 'phoenix.urdf')
 
-    spawn_URDF_robot = URDFSpawner(
-        name='phoenix',
-        urdf_path=urdf_path,
-        translation='0 0 1',
-        rotation='0 0 1 -1.5708',
-    )
-
+    # Starts webots driver with our plugins loaded via the URDF
     robot_driver = WebotsController(
-        robot_name='phoenix',
+        robot_name='Phoenix',
         parameters=[
             {'robot_description': urdf_path,
              'use_sim_time': True}
@@ -43,14 +37,14 @@ def generate_launch_description():
     # - `mode` (str): Can be `pause`, `realtime`, or `fast`.
     # - `ros2_supervisor` (bool): Spawn the `Ros2Supervisor` custom node that communicates with a Supervisor robot in the simulation.
     webots = WebotsLauncher(
-        world=PathJoinSubstitution([phnx_gazebo, 'worlds', world]),
+        world=PathJoinSubstitution([phnx_gazebo, 'webots_project', 'worlds', world]),
         ros2_supervisor=True
     )
 
     return LaunchDescription([
         DeclareLaunchArgument(
             'world',
-            default_value='my_world.wbt',
+            default_value='purdue_track.wbt',
         ),
         # Starts Webots
         webots,
@@ -58,7 +52,6 @@ def generate_launch_description():
         # Starts the Ros2Supervisor node created with the WebotsLauncher
         webots._supervisor,
         robot_driver,
-        spawn_URDF_robot,
 
         # This action will kill all nodes once the Webots simulation has exited
         launch.actions.RegisterEventHandler(

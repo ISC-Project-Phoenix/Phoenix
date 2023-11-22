@@ -21,7 +21,8 @@ def generate_launch_description():
         name='obj_tracker',
         output='screen',
         parameters=[{
-            'use_sim_time': use_sim_time
+            'use_sim_time': use_sim_time,
+            'measure_cov': 0.1,
         }]
     )
 
