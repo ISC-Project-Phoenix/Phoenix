@@ -32,25 +32,24 @@ PROTO Phoenix [
       trackFront 1.1 # TODO make accrate
       trackRear  1.2
       wheelbase  1.08
-      minSteeringAngle -2 # TODO make accrate
-      maxSteeringAngle 2
-      suspensionFrontSpringConstant  100000 # TODO remove these?
+      minSteeringAngle -0.5 # TODO make accrate
+      maxSteeringAngle 0.5
+      suspensionFrontSpringConstant  100000
       suspensionFrontDampingConstant 4000
       suspensionRearSpringConstant   100000
       suspensionRearDampingConstant  4000
       wheelsDampingConstant          5
-      maxSteeringTorque              10000 # TODO set to 25Nm?
+      maxSteeringTorque              10000
       type                           "propulsion"
       engineType                     "electric"
-      engineSound                    "" #TODO F1 car
       engineSoundRpmReference        1000
       brakeCoefficient               700
-      time0To100                     10.0 # TODO make accurate
-      maxVelocity                    8
+      time0To100                     6.0 # TODO make accurate
+      maxVelocity                    30
       engineMaxTorque                250 # TODO make motor stats accurate
       engineMaxPower                 15000
       engineMaxRPM                   45000
-      gearRatio                      [-1 1]
+      gearRatio                      [-1 2]
 
       # Wheels
       wheelFrontRight VehicleWheel {
@@ -183,11 +182,7 @@ PROTO Phoenix [
        physics Physics {
          density -1
          mass 136.078 # TODO make accurate
-         centerOfMass [ 0.000000 0.000000 0.000000 ]
-         inertiaMatrix [
-             5.344344e+00 1.470578e+01 1.470578e+01 #TODO make accurate to box above
-             0.000000e+00 0.000000e+00 0.000000e+00
-         ]
+         centerOfMass [ 0.400000 0.000000 0.10000 ]
        }
     }
 }
