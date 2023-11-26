@@ -42,14 +42,14 @@ PROTO Phoenix [
       maxSteeringTorque              10000
       type                           "propulsion"
       engineType                     "electric"
-      engineSoundRpmReference        1000
+      engineSoundRpmReference        10
       brakeCoefficient               700
-      time0To100                     6.0 # TODO make accurate
-      maxVelocity                    30
-      engineMaxTorque                250 # TODO make motor stats accurate
+      time0To100                     6.0
+      maxVelocity                    15
+      engineMaxTorque                250
       engineMaxPower                 15000
-      engineMaxRPM                   45000
-      gearRatio                      [-1 2]
+      engineMaxRPM                   3500
+      gearRatio                      [-1 1]
 
       # Wheels
       wheelFrontRight VehicleWheel {
