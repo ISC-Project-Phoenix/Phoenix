@@ -3,6 +3,10 @@ repositories:
       type: git
       url: git@github.com:ros-drivers/ackermann_msgs.git
       version: ros2
+    robot_localization:
+      type: git
+      url: git@github.com:cra-ros-pkg/robot_localization.git
+      version: ros2
     twist_to_ackermann:
       type: git 
       url: git@github.com:iscumd/twist_to_ackermann.git
