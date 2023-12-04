@@ -47,6 +47,7 @@ def generate_launch_description():
         }.items(),
     )
 
+
     oakd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
@@ -65,6 +66,13 @@ def generate_launch_description():
             'max_steering_rad': max_steering_rad,
             'wheelbase': wheelbase
         }.items()
+    )
+
+    pp = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'), 
+            'include/hybrid_pp/hybrid_pp.launch.py'
+            ]),
     )
 
     obj_detect = IncludeLaunchDescription(
@@ -116,6 +124,7 @@ def generate_launch_description():
         state_publishers,
         oakd,
         pir,
+        pp,
         obj_detect,
         obj_tracker
     ])
