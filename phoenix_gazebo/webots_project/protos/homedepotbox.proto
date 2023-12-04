@@ -1,0 +1,18 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/objects/factory/containers/protos/CardboardBox.proto"
+
+PROTO homedepotbox [
+  field SFVec3f    translation 0 0 0.3
+  field SFRotation rotation    0 0 1 0
+  field SFString name    "home depot box"
+]
+{
+  CardboardBox {
+    name IS name
+    translation IS translation
+    rotation IS rotation
+    size 0.6858 0.381 0.4064
+    mass 0.002
+  }
+}

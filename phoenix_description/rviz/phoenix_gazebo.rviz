@@ -9,6 +9,7 @@ Panels:
         - /RobotModel1
         - /Image1
         - /Image2
+        - /LaserScan1
       Splitter Ratio: 0.5
     Tree Height: 507
   - Class: rviz_common/Selection
@@ -28,7 +29,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
 Visualization Manager:
   Class: ""
   Displays:
@@ -92,6 +93,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        lidar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         mid_cam_link:
           Alpha: 1
           Show Axes: false
@@ -118,11 +124,6 @@ Visualization Manager:
           Show Trail: false
           Value: true
         right_rear_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sky_cam_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -150,13 +151,11 @@ Visualization Manager:
           Value: true
         left_rear_wheel:
           Value: true
+        lidar_link:
+          Value: true
         mid_cam_link:
           Value: true
         odom:
-          Value: true
-        phoenix/base_footprint:
-          Value: true
-        phoenix/odom:
           Value: true
         physical_rear_axle:
           Value: true
@@ -167,8 +166,6 @@ Visualization Manager:
         right_front_wheel_rack:
           Value: true
         right_rear_wheel:
-          Value: true
-        sky_cam_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -183,6 +180,8 @@ Visualization Manager:
             left_front_wheel_rack:
               left_front_wheel:
                 {}
+            lidar_link:
+              {}
             mid_cam_link:
               {}
             physical_rear_axle:
@@ -193,8 +192,6 @@ Visualization Manager:
             right_front_wheel_rack:
               right_front_wheel:
                 {}
-          sky_cam_link:
-            {}
         odom:
           {}
       Update Interval: 0
@@ -231,7 +228,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        {}
+        obj_tracker: true
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -259,6 +256,61 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /goal_pose
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz_default_plugins/PoseArray
+      Color: 0; 0; 255
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: PoseArray
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.20000000298023224
+      Shape: Arrow (3D)
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /tracks
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 0.25
+        Min Value: 0.25
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: AxisColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.05000000074505806
+      Style: Points
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /scan
+      Use Fixed Frame: true
+      Use rainbow: true
       Value: true
   Enabled: true
   Global Options:
@@ -306,7 +358,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 53.02679443359375
+      Distance: 11.105507850646973
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -321,10 +373,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7553978562355042
+      Pitch: 0.5847974419593811
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.0503902435302734
+      Yaw: 3.0503923892974854
     Saved: ~
 Window Geometry:
   Displays:

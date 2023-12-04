@@ -1,0 +1,188 @@
+#VRML_SIM R2023b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Phoenix
+# Extracted from: /home/andy/Documents/dev/phoenix/src/Phoenix/phoenix_description/urdf/phoenix.urdf
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/abstract/Car.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/abstract/VehicleWheel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/devices/sick/protos/SickS300.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/appearances/protos/GlossyPaint.proto"
+
+PROTO Phoenix [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Phoenix"  # Is `Robot.name`.
+  field  SFString    controller      "<extern>"     # Is `Robot.controller`.
+  field  MFString    controllerArgs  []         # Is `Robot.controllerArgs`.
+  field  SFBool      supervisor      FALSE      # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE       # Is `Robot.synchronization`.
+]
+{
+    Car {
+      # Config
+      translation IS translation
+      rotation IS rotation
+      name IS name
+      model "phoenix"
+      controller IS controller
+      controllerArgs IS controllerArgs
+      supervisor IS supervisor
+      synchronization IS synchronization
+      trackFront 1.1 # TODO make accrate
+      trackRear  1.2
+      wheelbase  1.08
+      minSteeringAngle -0.5 # TODO make accrate
+      maxSteeringAngle 0.5
+      suspensionFrontSpringConstant  100000
+      suspensionFrontDampingConstant 4000
+      suspensionRearSpringConstant   100000
+      suspensionRearDampingConstant  4000
+      wheelsDampingConstant          5
+      maxSteeringTorque              10000
+      type                           "propulsion"
+      engineType                     "electric"
+      engineSoundRpmReference        1000
+      brakeCoefficient               700
+      time0To100                     6.0 # TODO make accurate
+      maxVelocity                    30
+      engineMaxTorque                250 # TODO make motor stats accurate
+      engineMaxPower                 15000
+      engineMaxRPM                   45000
+      gearRatio                      [-1 2]
+
+      # Wheels
+      wheelFrontRight VehicleWheel {
+        name "front right wheel"
+        thickness 0.1143
+        tireRadius 0.12065
+        rimRadius 0.1
+        centralInnerRadius 0.03
+        centralOuterRadius 0.06
+      }
+      wheelFrontLeft VehicleWheel {
+        name "front left wheel"
+        wheelSide TRUE
+        thickness 0.1143
+        tireRadius 0.12065
+        rimRadius 0.1
+        centralInnerRadius 0.03
+        centralOuterRadius 0.06
+      }
+      wheelRearRight VehicleWheel {
+        name "rear right wheel"
+        thickness 0.2032
+        tireRadius 0.127
+        rimRadius 0.12
+        centralInnerRadius 0.03
+        centralOuterRadius 0.09
+      }
+      wheelRearLeft VehicleWheel {
+        name "rear left wheel"
+        wheelSide TRUE
+        thickness 0.2032
+        tireRadius 0.127
+        rimRadius 0.12
+        centralInnerRadius 0.03
+        centralOuterRadius 0.09
+      }
+
+      # Camera
+      extensionSlot [
+      Solid {
+          translation 1.050000 0.000000 0.400000
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.500000 0.500000 0.500000
+                roughness 1.000000
+                metalness 0
+              }
+              geometry Box {
+                 size 0.020000 0.050000 0.020000
+              }
+            }
+            # Mid camera
+            Camera {
+              name "mid_camera"
+              fieldOfView 1.65806
+              width 640
+              height 360
+            }
+            RangeFinder {
+              name "mid_camera_depth"
+              fieldOfView 1.65806
+              width 640
+              height 360
+              near 0.2
+              minRange 0.2
+              maxRange 10.0
+            }
+            # IMU part
+            Gyro {
+              name "mid_camera_gyro"
+            }
+            Accelerometer {
+              name "mid_camera_accel"
+            }
+            InertialUnit {
+              name "mid_camera_inert"
+            }
+          ]
+          name "mid_cam_link"
+          boundingObject Box {
+             size 0.020000 0.050000 0.020000
+          }
+          physics Physics {
+            density -1
+            mass 0.100000
+            centerOfMass [ 0.000000 0.000000 0.000000 ]
+          }
+        }
+
+        # Lidar
+        Solid {
+          translation 1.40000 0.000000 0.250000
+          children [
+             SickS300 { enablePhysics FALSE noise 0.05 }
+          ]
+        }
+
+        # Main body visual
+        Pose {
+        translation 0.82535 0 0
+        children [
+          Shape {
+              appearance GlossyPaint {
+                 baseColor 0.0196078431372549 0.0784313725490196 0.9019607843137255
+              }
+              geometry Box {
+                 size 1.396700 0.838200 0.100000
+              }
+            }
+           ]
+        }
+
+      ]
+
+      # The actual physics
+      boundingObject Group {
+        children [
+          Pose {
+            translation 0.82535 0 0
+            children [
+              # This is the base link box in the urdf
+              Box {
+                 size 1.396700 0.838200 0.100000
+              }
+            ]
+          }
+        ]
+       }
+       physics Physics {
+         density -1
+         mass 136.078 # TODO make accurate
+         centerOfMass [ 0.400000 0.000000 0.10000 ]
+       }
+    }
+}

@@ -10,7 +10,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 
 
-# Launches sim as well as rviz and joy stuff
 def generate_launch_description():
     # ROS packages
     pkg_phoenix_gazebo = get_package_share_directory('phoenix_gazebo')
@@ -68,6 +67,26 @@ def generate_launch_description():
         }.items()
     )
 
+    obj_detect = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            'include/obj_detector/obj_detector.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+
+    obj_tracker = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/obj_tracker/obj_tracker.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+    )
+
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument(
@@ -96,5 +115,7 @@ def generate_launch_description():
         robot_state_controller,
         state_publishers,
         oakd,
-        pir
+        pir,
+        obj_detect,
+        obj_tracker
     ])

@@ -12,10 +12,12 @@ find_package(robot_state_publisher REQUIRED)
 find_package(robot_state_controller REQUIRED)
 find_package(ros_gz_sim REQUIRED)
 find_package(ros_gz_bridge REQUIRED)
+find_package(webots_ros2_driver REQUIRED)
 find_package(joy REQUIRED)
 find_package(logi_g29 REQUIRED)
 find_package(teleop_twist_joy REQUIRED)
 find_package(gz_io_ros REQUIRED)
+find_package(wb_io_ros REQUIRED)
 find_package(data_logger REQUIRED)
 find_package(twist_to_ackermann REQUIRED)
 find_package(robot_localization REQUIRED)
@@ -28,7 +30,7 @@ find_package(hybrid_pp REQUIRED)
 
 #INSTALL
 install(
-        DIRECTORY launch worlds models config
+        DIRECTORY launch worlds models config webots_project
         DESTINATION share/${PROJECT_NAME}/
 )
 

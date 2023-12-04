@@ -26,6 +26,7 @@ def generate_launch_description():
     drive_mode_switch_button = LaunchConfiguration(
         'drive_mode_switch_button', default='7')
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+    use_webots = LaunchConfiguration('use_webots', default='true')
     use_rviz = LaunchConfiguration('use_rviz', default='true')
     gazebo_world = LaunchConfiguration(
         'gazebo_world', default='purdue_gp_track.sdf')
@@ -121,7 +122,8 @@ def generate_launch_description():
             'max_throttle_speed': max_throttle_speed,
             'max_steering_rad': max_steering_rad,
             'wheelbase': wheelbase,
-            'gazebo_world': gazebo_world
+            'gazebo_world': gazebo_world,
+            'use_webots': use_webots
         }.items(),
     )
 
@@ -176,6 +178,9 @@ def generate_launch_description():
         DeclareLaunchArgument('drive_mode_start_state',
                               default_value='auton',
                               description='Changes drive mode switch default state'),
+        DeclareLaunchArgument('use_webots',
+                              default_value='true',
+                              description='Opens webots if true, else opens gazebo'),
 
         # Hybrid PP
         DeclareLaunchArgument('min_look_ahead_distance',
