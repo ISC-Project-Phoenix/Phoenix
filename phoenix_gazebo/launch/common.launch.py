@@ -32,17 +32,6 @@ def generate_launch_description():
         'gazebo_world', default='purdue_gp_track.sdf')
 
     use_wheel = LaunchConfiguration('use_wheel', default='false')
-
-    # Hybrid PP
-    min_look_ahead_distance = LaunchConfiguration('min_look_ahead_distance',
-                                                  default='3.85')
-    max_look_ahead_distance = LaunchConfiguration('max_look_ahead_distance',
-                                                    default='10.0')
-    k_dd = LaunchConfiguration('k_dd', default='0.7')
-    max_speed = LaunchConfiguration('max_speed', default='6.7056')
-    rear_axle_frame = LaunchConfiguration('rear_axle_frame',
-                                            default='rear_axle')
-    gravity_constant = LaunchConfiguration('gravity_constant', default='9.81')
     debug = LaunchConfiguration('debug', default='true')
     
 
@@ -86,19 +75,7 @@ def generate_launch_description():
 
     pp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'hybrid_pp/hybrid_pp.launch.py')),
-        launch_arguments={
-            'use_sim_time': use_sim_time,
-            'min_look_ahead_distance': min_look_ahead_distance,
-            'max_look_ahead_distance': max_look_ahead_distance,
-            'k_dd': k_dd,
-            'max_speed': max_speed,
-            'rear_axle_frame': rear_axle_frame,
-            'wheel_base': wheelbase,
-            'gravity_constant': gravity_constant,
-            'debug': debug
-        }.items(),
-    )
+            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'hybrid_pp/hybrid_pp.launch.py')))
 
     rviz = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -181,32 +158,6 @@ def generate_launch_description():
         DeclareLaunchArgument('use_webots',
                               default_value='true',
                               description='Opens webots if true, else opens gazebo'),
-
-        # Hybrid PP
-        DeclareLaunchArgument('min_look_ahead_distance',
-                              default_value='3.85',
-                              description='Minimum look ahead distance'),
-        DeclareLaunchArgument('max_look_ahead_distance',
-                                default_value='10.0',
-                                description='Maximum look ahead distance'),
-        DeclareLaunchArgument('k_dd',
-                                default_value='0.7',
-                                description='K_dd constant'),
-        DeclareLaunchArgument('max_speed',
-                                default_value='6.7056',
-                                description='Maximum speed'),
-        DeclareLaunchArgument('rear_axle_frame',
-                                default_value='rear_axle',
-                                description='Rear axle frame'),
-        DeclareLaunchArgument('wheel_base',
-                                default_value='1.08',
-                                description='Wheel base'),
-        DeclareLaunchArgument('gravity_constant',
-                                default_value='9.81',
-                                description='Gravity constant'),
-        DeclareLaunchArgument('debug',
-                                default_value='true',
-                                description='Debug mode'),
 
 
         # Nodes
