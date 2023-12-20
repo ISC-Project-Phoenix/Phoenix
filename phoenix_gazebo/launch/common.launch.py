@@ -32,7 +32,6 @@ def generate_launch_description():
         'gazebo_world', default='purdue_gp_track.sdf')
 
     use_wheel = LaunchConfiguration('use_wheel', default='false')
-    debug = LaunchConfiguration('debug', default='true')
     
 
     # TODO make these correct
@@ -73,9 +72,6 @@ def generate_launch_description():
         condition=IfCondition(use_wheel)
     )
 
-    pp = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'hybrid_pp/hybrid_pp.launch.py')))
 
     rviz = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -164,7 +160,6 @@ def generate_launch_description():
         sim,
         joy_with_teleop_twist,
         twist_to_ackermann,
-        pp,
         logi_g29,
         rviz,
         robot_state_controller
