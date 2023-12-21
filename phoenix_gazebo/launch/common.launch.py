@@ -32,6 +32,7 @@ def generate_launch_description():
         'gazebo_world', default='purdue_gp_track.sdf')
 
     use_wheel = LaunchConfiguration('use_wheel', default='false')
+    
 
     # TODO make these correct
     max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
@@ -70,6 +71,7 @@ def generate_launch_description():
         }.items(),
         condition=IfCondition(use_wheel)
     )
+
 
     rviz = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -152,6 +154,7 @@ def generate_launch_description():
         DeclareLaunchArgument('use_webots',
                               default_value='true',
                               description='Opens webots if true, else opens gazebo'),
+
 
         # Nodes
         sim,

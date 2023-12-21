@@ -118,6 +118,16 @@ def generate_launch_description():
         }.items(),
     )
 
+    pp = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/hybrid_pp/hybrid_pp.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+    )
+
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument(
@@ -151,5 +161,6 @@ def generate_launch_description():
         webots,
         obj_detector_gz,
         obj_detector_wb,
-        obj_tracker
+        obj_tracker,
+        pp
     ])

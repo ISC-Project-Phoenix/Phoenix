@@ -67,6 +67,16 @@ def generate_launch_description():
         }.items()
     )
 
+    pp = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            'include/hybrid_pp/hybrid_pp.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+
     obj_detect = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
@@ -116,6 +126,7 @@ def generate_launch_description():
         state_publishers,
         oakd,
         pir,
+        pp,
         obj_detect,
         obj_tracker
     ])
