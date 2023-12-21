@@ -32,7 +32,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     min_look_ahead_distance = LaunchConfiguration('min_look_ahead_distance', default='3.85')
     max_look_ahead_distance = LaunchConfiguration('max_look_ahead_distance', default='10.0')
-    k_dd = LaunchConfiguration('k_dd', default='0.7')
+    k_dd = LaunchConfiguration('k_dd', default='1.5')
     max_speed = LaunchConfiguration('max_speed', default=6.7056)
     rear_axle_frame = LaunchConfiguration('rear_axle_frame', default='rear_axle')
     wheel_base = LaunchConfiguration('wheel_base', default='1.08')
@@ -68,10 +68,10 @@ def generate_launch_description():
                               default_value='10.0',
                               description='Maximum look ahead distance'),
         DeclareLaunchArgument('k_dd',
-                              default_value='0.7',
+                              default_value='1.3',
                               description='K_dd constant'),
         DeclareLaunchArgument('max_speed',
-                              default_value='6.7056',
+                              default_value='4.0',
                               description='Maximum speed'),
         DeclareLaunchArgument('rear_axle_frame',
                               default_value='rear_axle',
