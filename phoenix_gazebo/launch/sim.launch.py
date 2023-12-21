@@ -120,14 +120,13 @@ def generate_launch_description():
 
     pp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
-            os.path.join(pkg_phoenix_gazebo, 'launch'), 
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
             '/include/hybrid_pp/hybrid_pp.launch.py'
-            ]),
-            launch_arguments={
-                'use_sim_time': use_sim_time,
-            }.items(),
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
     )
-    
 
     return LaunchDescription([
         # Launch Arguments
