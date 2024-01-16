@@ -38,6 +38,7 @@ def generate_launch_description():
     wheel_base = LaunchConfiguration('wheel_base', default='1.08')
     gravity_constant = LaunchConfiguration('gravity_constant', default='9.81')
     debug = LaunchConfiguration('debug', default='true')
+    sonp = LaunchConfiguration('stop_on_no_path', default='false')
 
     pp = Node(
         package='hybrid_pp',
@@ -53,7 +54,8 @@ def generate_launch_description():
             'rear_axle_frame': rear_axle_frame,
             'wheel_base': wheel_base,
             'gravity_constant': gravity_constant,
-            'debug': debug
+            'debug': debug,
+            'stop_on_no_path': sonp
         }], )
 
     return LaunchDescription([
@@ -85,6 +87,9 @@ def generate_launch_description():
         DeclareLaunchArgument('debug',
                               default_value='true',
                               description='Debug mode'),
+        DeclareLaunchArgument('stop_on_no_path',
+                              default_value='false',
+                              description='Stops the kart if no path is found'),
         # Nodes
         pp,
     ])
