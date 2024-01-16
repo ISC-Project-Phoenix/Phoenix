@@ -22,7 +22,9 @@ def generate_launch_description():
         output='screen',
         parameters=[{
             'use_sim_time': use_sim_time,
-            'measure_cov': 0.1,
+            'measure_cov': 0.001,
+            'prediction_cov': 4.0,
+            'max_frames_missed': 2,
         }]
     )
 
