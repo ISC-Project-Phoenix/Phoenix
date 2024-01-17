@@ -14,6 +14,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+    debug = LaunchConfiguration('debug', default='true')
 
     track = Node(
         package='obj_tracker',
@@ -25,6 +26,7 @@ def generate_launch_description():
             'measure_cov': 0.001,
             'prediction_cov': 4.0,
             'max_frames_missed': 2,
+            'debug': debug
         }]
     )
 
@@ -33,6 +35,11 @@ def generate_launch_description():
         DeclareLaunchArgument('use_sim_time',
                               default_value='true',
                               description='Use simulation clock if true'),
+        DeclareLaunchArgument('debug',
+                              default_value = 'true',
+                              description = 'Flag for whether or not we publish our rviz visualizations'),
+        
+        
         # Nodes
         track,
     ])
