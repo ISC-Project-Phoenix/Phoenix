@@ -82,6 +82,7 @@ def generate_launch_description():
     # Autonomy pipeline
 
     # We need two versions of obj_detector to remap correctly
+    # TODO remove gazebo things, as we are not updating them
     obj_detector_gz = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
@@ -94,13 +95,10 @@ def generate_launch_description():
     )
 
     obj_detector_wb = GroupAction(actions=[
-        SetRemap('camera/mid/rgb', 'camera/mid/rgb/image_color'),
-        SetRemap('camera/mid/depth', 'camera/mid/depth/image'),
-
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([
                 os.path.join(pkg_phoenix_gazebo, 'launch'),
-                '/include/obj_detector/obj_detector.launch.py'
+                '/include/obj_detector/dual_camera.launch.py'
             ]),
             launch_arguments={
                 'use_sim_time': use_sim_time,

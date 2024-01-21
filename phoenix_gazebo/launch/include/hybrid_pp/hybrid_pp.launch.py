@@ -64,7 +64,7 @@ def generate_launch_description():
                               default_value='true',
                               description='Use simulation clock if true'),
         DeclareLaunchArgument('min_look_ahead_distance',
-                              default_value='4.0',
+                              default_value='3.85',
                               description='Minimum look ahead distance'),
         DeclareLaunchArgument('max_look_ahead_distance',
                               default_value='10.0',

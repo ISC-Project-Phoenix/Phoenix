@@ -47,6 +47,7 @@ def generate_launch_description():
         }.items(),
     )
 
+    # TODO launch two
     oakd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
@@ -77,6 +78,7 @@ def generate_launch_description():
         }.items(),
     )
 
+    #TODO replace with multi detector
     obj_detect = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
