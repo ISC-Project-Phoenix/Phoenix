@@ -47,11 +47,10 @@ def generate_launch_description():
         }.items(),
     )
 
-    # TODO launch two
-    oakd = IncludeLaunchDescription(
+    cameras = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
-            '/include/oakd/oakd.launch.py'
+            '/include/oakd/dual_cameras.launch.py'
         ])
     )
 
@@ -78,11 +77,10 @@ def generate_launch_description():
         }.items(),
     )
 
-    #TODO replace with multi detector
     obj_detect = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            'include/obj_detector/obj_detector.launch.py'
+            'include/obj_detector/dual_camera.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time
@@ -126,7 +124,7 @@ def generate_launch_description():
         # Nodes
         robot_state_controller,
         state_publishers,
-        oakd,
+        cameras,
         pir,
         pp,
         obj_detect,

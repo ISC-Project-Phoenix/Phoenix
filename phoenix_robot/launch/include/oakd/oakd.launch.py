@@ -32,8 +32,7 @@ def generate_launch_description():
                 PythonLaunchDescriptionSource(
                     os.path.join(oakd_package, 'launch', 'camera.launch.py')),
                 launch_arguments={
-                    'params_file': os.path.join(phnx_package, 'config', 'oakd', 'camera.yaml'),
-                    'camera_model': 'OAK-D-S2'
+                    'params_file': os.path.join(phnx_package, 'config', 'oakd', 'cameram.yaml'),
                 }.items()
             )]
     )

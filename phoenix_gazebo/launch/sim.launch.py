@@ -58,6 +58,9 @@ def generate_launch_description():
             ]),
             launch_arguments={
                 'use_sim_time': use_sim_time,
+                # Webots has odd outputs
+                'rgb_raw_postfix': "/rgb/image_color",
+                'depth_raw_postfix': "/depth/image",
             }.items(),
         )])
 

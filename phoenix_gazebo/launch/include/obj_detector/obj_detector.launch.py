@@ -21,6 +21,7 @@ def generate_launch_description():
     camera_info_topic = LaunchConfiguration('camera_info_topic')
     name = LaunchConfiguration('name')
     debug = LaunchConfiguration('debug')
+    trans = LaunchConfiguration('transport')
 
     det = Node(
         package='obj_detector',
@@ -31,6 +32,7 @@ def generate_launch_description():
             'use_sim_time': use_sim_time,
             'camera_frame': camera_frame,
             'debug': debug,
+            'transport': trans
         }],
         remappings=[
             ('/camera/mid/rgb', rgb_topic),
@@ -66,6 +68,9 @@ def generate_launch_description():
         DeclareLaunchArgument('debug',
                               default_value='true',
                               description='Show debug windows'),
+        DeclareLaunchArgument('transport',
+                              default_value='raw',
+                              description='Transport type'),
 
         # Nodes
         det,

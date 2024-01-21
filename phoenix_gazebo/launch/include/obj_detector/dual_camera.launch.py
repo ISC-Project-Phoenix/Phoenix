@@ -17,6 +17,9 @@ def generate_launch_description():
     pkg_phoenix_gazebo = get_package_share_directory('phoenix_gazebo')
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     debug = LaunchConfiguration('debug', default='false')
+    trans = LaunchConfiguration('transport')
+    rgb_post = LaunchConfiguration('rgb_raw_postfix')
+    depth_post = LaunchConfiguration('depth_raw_postfix')
 
     left = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -25,13 +28,14 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'camera_topic_rgb': TextSubstitution(text="camera/left/rgb/image_color"),
-            'camera_topic_depth': TextSubstitution(text="camera/left/depth/image"),
+            'camera_topic_rgb': ["camera/left", rgb_post],
+            'camera_topic_depth': ["camera/left", depth_post],
             'camera_info_topic': TextSubstitution(text="camera/left/rgb/camera_info"),
             'camera_frame': TextSubstitution(text="left_cam_link"),
             'detection_topic': TextSubstitution(text="/object_poses/left"),
             'name': TextSubstitution(text="left_obj_detector"),
             'debug': debug,
+            'transport': trans
         }.items(),
     )
 
@@ -42,13 +46,14 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'camera_topic_rgb': TextSubstitution(text="camera/right/rgb/image_color"),
-            'camera_topic_depth': TextSubstitution(text="camera/right/depth/image"),
+            'camera_topic_rgb': ["camera/right", rgb_post],
+            'camera_topic_depth': ["camera/right", depth_post],
             'camera_info_topic': TextSubstitution(text="camera/right/rgb/camera_info"),
             'camera_frame': TextSubstitution(text="right_cam_link"),
             'detection_topic': TextSubstitution(text="/object_poses/right"),
             'name': TextSubstitution(text="right_obj_detector"),
             'debug': debug,
+            'transport': trans
         }.items(),
     )
 
@@ -75,6 +80,15 @@ def generate_launch_description():
         DeclareLaunchArgument('debug',
                               default_value='false',
                               description='Displays debug'),
+        DeclareLaunchArgument('transport',
+                              default_value='raw',
+                              description='transport type'),
+        DeclareLaunchArgument('rgb_raw_postfix',
+                              default_value='/rgb',
+                              description='postfix of rgb base'),
+        DeclareLaunchArgument('depth_raw_postfix',
+                              default_value='/depth',
+                              description='postfix of depth base'),
 
         # Nodes
         left,
