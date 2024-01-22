@@ -10,7 +10,7 @@ from launch_ros.actions import ComposableNodeContainer, Node, SetRemap
 from launch_ros.descriptions import ComposableNode
 
 
-# Launches the oak-d driver, as well as its tf publisher
+# Launches the oak-d driver, as well as its tf publisher. This is a single camera version for debugging
 def generate_launch_description():
     oakd_package = get_package_share_directory("depthai_ros_driver")
     phnx_package = get_package_share_directory("phoenix_robot")

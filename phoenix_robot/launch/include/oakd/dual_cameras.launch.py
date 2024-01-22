@@ -10,7 +10,8 @@ from launch_ros.actions import ComposableNodeContainer, Node, SetRemap
 from launch_ros.descriptions import ComposableNode
 
 
-# Launches two cameras
+# Launches two cameras. These cameras are discriminated using their exact IDs given in the cameral and camerar configs.
+# These must be changed if not using the exact cameras on phoenix.
 def generate_launch_description():
     oakd_package = get_package_share_directory("depthai_ros_driver")
     phnx_package = get_package_share_directory("phoenix_robot")

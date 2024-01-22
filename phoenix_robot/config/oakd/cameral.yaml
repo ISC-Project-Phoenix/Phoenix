@@ -6,9 +6,10 @@
       i_enable_ir: false
       i_external_calibration_path: ''
       i_floodlight_brightness: 0
-      i_ip: '' # TODO find
+      i_ip: ''
       i_laser_dot_brightness: 800
-      i_mx_id: ''
+      # Unique ID of camera with an L sticker on Phoenix
+      i_mx_id: '19443010819A1B1300'
       i_nn_type: none
       i_pipeline_dump: false
       i_pipeline_type: RGBD
