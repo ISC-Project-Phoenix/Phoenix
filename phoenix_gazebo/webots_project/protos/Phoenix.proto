@@ -93,7 +93,7 @@ PROTO Phoenix [
       # Left camera
       Solid {
           translation 1.050000 0.200000 0.400000
-          rotation 0 0 1 0.785398
+          rotation 0 0 1 0.585398
           children [
             Shape {
               appearance PBRAppearance {
@@ -146,7 +146,7 @@ PROTO Phoenix [
         # Right Camera
         Solid {
           translation 1.050000 -0.200000 0.400000
-          rotation 0 0 1 -0.785398
+          rotation 0 0 1 -0.585398
           children [
             Shape {
               appearance PBRAppearance {

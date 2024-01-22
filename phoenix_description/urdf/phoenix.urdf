@@ -314,7 +314,7 @@
     </inertial>
 </link>
 <joint name="left_cam_to_mid_cam" type="fixed">
-    <origin rpy="0 0 0.785398" xyz="0 0.2 0"/>
+    <origin rpy="0 0 0.585398" xyz="0 0.2 0"/>
     <parent link="mid_cam_link"/>
     <child link="left_cam_link"/>
 </joint>
@@ -342,7 +342,7 @@
     </inertial>
 </link>
 <joint name="right_cam_to_mid_cam" type="fixed">
-    <origin rpy="0 0 -0.785398" xyz="0 -0.2 0"/>
+    <origin rpy="0 0 -0.585398" xyz="0 -0.2 0"/>
     <parent link="mid_cam_link"/>
     <child link="right_cam_link"/>
 </joint>
