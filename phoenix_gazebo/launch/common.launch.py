@@ -26,10 +26,7 @@ def generate_launch_description():
     drive_mode_switch_button = LaunchConfiguration(
         'drive_mode_switch_button', default='7')
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
-    use_webots = LaunchConfiguration('use_webots', default='true')
     use_rviz = LaunchConfiguration('use_rviz', default='true')
-    gazebo_world = LaunchConfiguration(
-        'gazebo_world', default='purdue_gp_track.sdf')
 
     use_wheel = LaunchConfiguration('use_wheel', default='false')
     
@@ -72,7 +69,6 @@ def generate_launch_description():
         condition=IfCondition(use_wheel)
     )
 
-
     rviz = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
@@ -95,8 +91,6 @@ def generate_launch_description():
             'max_throttle_speed': max_throttle_speed,
             'max_steering_rad': max_steering_rad,
             'wheelbase': wheelbase,
-            'gazebo_world': gazebo_world,
-            'use_webots': use_webots
         }.items(),
     )
 
@@ -127,9 +121,6 @@ def generate_launch_description():
         DeclareLaunchArgument('use_rviz',
                               default_value='true',
                               description='Open rviz if true'),
-        DeclareLaunchArgument('gazebo_world',
-                              default_value='purdue_gp_track.sdf',
-                              description='gazebo world to load'),
         DeclareLaunchArgument('max_braking_speed',
                               default_value='-10.0',
                               description='Maximum braking speed'),
@@ -151,9 +142,6 @@ def generate_launch_description():
         DeclareLaunchArgument('drive_mode_start_state',
                               default_value='auton',
                               description='Changes drive mode switch default state'),
-        DeclareLaunchArgument('use_webots',
-                              default_value='true',
-                              description='Opens webots if true, else opens gazebo'),
 
 
         # Nodes

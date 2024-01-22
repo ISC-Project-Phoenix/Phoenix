@@ -89,8 +89,11 @@ PROTO Phoenix [
 
       # Camera
       extensionSlot [
+
+      # Left camera
       Solid {
-          translation 1.050000 0.000000 0.400000
+          translation 1.050000 0.200000 0.400000
+          rotation 0 0 1 0.585398
           children [
             Shape {
               appearance PBRAppearance {
@@ -102,15 +105,15 @@ PROTO Phoenix [
                  size 0.020000 0.050000 0.020000
               }
             }
-            # Mid camera
+            # Left camera
             Camera {
-              name "mid_camera"
+              name "left_camera"
               fieldOfView 1.65806
               width 640
               height 360
             }
             RangeFinder {
-              name "mid_camera_depth"
+              name "left_camera_depth"
               fieldOfView 1.65806
               width 640
               height 360
@@ -120,16 +123,69 @@ PROTO Phoenix [
             }
             # IMU part
             Gyro {
-              name "mid_camera_gyro"
+              name "left_camera_gyro"
             }
             Accelerometer {
-              name "mid_camera_accel"
+              name "left_camera_accel"
             }
             InertialUnit {
-              name "mid_camera_inert"
+              name "left_camera_inert"
             }
           ]
-          name "mid_cam_link"
+          name "left_cam_link"
+          boundingObject Box {
+             size 0.020000 0.050000 0.020000
+          }
+          physics Physics {
+            density -1
+            mass 0.100000
+            centerOfMass [ 0.000000 0.000000 0.000000 ]
+          }
+        }
+
+        # Right Camera
+        Solid {
+          translation 1.050000 -0.200000 0.400000
+          rotation 0 0 1 -0.585398
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.500000 0.500000 0.500000
+                roughness 1.000000
+                metalness 0
+              }
+              geometry Box {
+                 size 0.020000 0.050000 0.020000
+              }
+            }
+            # Right camera
+            Camera {
+              name "right_camera"
+              fieldOfView 1.65806
+              width 640
+              height 360
+            }
+            RangeFinder {
+              name "right_camera_depth"
+              fieldOfView 1.65806
+              width 640
+              height 360
+              near 0.2
+              minRange 0.2
+              maxRange 10.0
+            }
+            # IMU part
+            Gyro {
+              name "right_camera_gyro"
+            }
+            Accelerometer {
+              name "right_camera_accel"
+            }
+            InertialUnit {
+              name "right_camera_inert"
+            }
+          ]
+          name "right_cam_link"
           boundingObject Box {
              size 0.020000 0.050000 0.020000
           }

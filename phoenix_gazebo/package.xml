@@ -13,15 +13,11 @@
   <exec_depend>joint_state_publisher</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
   <exec_depend>robot_state_controller</exec_depend>
-  <exec_depend>ros_gz_sim</exec_depend>
-  <exec_depend>ros_gz_bridge</exec_depend>
   <exec_depend>webots_ros2_driver</exec_depend>
   <exec_depend>teleop_twist_joy</exec_depend>
   <exec_depend>joy</exec_depend>
   <exec_depend>logi_g29</exec_depend>
   <exec_depend>phoenix_description</exec_depend>
-  <exec_depend>data_logger</exec_depend>
-  <exec_depend>gz_io_ros</exec_depend>
   <exec_depend>wb_io_ros</exec_depend>
   <exec_depend>twist_to_ackermann</exec_depend>
   <exec_depend>robot_localization</exec_depend>

@@ -17,7 +17,6 @@
   <exec_depend>joy</exec_depend>
   <exec_depend>logi_g29</exec_depend>
   <exec_depend>phoenix_description</exec_depend>
-  <exec_depend>data_logger</exec_depend>
   <exec_depend>phoenix_gazebo</exec_depend>
   <exec_depend>depthai_ros_driver</exec_depend>
   <exec_depend>phnx_io_ros</exec_depend>
