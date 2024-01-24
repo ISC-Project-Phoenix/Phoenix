@@ -109,14 +109,14 @@ PROTO Phoenix [
             Camera {
               name "left_camera"
               fieldOfView 1.65806
-              width 640
-              height 360
+              width 1280
+              height 720
             }
             RangeFinder {
               name "left_camera_depth"
               fieldOfView 1.65806
-              width 640
-              height 360
+              width 1280
+              height 720
               near 0.2
               minRange 0.2
               maxRange 10.0
@@ -162,14 +162,14 @@ PROTO Phoenix [
             Camera {
               name "right_camera"
               fieldOfView 1.65806
-              width 640
-              height 360
+              width 1280
+              height 720
             }
             RangeFinder {
               name "right_camera_depth"
               fieldOfView 1.65806
-              width 640
-              height 360
+              width 1280
+              height 720
               near 0.2
               minRange 0.2
               maxRange 10.0

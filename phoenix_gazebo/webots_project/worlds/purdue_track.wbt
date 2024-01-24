@@ -39,8 +39,10 @@ Viewpoint {
   followType "None"
 }
 TexturedBackground {
+    texture "noon_park_empty"
 }
 TexturedBackgroundLight {
+    texture "noon_park_empty"
 }
 Floor {
   translation 0 0 -0.02
