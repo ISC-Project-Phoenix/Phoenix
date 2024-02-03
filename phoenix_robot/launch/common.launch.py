@@ -43,10 +43,12 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'switch_button': drive_mode_switch_button,
+            'init_value': 'teleop',
             'use_sim_time': use_sim_time
         }.items(),
     )
 
+    # Connect to two cameras
     cameras = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
@@ -77,6 +79,7 @@ def generate_launch_description():
         }.items(),
     )
 
+    # Create a detector for each camera, and merge them
     obj_detect = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
@@ -94,6 +97,17 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
+        }.items(),
+    )
+
+    planner = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/obj_tracker/obj_tracker.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+            'debug': False,
         }.items(),
     )
 
@@ -128,5 +142,6 @@ def generate_launch_description():
         pir,
         pp,
         obj_detect,
-        obj_tracker
+        obj_tracker,
+        planner
     ])
