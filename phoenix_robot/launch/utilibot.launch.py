@@ -25,7 +25,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     use_rviz = LaunchConfiguration('use_rviz', default='true')
 
-    use_wheel = LaunchConfiguration('use_wheel', default='true')
+    use_wheel = LaunchConfiguration('use_wheel', default='false')
 
     # TODO make these correct
     max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
@@ -102,7 +102,7 @@ def generate_launch_description():
 
         # Set true if using logitech wheel
         DeclareLaunchArgument('use_wheel',
-                              default_value='true',
+                              default_value='false',
                               description='Use logitech wheel'),
 
         # Nodes

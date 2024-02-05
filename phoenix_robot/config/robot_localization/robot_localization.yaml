@@ -274,4 +274,4 @@ ekf_filter_node:
     # if unspecified. In this example, we specify only the diagonal of the matrix.
     initial_estimate_covariance: [1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9]
 
-    use_sim_time: true
+    use_sim_time: false
