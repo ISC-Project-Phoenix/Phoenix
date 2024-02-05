@@ -19,11 +19,6 @@ def generate_launch_description():
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
-    max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
-    max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
-    max_steering_rad = LaunchConfiguration('max_steering_rad', default='2.0')
-    wheelbase = LaunchConfiguration('wheelbase', default='1.08')
-
     # Misc utility nodes
     state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -100,18 +95,6 @@ def generate_launch_description():
             'use_sim_time',
             default_value='true',
             description='Use simulation (Gazebo) clock if true'),
-        DeclareLaunchArgument('max_braking_speed',
-                              default_value='-10.0',
-                              description='Maximum braking speed'),
-        DeclareLaunchArgument('max_throttle_speed',
-                              default_value='10.0',
-                              description='Maximum throttle speed'),
-        DeclareLaunchArgument('wheelbase',
-                              default_value='1.08',
-                              description='Maximum throttle speed'),
-        DeclareLaunchArgument('max_steering_rad',
-                              default_value='2.0',
-                              description='Maximum wheel angle'),
 
         # Nodes
         state_publishers,

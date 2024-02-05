@@ -22,12 +22,6 @@ def generate_launch_description():
         'drive_mode_switch_button', default='7')
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
-    # TODO make these correct
-    max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
-    max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
-    max_steering_rad = LaunchConfiguration('max_steering_rad', default='2.0')
-    wheelbase = LaunchConfiguration('wheelbase', default='1.08')
-
     state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch')
@@ -68,19 +62,13 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
             '/include/phnx_io_ros/phnx_io_ros.launch.py'
-        ]),
-        launch_arguments={
-            'max_braking_speed': max_braking_speed,
-            'max_throttle_speed': max_throttle_speed,
-            'max_steering_rad': max_steering_rad,
-            'wheelbase': wheelbase
-        }.items()
+        ])
     )
 
     pp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            'include/hybrid_pp/hybrid_pp.launch.py'
+            '/include/hybrid_pp/hybrid_pp.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time
@@ -91,10 +79,11 @@ def generate_launch_description():
     obj_detect = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            'include/obj_detector/dual_camera.launch.py'
+            '/include/obj_detector/dual_camera.launch.py'
         ]),
         launch_arguments={
-            'use_sim_time': use_sim_time
+            'use_sim_time': use_sim_time,
+            'transport': "compressed"
         }.items(),
     )
 
@@ -115,7 +104,7 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'debug': False,
+            'debug': 'False',
         }.items(),
     )
 
@@ -130,18 +119,6 @@ def generate_launch_description():
             'use_sim_time',
             default_value='false',
             description='Use simulation (Gazebo) clock if true'),
-        DeclareLaunchArgument('max_braking_speed',
-                              default_value='-10.0',
-                              description='Maximum braking speed'),
-        DeclareLaunchArgument('max_throttle_speed',
-                              default_value='10.0',
-                              description='Maximum throttle speed'),
-        DeclareLaunchArgument('wheelbase',
-                              default_value='1.08',
-                              description='Maximum throttle speed'),
-        DeclareLaunchArgument('max_steering_rad',
-                              default_value='2.0',
-                              description='Maximum wheel angle'),
 
         # Nodes
         robot_state_controller,

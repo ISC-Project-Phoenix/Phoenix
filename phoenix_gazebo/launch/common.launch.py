@@ -31,10 +31,11 @@ def generate_launch_description():
     use_wheel = LaunchConfiguration('use_wheel', default='false')
     
 
-    # TODO make these correct
+    # TODO make these correct, these are only used for the logitech
     max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
     max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
     max_steering_rad = LaunchConfiguration('max_steering_rad', default='2.0')
+
     wheelbase = LaunchConfiguration('wheelbase', default='1.08')
 
     # If wheel is not used, we need to translate joystick commands to ackermann
@@ -87,10 +88,6 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'max_braking_speed': max_braking_speed,
-            'max_throttle_speed': max_throttle_speed,
-            'max_steering_rad': max_steering_rad,
-            'wheelbase': wheelbase,
         }.items(),
     )
 

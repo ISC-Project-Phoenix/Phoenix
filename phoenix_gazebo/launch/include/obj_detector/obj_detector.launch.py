@@ -32,7 +32,7 @@ def generate_launch_description():
             'use_sim_time': use_sim_time,
             'camera_frame': camera_frame,
             'debug': debug,
-            'transport': trans
+            'transport_type': trans
         }],
         remappings=[
             ('/camera/mid/rgb', rgb_topic),
