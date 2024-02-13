@@ -34,6 +34,7 @@ def generate_launch_description():
     max_look_ahead_distance = LaunchConfiguration('max_look_ahead_distance', default='10.0')
     k_dd = LaunchConfiguration('k_dd', default='1.5')
     max_speed = LaunchConfiguration('max_speed', default=6.7056)
+    avoidance_radius = LaunchConfiguration('avoidance_radius', default=2.0);
     rear_axle_frame = LaunchConfiguration('rear_axle_frame', default='rear_axle')
     wheel_base = LaunchConfiguration('wheel_base', default='1.08')
     gravity_constant = LaunchConfiguration('gravity_constant', default='9.81')
@@ -51,6 +52,7 @@ def generate_launch_description():
             'max_look_ahead_distance': max_look_ahead_distance,
             'k_dd': k_dd,
             'max_speed': max_speed,
+            'avoidance_radius': avoidance_radius,
             'rear_axle_frame': rear_axle_frame,
             'wheel_base': wheel_base,
             'gravity_constant': gravity_constant,
@@ -75,6 +77,9 @@ def generate_launch_description():
         DeclareLaunchArgument('max_speed',
                               default_value='4.0',
                               description='Maximum speed'),
+        DeclareLaunchArgument('avoidance_radius',
+                              default_value='2.0',
+                              description='Radius for avoiding obstacles'),
         DeclareLaunchArgument('rear_axle_frame',
                               default_value='rear_axle',
                               description='Rear axle frame'),
