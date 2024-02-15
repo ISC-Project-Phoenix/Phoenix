@@ -34,7 +34,7 @@ def generate_launch_description():
     max_look_ahead_distance = LaunchConfiguration('max_look_ahead_distance', default='10.0')
     k_dd = LaunchConfiguration('k_dd', default='1.5')
     max_speed = LaunchConfiguration('max_speed', default=6.7056)
-    avoidance_radius = LaunchConfiguration('avoidance_radius', default=2.0);
+    avoidance_radius = LaunchConfiguration('avoidance_radius', default=2.0)
     rear_axle_frame = LaunchConfiguration('rear_axle_frame', default='rear_axle')
     wheel_base = LaunchConfiguration('wheel_base', default='1.08')
     gravity_constant = LaunchConfiguration('gravity_constant', default='9.81')
