@@ -76,6 +76,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        left_cam_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         left_front_wheel:
           Alpha: 1
           Show Axes: false
@@ -107,6 +112,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         rear_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_cam_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -143,6 +153,8 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
+        left_cam_link:
+          Value: true
         left_front_wheel:
           Value: true
         left_front_wheel_rack:
@@ -158,6 +170,8 @@ Visualization Manager:
         physical_rear_axle:
           Value: true
         rear_axle:
+          Value: true
+        right_cam_link:
           Value: true
         right_front_wheel:
           Value: true
@@ -181,7 +195,10 @@ Visualization Manager:
             lidar_link:
               {}
             mid_cam_link:
-              {}
+              left_cam_link:
+                {}
+              right_cam_link:
+                {}
             physical_rear_axle:
               left_rear_wheel:
                 {}
@@ -273,6 +290,19 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /travel_path_marker
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Marker
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /object_vis_marker
       Value: true
     - Alpha: 1
       Axes Length: 1
