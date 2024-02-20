@@ -100,7 +100,7 @@ def generate_launch_description():
     planner = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            '/include/obj_tracker/obj_tracker.launch.py'
+            '/include/obj_planner/obj_planner.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
