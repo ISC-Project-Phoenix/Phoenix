@@ -1,4 +1,4 @@
-/oak:
+/oakl:
   ros__parameters:
     camera:
       i_calibration_dump: false
