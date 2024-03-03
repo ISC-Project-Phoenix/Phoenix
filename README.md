@@ -76,3 +76,15 @@ kart. Because this ROS network is shared with the kart, this allows us to debug 
 
 Finally, pressing the teleop toggle switch on the controller will allow the autonomous stack to drive the kart. Toggling
 it again will swap back to teleop. This can be used as a sort of soft stop. Rviz can be used to view kart state.
+
+#### Teleop only
+
+If you want to just test the kart in a minimal teleop setup, you can use:
+
+`ros2 launch phoenix_robot teleop_only_kartside.launch.py`
+
+This file should be launched on a computer connected to the kart, similar to above. This can be autobooted, or just
+a laptop connected to the kart that will also run the utilitbot launch. 
+
+The file above needs to have both the interface board and both cameras connected. These are just used for their IMU.
+If desired, you can just use the encoder alone by adding `encoder_only`.

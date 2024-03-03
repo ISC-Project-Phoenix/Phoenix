@@ -44,7 +44,8 @@ def generate_launch_description():
             os.path.join(pkg_teleop_twist_joy, 'launch', 'teleop-launch.py')),
         launch_arguments={
             'joy_dev': '/dev/input/js0',
-            'config_filepath': joy_config
+            'config_filepath': joy_config,
+            'use_sim_time': use_sim_time
         }.items(),
         condition=UnlessCondition(use_wheel)
     )
@@ -53,7 +54,8 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'twist_to_ackermann/twist_to_ackermann.launch.py')),
         launch_arguments={
-            'wheelbase': wheelbase
+            'wheelbase': wheelbase,
+            'use_sim_time': use_sim_time
         }.items(),
         condition=UnlessCondition(use_wheel)
     )
@@ -65,7 +67,8 @@ def generate_launch_description():
             'max_braking_speed': max_braking_speed,
             'max_throttle_speed': max_throttle_speed,
             'max_steering_rad': max_steering_rad,
-            'wheelbase': wheelbase
+            'wheelbase': wheelbase,
+            'use_sim_time': use_sim_time
         }.items(),
         condition=IfCondition(use_wheel)
     )

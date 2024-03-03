@@ -25,6 +25,7 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch.conditions import IfCondition, UnlessCondition
+from launch.substitutions import PathJoinSubstitution
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
@@ -36,14 +37,16 @@ from launch_ros.actions import Node
 def generate_launch_description():
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    config_file_name = LaunchConfiguration('config_file_name')
 
     rl = Node(
         package='robot_localization',
         executable='ekf_node',
         name='ekf_filter_node',
         output='screen',
-        parameters=[os.path.join(get_package_share_directory("phoenix_robot"), 'config', 'robot_localization',
-                                 'robot_localization.yaml')],
+        parameters=[PathJoinSubstitution(
+            [get_package_share_directory('phoenix_robot'), 'config', 'robot_localization', config_file_name])
+        ],
         remappings=[
             ('/odometry/filtered', '/odom'),
         ],
@@ -54,6 +57,9 @@ def generate_launch_description():
         DeclareLaunchArgument('use_sim_time',
                               default_value='false',
                               description='Use simulation clock if true'),
+        DeclareLaunchArgument('config_file_name',
+                              default_value='robot_localization.yaml',
+                              description='Name of the config file to load'),
         # Nodes
         rl,
     ])

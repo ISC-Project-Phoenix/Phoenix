@@ -55,14 +55,16 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
             '/include/oakd/dual_cameras.launch.py'
-        ])
+        ]),
+        launch_arguments={'use_sim_time': use_sim_time}.items(),
     )
 
     pir = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
             '/include/phnx_io_ros/phnx_io_ros.launch.py'
-        ])
+        ]),
+        launch_arguments={'use_sim_time': use_sim_time}.items(),
     )
 
     pp = IncludeLaunchDescription(
