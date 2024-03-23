@@ -10,9 +10,9 @@ teleop_twist_joy_node:
     axis_angular:  # Left thumb stick horizontal
       yaw: 0
     scale_angular:
-      yaw: 0.5
+      yaw: 0.273
     scale_angular_turbo:
-      yaw: 1.0
+      yaw: 0.273
 
     # Required for phnx, else the control loop doesn't receive 0 on stopping control
     require_enable_button: false
