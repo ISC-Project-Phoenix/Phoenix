@@ -30,6 +30,13 @@ from launch_ros.actions import Node
 def generate_launch_description():
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+    throttle_axis = LaunchConfiguration('throttle_axis', default='5');
+    steering_axis = LaunchConfiguration('steering_axis', default='0');
+    min_axis_input = LaunchConfiguration('min_axis_input', default='-1.0');
+    max_axis_input = LaunchConfiguration('max_axis_input', default='1.0');
+    min_steering_angle = LaunchConfiguration('min_steering_angle', default='-0.2733');
+    max_steering_angle = LaunchConfiguration('max_steering_angle', default='0.2733');
+    max_speed = LaunchConfiguration('max_speed', default='6.7056');
 
     ack_joy = Node(
         package='teleop_ack_joy',
@@ -38,6 +45,13 @@ def generate_launch_description():
         output='screen',
         parameters=[{
             'use_sim_time': use_sim_time,
+            'throttle_axis': throttle_axis,
+            'steering_axis': steering_axis,
+            'min_axis_input': min_axis_input,
+            'max_axis_input': max_axis_input,
+            'min_steering_angle': min_steering_angle,
+            'max_steering_angle': max_steering_angle,
+            'max_speed': max_speed,
         }], )
 
     joy = Node(
