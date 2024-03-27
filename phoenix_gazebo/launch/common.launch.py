@@ -50,6 +50,14 @@ def generate_launch_description():
         condition=UnlessCondition(use_wheel)
     )
 
+    teleop_ack_joy = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'teleop_ack_joy/teleop_ack_joy.launch.py')),
+        launch_arguments={
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+
     twist_to_ackermann = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'twist_to_ackermann/twist_to_ackermann.launch.py')),
@@ -147,6 +155,7 @@ def generate_launch_description():
         # Nodes
         sim,
         joy_with_teleop_twist,
+        teleop_ack_joy,
         twist_to_ackermann,
         logi_g29,
         rviz,

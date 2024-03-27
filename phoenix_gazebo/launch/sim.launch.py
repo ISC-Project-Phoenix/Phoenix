@@ -102,6 +102,6 @@ def generate_launch_description():
         webots,
         obj_detector_wb,
         obj_tracker,
-        pp,
+        # pp,
         planner
     ])
