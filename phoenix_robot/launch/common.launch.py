@@ -16,6 +16,7 @@ def generate_launch_description():
     pkg_phoenix_robot = get_package_share_directory('phoenix_robot')
     pkg_robot_state_controller = get_package_share_directory(
         'robot_state_controller')
+    pkg_isc_sick = get_package_share_directory('ros2_sick')
 
     # Launch arguments
     drive_mode_switch_button = LaunchConfiguration(
@@ -55,6 +56,14 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
             '/include/oakd/dual_cameras.launch.py'
+        ]),
+        launch_arguments={'use_sim_time': use_sim_time}.items(),
+    )
+
+    sick = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_isc_sick, 'launch')
+            , '/sick.launch.py'
         ]),
         launch_arguments={'use_sim_time': use_sim_time}.items(),
     )
@@ -127,6 +136,7 @@ def generate_launch_description():
         state_publishers,
         ekf,
         cameras,
+        sick,
         pir,
         pp,
         obj_detect,

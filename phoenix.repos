@@ -51,3 +51,7 @@ repositories:
       type: git
       url: git@github.com:ISC-Project-Phoenix/phnx_msgs.git
       version: master
+    isc_sick:
+      type: git
+      url: git@github.com:iscumd/isc_sick.git
+      version: master
