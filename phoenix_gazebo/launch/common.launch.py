@@ -32,8 +32,8 @@ def generate_launch_description():
     
 
     # TODO make these correct, these are only used for the logitech
-    max_braking_speed = LaunchConfiguration('max_braking_speed', default='-4')
-    max_throttle_speed = LaunchConfiguration('max_speed', default='4')
+    max_braking_speed = LaunchConfiguration('max_braking_speed', default='-4.0')
+    max_throttle_speed = LaunchConfiguration('max_speed', default='4.0')
     max_steering_rad = LaunchConfiguration('max_steering_rad', default='2.0')
 
     wheelbase = LaunchConfiguration('wheelbase', default='1.08')
