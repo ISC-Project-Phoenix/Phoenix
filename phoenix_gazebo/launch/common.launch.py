@@ -111,7 +111,7 @@ def generate_launch_description():
         launch_arguments={
             'switch_button': drive_mode_switch_button,
             'use_sim_time': use_sim_time,
-            'init_value': "auton"
+            'init_value': "teleop"
         }.items(),
     )
 
@@ -154,7 +154,7 @@ def generate_launch_description():
 
         # Nodes
         sim,
-        joy_with_teleop_twist,
+        # joy_with_teleop_twist,
         teleop_ack_joy,
         twist_to_ackermann,
         logi_g29,
