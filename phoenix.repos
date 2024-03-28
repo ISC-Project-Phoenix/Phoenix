@@ -55,3 +55,7 @@ repositories:
       type: git
       url: git@github.com:iscumd/isc_sick.git
       version: master
+    teleop_ack_joy:
+      type: git
+      url: git@github.com:iscumd/teleop_ack_joy.git
+      version: master

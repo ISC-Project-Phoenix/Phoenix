@@ -94,7 +94,7 @@ def generate_launch_description():
                               default_value='true',
                               description='Debug mode'),
         DeclareLaunchArgument('stop_on_no_path',
-                              default_value='false',
+                              default_value='true',
                               description='Stops the kart if no path is found'),
         # Nodes
         pp,

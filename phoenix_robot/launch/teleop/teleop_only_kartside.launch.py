@@ -88,7 +88,7 @@ def generate_launch_description():
         # Launch Arguments
         DeclareLaunchArgument(
             'drive_mode_switch_button',
-            default_value='10',
+            default_value='7',
             description='Which button is used on the joystick to switch drive mode. (In joy message)'
         ),
         DeclareLaunchArgument(
