@@ -14,48 +14,32 @@ from launch.substitutions import LaunchConfiguration
 def generate_launch_description():
     # ROS packages
     pkg_phoenix_gazebo = get_package_share_directory('phoenix_gazebo')
-    pkg_teleop_twist_joy = get_package_share_directory('teleop_twist_joy')
     pkg_robot_state_controller = get_package_share_directory(
         'robot_state_controller')
-
-    # Config
-    joy_config = os.path.join(pkg_phoenix_gazebo, 'config/joystick',
-                              'xbone.config.yaml')
 
     # Launch arguments
     drive_mode_switch_button = LaunchConfiguration(
         'drive_mode_switch_button', default='7')
+    drive_mode_start_state = LaunchConfiguration(
+        'drive_mode_start_state', default='auton')
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     use_rviz = LaunchConfiguration('use_rviz', default='true')
 
     use_wheel = LaunchConfiguration('use_wheel', default='false')
-    
 
-    # TODO make these correct, these are only used for the logitech
-    max_braking_speed = LaunchConfiguration('max_braking_speed', default='-10.0')
-    max_throttle_speed = LaunchConfiguration('max_throttle_speed', default='10.0')
-    max_steering_rad = LaunchConfiguration('max_steering_rad', default='2.0')
+    max_braking_speed = LaunchConfiguration('max_braking_speed', default='-4.0')
+    max_throttle_speed = LaunchConfiguration('max_speed', default='4.0')
+    max_steering_rad = LaunchConfiguration('max_steering_rad', default='0.2733')
 
     wheelbase = LaunchConfiguration('wheelbase', default='1.08')
 
     # If wheel is not used, we need to translate joystick commands to ackermann
-    joy_with_teleop_twist = IncludeLaunchDescription(
+    teleop_ack_joy = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_teleop_twist_joy, 'launch', 'teleop-launch.py')),
+            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'teleop_ack_joy/teleop_ack_joy.launch.py')),
         launch_arguments={
-            'joy_dev': '/dev/input/js0',
-            'config_filepath': joy_config,
-            'use_sim_time': use_sim_time
-        }.items(),
-        condition=UnlessCondition(use_wheel)
-    )
-
-    twist_to_ackermann = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'twist_to_ackermann/twist_to_ackermann.launch.py')),
-        launch_arguments={
-            'wheelbase': wheelbase,
-            'use_sim_time': use_sim_time
+            'use_sim_time': use_sim_time,
+            'max_speed': max_throttle_speed,
         }.items(),
         condition=UnlessCondition(use_wheel)
     )
@@ -91,6 +75,7 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
+            'max_speed': max_throttle_speed
         }.items(),
     )
 
@@ -103,7 +88,7 @@ def generate_launch_description():
         launch_arguments={
             'switch_button': drive_mode_switch_button,
             'use_sim_time': use_sim_time,
-            'init_value': "auton"
+            'init_value': drive_mode_start_state
         }.items(),
     )
 
@@ -111,7 +96,7 @@ def generate_launch_description():
         # Launch Arguments
         DeclareLaunchArgument(
             'drive_mode_switch_button',
-            default_value='10',
+            default_value='7',
             description='Which button is used on the joystick to switch drive mode. (In joy message)'
         ),
         DeclareLaunchArgument(
@@ -122,16 +107,16 @@ def generate_launch_description():
                               default_value='true',
                               description='Open rviz if true'),
         DeclareLaunchArgument('max_braking_speed',
-                              default_value='-10.0',
+                              default_value='-4.0',
                               description='Maximum braking speed'),
         DeclareLaunchArgument('max_throttle_speed',
-                              default_value='10.0',
+                              default_value='4.0',
                               description='Maximum throttle speed'),
         DeclareLaunchArgument('wheelbase',
                               default_value='1.08',
                               description='Maximum throttle speed'),
         DeclareLaunchArgument('max_steering_rad',
-                              default_value='2.0',
+                              default_value='0.2733',
                               description='Maximum wheel angle'),
 
         # Set true if using logitech wheel
@@ -143,11 +128,9 @@ def generate_launch_description():
                               default_value='auton',
                               description='Changes drive mode switch default state'),
 
-
         # Nodes
         sim,
-        joy_with_teleop_twist,
-        twist_to_ackermann,
+        teleop_ack_joy,
         logi_g29,
         rviz,
         robot_state_controller

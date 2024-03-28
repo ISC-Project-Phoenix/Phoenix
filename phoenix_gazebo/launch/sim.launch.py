@@ -18,6 +18,7 @@ def generate_launch_description():
 
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+    max_speed = LaunchConfiguration('max_speed', default='4.0')
 
     # Misc utility nodes
     state_publishers = IncludeLaunchDescription(
@@ -44,7 +45,6 @@ def generate_launch_description():
     )
 
     # Autonomy pipeline
-
     obj_detector_wb = GroupAction(actions=[
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([
@@ -76,6 +76,7 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
+            'max_speed': max_speed,
         }.items(),
     )
 
@@ -95,6 +96,11 @@ def generate_launch_description():
             'use_sim_time',
             default_value='true',
             description='Use simulation (Gazebo) clock if true'),
+
+        DeclareLaunchArgument(
+            'max_speed',
+            default_value='4.0',
+            description='The max allowed speed for the cart'),
 
         # Nodes
         state_publishers,
