@@ -18,7 +18,7 @@ def generate_launch_description():
 
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
-    max_speed = LaunchConfiguration('max_speed', default='6.7056')
+    max_speed = LaunchConfiguration('max_speed', default='4.0')
 
     # Misc utility nodes
     state_publishers = IncludeLaunchDescription(
@@ -99,7 +99,7 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'max_speed',
-            default_value='6.7056',
+            default_value='4.0',
             description='The max allowed speed for the cart'),
 
         # Nodes

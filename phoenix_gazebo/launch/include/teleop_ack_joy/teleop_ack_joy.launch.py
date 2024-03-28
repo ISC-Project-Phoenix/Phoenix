@@ -30,13 +30,13 @@ from launch_ros.actions import Node
 def generate_launch_description():
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
-    throttle_axis = LaunchConfiguration('throttle_axis', default='5');
-    steering_axis = LaunchConfiguration('steering_axis', default='0');
-    min_axis_input = LaunchConfiguration('min_axis_input', default='-1.0');
-    max_axis_input = LaunchConfiguration('max_axis_input', default='1.0');
-    min_steering_angle = LaunchConfiguration('min_steering_angle', default='-0.2733');
-    max_steering_angle = LaunchConfiguration('max_steering_angle', default='0.2733');
-    max_speed = LaunchConfiguration('max_speed', default='6.7056');
+    throttle_axis = LaunchConfiguration('throttle_axis', default='5')
+    steering_axis = LaunchConfiguration('steering_axis', default='0')
+    min_axis_input = LaunchConfiguration('min_axis_input', default='-1.0')
+    max_axis_input = LaunchConfiguration('max_axis_input', default='1.0')
+    min_steering_angle = LaunchConfiguration('min_steering_angle', default='-0.2733')
+    max_steering_angle = LaunchConfiguration('max_steering_angle', default='0.2733')
+    max_speed = LaunchConfiguration('max_speed', default='4.0')
 
     ack_joy = Node(
         package='teleop_ack_joy',
@@ -68,6 +68,27 @@ def generate_launch_description():
         DeclareLaunchArgument('use_sim_time',
                               default_value='true',
                               description='Use simulation clock if true'),
+        DeclareLaunchArgument('throttle_axis',
+                              default_value='5',
+                              description=''),
+        DeclareLaunchArgument('steering_axis',
+                              default_value='0',
+                              description=''),
+        DeclareLaunchArgument('min_axis_input',
+                              default_value='-1',
+                              description=''),
+        DeclareLaunchArgument('max_axis_input',
+                              default_value='1',
+                              description=''),
+        DeclareLaunchArgument('min_steering_angle',
+                              default_value='-0.2733',
+                              description=''),
+        DeclareLaunchArgument('max_steering_angle',
+                              default_value='0.2733',
+                              description=''),
+        DeclareLaunchArgument('max_speed',
+                              default_value='4.0',
+                              description=''),
         # Nodes
         ack_joy,
         joy
