@@ -1,0 +1,6 @@
+ros2_sick:
+  ros__parameters:
+    frame_id: 'lidar_link'
+    host: '192.168.1.100'
+    port: 2112
+    tf_correction: true

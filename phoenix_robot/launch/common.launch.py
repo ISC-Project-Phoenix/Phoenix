@@ -7,7 +7,7 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 
 
 def generate_launch_description():
@@ -65,7 +65,10 @@ def generate_launch_description():
             os.path.join(pkg_isc_sick, 'launch')
             , '/sick.launch.py'
         ]),
-        launch_arguments={'use_sim_time': use_sim_time}.items(),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+            'config_file': PathJoinSubstitution([pkg_phoenix_robot, 'config', 'ros2_sick', 'sick_lms111.yaml'])
+        }.items(),
     )
 
     pir = IncludeLaunchDescription(
