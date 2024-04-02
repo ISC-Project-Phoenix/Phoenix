@@ -5,9 +5,9 @@ from ament_index_python.packages import get_package_share_directory
 from launch.conditions import IfCondition, UnlessCondition
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, LogInfo
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, PythonExpression
 from launch_ros.actions import Node
 
 
@@ -23,6 +23,13 @@ def generate_launch_description():
     debug = LaunchConfiguration('debug')
     trans = LaunchConfiguration('transport')
 
+    remappings = [('/camera/mid/rgb/camera_info', camera_info_topic),
+                  ('/camera/mid/depth', depth_topic),
+                  ('/object_poses', detection_topic),
+                  ('/camera/mid/rgb', rgb_topic),
+                  ('/camera/mid/rgb/compressed', [rgb_topic, '/compressed']),
+                  ]
+
     det = Node(
         package='obj_detector',
         executable='obj_detector',
@@ -34,12 +41,7 @@ def generate_launch_description():
             'debug': debug,
             'transport_type': trans
         }],
-        remappings=[
-            ('/camera/mid/rgb', rgb_topic),
-            ('/camera/mid/rgb/camera_info', camera_info_topic),
-            ('/camera/mid/depth', depth_topic),
-            ('/object_poses', detection_topic),
-        ]
+        remappings=remappings
     )
 
     return LaunchDescription([
