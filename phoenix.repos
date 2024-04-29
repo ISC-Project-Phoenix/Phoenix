@@ -6,7 +6,7 @@ repositories:
     robot_localization:
       type: git
       url: git@github.com:cra-ros-pkg/robot_localization.git
-      version: ros2
+      version: humble-devel
     twist_to_ackermann:
       type: git 
       url: git@github.com:iscumd/twist_to_ackermann.git
