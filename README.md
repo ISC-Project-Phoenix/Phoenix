@@ -45,9 +45,8 @@ By default, webots will be launched:
 This repo is designed to be launched on a headless computer on the go-kart. To do this setup the computer with:
 
 - Two Oak-d-w cameras plugged into fast USB ports
-- The SICK LiDAR plugged into the ethernet jack
-    - This ethernet interface must be configured to have a static IP of 192.168.0.2
-- A Wi-Fi adapter available
+- The SICK LiDAR networked to the computer via a switch
+- A router connected to the lidar and computer
 
 Once this is done, the kart half of the stack can be launched with:
 
@@ -58,15 +57,16 @@ not output outputs of the autonomous stack (although it will be running).
 
 It is often useful to start this process on user log on (via chronjob or some feature of a DE like KDE), to allow for
 ROS to launch as soon as the PC boots. A script is provided in this repo under scripts called `start.bash` that can be
-used to do this, by just setting it as the autorun executable.
+used to do this, by just setting it as the autorun executable. Note that if using the desktop autostart, you must have 
+a monitor connected to actually start the session. We use a fake monitor dongle to achieve this.
 
-Because this is designed to be headless on the kart, it's intended for this computer to setup an adhoc network over it's
-WiFi adapter. This must be done on the OS network manager. For Phoenix's onboard PC, this is SSID `phnx_adhoc`, which
-has DHCP and a subnet of `10.42.0.0/24`, with the onboard PC as `10.42.0.1`.
+Because this is designed to be headless on the kart, it's intended for this computer to be debugged over Wi-Fi. While this 
+could be done with an adhoc network, we've found its best to just connect everything to a router, and connect to that for 
+extra range.
 
 By connecting with this network, one can share ROS2 instances, allowing for remote debugging and controls.
 
-To achieve this (and actually move the kart), connect another computer to the adhoc network. This connection should be
+To achieve this (and actually move the kart), connect another computer to the router. This connection should be
 strong, as a poor connection can actually effect the performance of the kart itself. Once connected, run:
 
 `ros2 launch phoenix_robot utilibot.launch.py`
