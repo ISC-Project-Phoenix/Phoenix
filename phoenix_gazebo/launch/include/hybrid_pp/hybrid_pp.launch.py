@@ -53,7 +53,7 @@ def generate_launch_description():
             'k_dd': k_dd,
             'max_speed': max_speed,
             'avoidance_radius': avoidance_radius,
-            'filter_window': 5,
+            'filter_window': 10,
             'rear_axle_frame': rear_axle_frame,
             'wheel_base': wheel_base,
             'gravity_constant': gravity_constant,

@@ -85,7 +85,8 @@ def generate_launch_description():
             '/include/hybrid_pp/hybrid_pp.launch.py'
         ]),
         launch_arguments={
-            'use_sim_time': use_sim_time
+            'use_sim_time': use_sim_time,
+            'max_speed': 8.0
         }.items(),
     )
 
