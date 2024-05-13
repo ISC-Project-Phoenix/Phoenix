@@ -22,6 +22,8 @@ def generate_launch_description():
     name = LaunchConfiguration('name')
     debug = LaunchConfiguration('debug')
     trans = LaunchConfiguration('transport')
+    hsv_lowerb = LaunchConfiguration('hsv_lowerb')
+    hsv_upperb = LaunchConfiguration('hsv_upperb')
 
     remappings = [('/camera/mid/rgb/camera_info', camera_info_topic),
                   ('/camera/mid/depth', depth_topic),
@@ -39,7 +41,9 @@ def generate_launch_description():
             'use_sim_time': use_sim_time,
             'camera_frame': camera_frame,
             'debug': debug,
-            'transport_type': trans
+            'transport_type': trans,
+            'hsv_upperb': hsv_upperb,
+            'hsv_lowerb': hsv_lowerb
         }],
         remappings=remappings
     )
@@ -73,6 +77,15 @@ def generate_launch_description():
         DeclareLaunchArgument('transport',
                               default_value='raw',
                               description='Transport type'),
+        DeclareLaunchArgument('hsv_lowerb',
+                              default_value="[0, 130, 130]",
+                              description='Cone color filter lower bound in HSV'),
+        DeclareLaunchArgument('hsv_upperb',
+                              default_value="[15, 255, 255]",
+                              description='Cone color filter upper bound in HSV'),
+        DeclareLaunchArgument('gamma',
+                              default_value="0.7",
+                              description='Gamma value to filter images with'),
 
         # Nodes
         det,
