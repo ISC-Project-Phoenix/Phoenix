@@ -86,8 +86,8 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'max_speed': 8.0,
-            'min_speed': 0.5
+            'max_speed': '8.0',
+            'min_speed': '0.5'
         }.items(),
     )
 
