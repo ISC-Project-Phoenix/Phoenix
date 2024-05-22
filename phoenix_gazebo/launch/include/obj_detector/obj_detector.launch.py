@@ -24,6 +24,7 @@ def generate_launch_description():
     trans = LaunchConfiguration('transport')
     hsv_lowerb = LaunchConfiguration('hsv_lowerb')
     hsv_upperb = LaunchConfiguration('hsv_upperb')
+    area_threshold = LaunchConfiguration('area_threshold')
 
     remappings = [('/camera/mid/rgb/camera_info', camera_info_topic),
                   ('/camera/mid/depth', depth_topic),
@@ -43,7 +44,8 @@ def generate_launch_description():
             'debug': debug,
             'transport_type': trans,
             'hsv_upperb': hsv_upperb,
-            'hsv_lowerb': hsv_lowerb
+            'hsv_lowerb': hsv_lowerb,
+            'area_threshold' : area_threshold,
         }],
         remappings=remappings
     )
@@ -78,14 +80,18 @@ def generate_launch_description():
                               default_value='raw',
                               description='Transport type'),
         DeclareLaunchArgument('hsv_lowerb',
-                              default_value="[0, 130, 130]",
+                              default_value="[0, 120, 120]",
                               description='Cone color filter lower bound in HSV'),
         DeclareLaunchArgument('hsv_upperb',
-                              default_value="[15, 255, 255]",
+                              default_value="[30, 255, 255]",
                               description='Cone color filter upper bound in HSV'),
         DeclareLaunchArgument('gamma',
-                              default_value="0.7",
+                              default_value="0.4",
                               description='Gamma value to filter images with'),
+        DeclareLaunchArgument('area_threshold',
+                              default_value='200.0',
+                              description='Pixel threshold to filter small detections out'),
+
 
         # Nodes
         det,
