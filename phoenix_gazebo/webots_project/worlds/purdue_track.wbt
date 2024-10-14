@@ -9,9 +9,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/SimpleTree.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Forest.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/PedestrianCrossing.proto"
-EXTERNPROTO "../protos/Phoenix.proto"
-EXTERNPROTO "../protos/Isc_Cone.proto"
-EXTERNPROTO "../protos/homedepotbox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/RoadLine.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/CurvedRoadSegment.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/stairs/protos/StraightStairs.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/stairs/protos/StraightStairsRail.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/stairs/protos/StraightStairsLanding.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/VarnishedPine.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 
 WorldInfo {
   info [
@@ -32,17 +36,15 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.04580563631831882 -0.9813355079697378 0.18676847828059912 5.793480509993263
-  position -9.722365138260635 2.652603817256743 8.58871697606421
+  orientation -0.28492222135715645 0.6300311565947508 0.7224126725748821 1.0807708428560925
+  position -180.6035807847134 -169.6459284178406 238.09690043956488
   near 3
-  follow "Phoenix"
-  followType "None"
 }
 TexturedBackground {
-    texture "noon_park_empty"
+  texture "noon_park_empty"
 }
 TexturedBackgroundLight {
-    texture "noon_park_empty"
+  texture "noon_park_empty"
 }
 Floor {
   translation 0 0 -0.02
@@ -56,6 +58,79 @@ Floor {
     roughness 1
     metalness 0
   }
+}
+StraightStairs {
+  translation -2.905 -5.0315 0
+  rotation 0 0 1 1.0472
+  stepRise 0.22
+  nSteps 15
+  stepAppearance VarnishedPine {
+    colorOverride 0 0 0
+    textureTransform TextureTransform {
+      scale 4 4
+    }
+  }
+  stringerAppearance VarnishedPine {
+    colorOverride 0 0 0
+    textureTransform TextureTransform {
+      scale 4 4
+    }
+  }
+  leftRail [
+    StraightStairsRail {
+      run 6
+      rise 3.3
+      width 0.05
+      appearance VarnishedPine {
+        colorOverride 0 0 0
+        textureTransform TextureTransform {
+          scale 4 4
+        }
+      }
+    }
+  ]
+  rightRail [
+    StraightStairsRail {
+      name "straight stairs rail(1)"
+      run 6
+      rise 3.3
+      width 0.05
+      appearance VarnishedPine {
+        colorOverride 0 0 0
+        textureTransform TextureTransform {
+          scale 4 4
+        }
+      }
+    }
+  ]
+}
+StraightStairsLanding {
+  translation 1.23794 2.13731 0
+  rotation 0 0 1 1.0471996938995747
+  landingSize 5 1.27 0.03
+  height 3.28
+  appearance VarnishedPine {
+    colorOverride 0 0 0
+    textureTransform TextureTransform {
+      scale 4 4
+    }
+  }
+  floorAppearance Parquetry {
+    colorOverride 0 0 0
+  }
+  rail [
+    StraightStairsRail {
+      translation -2.45 0.64 0
+      run 4.9
+      rise 0
+      appearance VarnishedPine {
+        colorOverride 0 0 0
+        textureTransform TextureTransform {
+          scale 4 4
+        }
+      }
+    }
+  ]
 }
 Crossroad {
   translation 124.224574 -111.255184 0.01
@@ -165,43 +240,6 @@ Crossroad {
     "656503822_2"
     "823935283_2"
     "823935283_3"
-  ]
-}
-Crossroad {
-  translation 46.009472 8.595377 0.01
-  name "crossroad(7)"
-  id "7578569045"
-  shape [
-    4.030595 1.937604 0
-    3.96844 -2.061914 0
-    -4.025352 -1.94847 0
-    -3.973988 2.0512 0
-    0.207382 4.719994 0
-    4.030595 1.937604 0
-  ]
-  connectedRoadIDs [
-    "283069992_1"
-    "283069992_2"
-    "810556942"
-  ]
-}
-Crossroad {
-  translation -47.525313 41.902604 0.01
-  name "crossroad(8)"
-  id "7578569050"
-  shape [
-    4.369903 2.125 0
-    3.609103 -1.801982 0
-    0.281837 -4.463246 0
-    -3.401495 -2.903417 0
-    -0.426778 4.451726 0
-    3.305314 3.012458 0
-    4.369903 2.125 0
-  ]
-  connectedRoadIDs [
-    "283069992_3"
-    "283069992_4"
-    "810556942"
   ]
 }
 Crossroad {
@@ -478,43 +516,78 @@ Road {
   splineSubdivision 0
 }
 Road {
-  translation 42.466495 6.770685 0.01
+  translation 42.4665 6.77069 0
   name "road(1)"
   id "810556942"
   startJunction "7578569045"
   endJunction "7578569050"
   width 4
-  numberOfLanes 1
+  numberOfLanes 15
   speedLimit 27.777778
-  lines []
+  lines [
+    RoadLine {
+      type "continuous"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "continuous"
+    }
+  ]
   rightBorder FALSE
   leftBorder FALSE
   wayPoints [
     0 0 0
-    -0.085786 -0.064596 0
-    -17.911913 -15.671234 0
+    2.02 1.42 0
+    -17 -15 0
     -20.16753 -16.294256 0
     -22.593517 -15.740799 0
     -86.913964 22.879585 0
     -88.509878 25.198461 0
     -89.6059 28.31684 0
-    -90.153317 31.142416 0
+    -89.83 29.5 0
   ]
   startingAngle [
-    -3.770709
+    2.54
   ]
   endingAngle [
-    -1.762162
+    -1.7622
   ]
-  startLine [
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
-  ]
-  endLine [
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
-  ]
-  splineSubdivision 0
+  splineSubdivision 7
 }
 Road {
   translation 69.403003 102.33156 0.01
@@ -522,9 +595,20 @@ Road {
   id "823935267"
   startJunction "651185991"
   width 4
-  numberOfLanes 1
+  numberOfLanes 4
   speedLimit 27.777778
-  lines []
+  lines [
+    RoadLine {
+      color 1 1 0
+      type "continuous"
+    }
+    RoadLine {
+    }
+    RoadLine {
+      color 1 1 0
+      type "continuous"
+    }
+  ]
   rightBorder FALSE
   leftBorder FALSE
   wayPoints [
@@ -844,9 +928,52 @@ Road {
   startJunction "2869842491"
   endJunction "7578569045"
   width 4
-  numberOfLanes 1
+  numberOfLanes 15
   speedLimit 27.777778
-  lines []
+  lines [
+    RoadLine {
+      type "continuous"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "continuous"
+    }
+  ]
   rightBorder FALSE
   leftBorder FALSE
   wayPoints [
@@ -857,16 +984,14 @@ Road {
     7.723659 -72.484585 0
   ]
   startingAngle [
-    0.490738
+    0.495
   ]
   endingAngle [
-    1.557955
+    1.55802
   ]
-  endLine [
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
+  startLine [
+    ""
   ]
-  splineSubdivision 0
 }
 Road {
   translation -539.0179 1997.977786 0.01
@@ -1028,9 +1153,49 @@ Road {
   startJunction "7578569050"
   endJunction "2869842491"
   width 4
-  numberOfLanes 1
+  numberOfLanes 14
   speedLimit 27.777778
-  lines []
+  lines [
+    RoadLine {
+      type "continuous"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "continuous"
+    }
+  ]
   rightBorder FALSE
   leftBorder FALSE
   wayPoints [
@@ -1042,11 +1207,111 @@ Road {
   endingAngle [
     0.490738
   ]
-  startLine [
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
+}
+CurvedRoadSegment {
+  translation -40.4 37.3 0.001
+  rotation 0 0 1 1.5708603061004252
+  name "road(2)"
+  width 4
+  numberOfLanes 14
+  lines [
+    RoadLine {
+      type "continuous"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+    }
   ]
-  splineSubdivision 0
+  rightBorder FALSE
+  leftBorder FALSE
+  curvatureRadius 7.03
+  totalAngle 1.1
+  subdivision 14
+}
+CurvedRoadSegment {
+  translation -40.4 37.3 -0.001
+  rotation 0 0 1 1.8326603061004252
+  name "road(2)"
+  width 4
+  numberOfLanes 14
+  lines [
+    RoadLine {
+      type "continuous"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "continuous"
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  curvatureRadius 7.03
+  totalAngle 0.4
+  subdivision 14
 }
 Road {
   translation 73.529318 130.940797 0.01
@@ -1459,8 +1724,8 @@ Road {
   rightBorder FALSE
   leftBorder FALSE
   wayPoints [
-    0 0 0
-    0.300434 -19.332177 0
+    0 8 -0.016
+    0.300434 -19.6 0
     -0.639691 -21.364051 0
     -2.385939 -22.763746 0
     -5.07905 -23.797987 0
@@ -1471,18 +1736,10 @@ Road {
   endingAngle [
     -3.508258
   ]
-  startLine [
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
-  ]
-  endLine [
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
-  ]
   splineSubdivision 0
 }
 Road {
-  translation 33.429918 -21.794689 0.01
+  translation 33.4299 -21.7947 -0.01
   name "road(28)"
   id "283069992_4"
   startJunction "6149750706"
@@ -1504,7 +1761,7 @@ Road {
     -98.945614 52.930309 0
     -97.132648 56.161498 0
     -93.207605 58.972208 0
-    -84.687323 62.258025 0
+    -77 65.4 0
   ]
   startingAngle [
     -3.435439
@@ -1513,12 +1770,7 @@ Road {
     -0.368072
   ]
   startLine [
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
     "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
-  ]
-  endLine [
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
-    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
   ]
   splineSubdivision 0
 }
@@ -1842,1115 +2094,74 @@ DEF parking Pose {
     }
   ]
 }
-Phoenix {
-  translation -0.147225 2.725 0.18
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 2.33 4.0356 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 0.17 0.294452 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 2.23111 -0.895547 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 4.03569 -2.02983 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 6.38255 -3.38483 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 8.53183 -4.82205 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 10.6709 -6.05705 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 12.758 -7.26205 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 14.9663 -8.53705 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 17.1046 -9.93329 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 19.131 -11.1033 0.01
-  rotation 0 0 1 3.46682e-06
-}
-Isc_Cone {
-  translation 21.211 -11.6933 0.01
-  rotation 0 0 1 3.46682e-06
-}
-Isc_Cone {
-  translation 23.501 -11.6933 0.01
-  rotation 0 0 1 3.46682e-06
-}
-Isc_Cone {
-  translation 25.704 -11.0967 0.01
-  rotation 0 0 1 0.523602
-}
-Isc_Cone {
-  translation 27.4985 -9.72556 0.01
-  rotation 0 0 1 0.785401
-}
-Isc_Cone {
-  translation 29.1237 -8.09933 0.01
-  rotation 0 0 1 0.785401
-}
-Isc_Cone {
-  translation 30.7556 -6.46615 0.01
-  rotation 0 0 1 0.785401
-}
-Isc_Cone {
-  translation 32.5993 -4.88944 0.01
-  rotation 0 0 1 0.785401
-}
-Isc_Cone {
-  translation 35.8377 -2.54188 0.01
-  rotation 0 0 1 0.785401
-}
-Isc_Cone {
-  translation 38.382 0.00374462 0.01
-  rotation 0 0 1 0.785401
-}
-Isc_Cone {
-  translation 41.0679 2.39372 0.01
-  rotation 0 0 1 0.785401
-}
-Isc_Cone {
-  translation 43.7329 5.05919 0.01
-  rotation 0 0 1 0.785401
-}
-Isc_Cone {
-  translation 46.1295 7.45604 0.01
-  rotation 0 0 1 0.785401
-}
-Isc_Cone {
-  translation 4.3218 2.8856 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 6.33958 1.7206 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 8.30879 0.491318 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 10.3121 -0.757964 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 12.2269 -1.86296 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 14.3061 -3.06296 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 16.4623 -4.30796 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 18.5583 -5.51796 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 20.5463 -6.81554 0.01
-  rotation 0 0 1 -0.523595307179586
-}
-Isc_Cone {
-  translation 22.3163 -7.24554 0.01
-  rotation 0 0 1 3.46682e-06
-}
-Isc_Cone {
-  translation 23.8209 -6.58189 0.01
-  rotation 0 0 1 -0.261795307179586
-}
-Isc_Cone {
-  translation 25.4755 -4.92751 0.01
-  rotation 0 0 1 -0.785395307179586
-}
-Isc_Cone {
-  translation 27.2638 -3.46397 0.01
-  rotation 0 0 1 -0.785395307179586
-}
-Isc_Cone {
-  translation 30.0198 -1.10238 0.01
-  rotation 0 0 1 -0.785395307179586
-}
-Isc_Cone {
-  translation 32.8899 1.49973 0.01
-  rotation 0 0 1 -0.785395307179586
-}
-Isc_Cone {
-  translation 36.035 4.08063 0.01
-  rotation 0 0 1 -0.785395307179586
-}
-Isc_Cone {
-  translation 39.1182 7.13532 0.01
-  rotation 0 0 1 -0.785395307179586
-}
-Isc_Cone {
-  translation 41.5509 9.5676 0.01
-  rotation 0 0 1 -0.785395307179586
-}
-Isc_Cone {
-  translation 43.6229 12.8133 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.6229 16.1133 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.6229 19.5033 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 47.5029 9.6633 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3829 12.9533 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3829 16.3833 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3829 20.3733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3829 23.2233 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3829 26.8833 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3829 30.3733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3829 33.5833 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3129 36.8633 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.3429 43.1733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.3429 46.6333 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.3429 50.0533 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.3429 53.3333 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 42.9629 56.4233 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 42.9629 59.8033 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 42.9629 63.1533 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 42.9629 66.2933 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 42.9629 69.5833 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 42.9629 72.9033 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 42.9629 76.0933 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 41.8529 79.3233 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 39.7329 81.8733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 37.1529 82.9933 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 34.3329 82.4933 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 31.8429 80.6133 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 30.1429 78.5433 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 29.8529 74.8933 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 29.8529 71.6333 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 29.8529 68.2333 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 28.9929 65.4333 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 27.1029 62.8233 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 24.4529 60.2533 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 22.615 58.9808 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 20.0823 57.1987 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 17.5372 55.219 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 15.6288 52.2216 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 13.585 59.059 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 11.1596 55.5314 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 10.0707 51.9119 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 10.9903 48.2356 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 12.6456 46.0017 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 15.0141 43.6332 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 16.9589 40.5852 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 19.3211 38.223 0.01
-  rotation 0 0 1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 16.8745 49.2234 0.01
-  rotation 0 0 -1 2.618
-}
-Isc_Cone {
-  translation 18.5298 47.0964 0.01
-  rotation 0 0 -1 2.618
-}
-Isc_Cone {
-  translation 20.5669 44.5887 0.01
-  rotation 0 0 -1 2.618
-}
-Isc_Cone {
-  translation 22.1619 41.8259 0.01
-  rotation 0 0 -1 2.618
-}
-Isc_Cone {
-  translation 23.8169 38.9584 0.01
-  rotation 0 0 -1 2.618
-}
-Isc_Cone {
-  translation 24.4815 36.3864 0.01
-  rotation 0 0 1 3.14159
-}
-Isc_Cone {
-  translation 24.4815 32.8064 0.01
-  rotation 0 0 1 3.14159
-}
-Isc_Cone {
-  translation 20.0415 34.3964 0.01
-  rotation 0 0 -1 -2.6179953071795863
-}
-Isc_Cone {
-  translation 18.3465 31.4607 0.01
-  rotation 0 0 -1 -2.6179953071795863
-}
-Isc_Cone {
-  translation 15.4971 29.8157 0.01
-  rotation 0 0 -1 -2.094395307179586
-}
-Isc_Cone {
-  translation 12.2204 28.2705 0.01
-  rotation 0 0 -1 -2.094395307179586
-}
-Isc_Cone {
-  translation 9.0204 28.2705 0.01
-  rotation 0 0 -1 -1.5707953071795862
-}
-Isc_Cone {
-  translation 5.8204 28.2705 0.01
-  rotation 0 0 -1 -1.5707953071795862
-}
-Isc_Cone {
-  translation 2.89688 29.6466 0.01
-  rotation 0 0 -1 -1.047195307179586
-}
-Isc_Cone {
-  translation 0.098962 31.1009 0.01
-  rotation 0 0 -1 -1.047195307179586
-}
-Isc_Cone {
-  translation -2.47129 32.9891 0.01
-  rotation 0 0 -1 -0.785395307179586
-}
-Isc_Cone {
-  translation -4.85419 35.3719 0.01
-  rotation 0 0 -1 -0.785395307179586
-}
-Isc_Cone {
-  translation -6.47419 38.1777 0.01
-  rotation 0 0 -1 -0.523595307179586
-}
-Isc_Cone {
-  translation -8.40954 32.0497 0.01
-  rotation 0 0 -1 -0.523595307179586
-}
-Isc_Cone {
-  translation -10.0495 34.8903 0.01
-  rotation 0 0 -1 -0.523595307179586
-}
-Isc_Cone {
-  translation -11.3157 37.9233 0.01
-  rotation 0 0 -1 -0.261795307179586
-}
-Isc_Cone {
-  translation -12.5518 40.8321 0.01
-  rotation 0 0 -1 -0.261795307179586
-}
-Isc_Cone {
-  translation -13.0856 43.7542 0.01
-  rotation 0 0 -1 -0.261795307179586
-}
-Isc_Cone {
-  translation -13.4101 47.0535 0.01
-  rotation 0 0 1 -5.307179586466759e-06
-}
-Isc_Cone {
-  translation -13.4101 50.1535 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -12.8717 53.1672 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -12.0573 56.2004 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -11.47 59.3974 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -11.47 59.3974 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -7.49135 41.3936 0.01
-  rotation 0 0 -1 -0.261795307179586
-}
-Isc_Cone {
-  translation -8.21609 44.0988 0.01
-  rotation 0 0 -1 -0.261795307179586
-}
-Isc_Cone {
-  translation -8.41609 46.8588 0.01
-  rotation 0 0 1 -5.307179586466759e-06
-}
-Isc_Cone {
-  translation -8.41609 50.1188 0.01
-  rotation 0 0 1 -5.307179586466759e-06
-}
-Isc_Cone {
-  translation -7.86609 53.5188 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -7.00415 56.7356 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -6.20427 59.7208 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -5.53503 62.8752 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -10.6306 62.7907 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -10.0189 65.9605 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -9.40207 69.4603 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -8.5298 72.715 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -9.44945 78.5948 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -11.9981 81.4008 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -15.3426 83.0541 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -19.0892 84.0603 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -22.345 84.0839 0.01
-  rotation 0 0 1 1.57079
-}
-Isc_Cone {
-  translation -22.345 84.0839 0.01
-  rotation 0 0 1 1.57079
-}
-Isc_Cone {
-  translation -8.6098 75.975 0.01
-  rotation 0 0 -1 5.92017e-06
-}
-Isc_Cone {
-  translation -4.6835 66.0532 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -4.20421 69.3104 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -3.53531 72.7343 0.01
-  rotation 0 0 1 -0.2618053071795865
-}
-Isc_Cone {
-  translation -3.53531 75.9043 0.01
-  rotation 0 0 -1 5.92017e-06
-}
-Isc_Cone {
-  translation -4.36618 79.0045 0.01
-  rotation 0 0 1 0.261793
-}
-Isc_Cone {
-  translation -6.06118 81.9399 0.01
-  rotation 0 0 1 0.523592
-}
-Isc_Cone {
-  translation -7.72118 84.8147 0.01
-  rotation 0 0 1 1.04719
-}
-Isc_Cone {
-  translation -10.7714 86.3911 0.01
-  rotation 0 0 1 1.04719
-}
-Isc_Cone {
-  translation -13.7536 87.584 0.01
-  rotation 0 0 1 1.30899
-}
-Isc_Cone {
-  translation -16.9015 88.4292 0.01
-  rotation 0 0 1 1.30899
-}
-Isc_Cone {
-  translation -20.3115 88.7792 0.01
-  rotation 0 0 1 1.57079
-}
-Isc_Cone {
-  translation -25.5015 84.0192 0.01
-  rotation 0 0 1 1.57079
-}
-Isc_Cone {
-  translation -28.4615 83.5292 0.01
-  rotation 0 0 1 1.57079
-}
-Isc_Cone {
-  translation -31.2015 82.4892 0.01
-  rotation 0 0 1 1.57079
-}
-Isc_Cone {
-  translation -23.5015 88.7792 0.01
-  rotation 0 0 1 1.57079
-}
-Isc_Cone {
-  translation -26.8315 88.4992 0.01
-  rotation 0 0 1 1.57079
-}
-Isc_Cone {
-  translation -29.2715 88.4992 0.01
-  rotation 0 0 1 1.57079
-}
-Isc_Cone {
-  translation -29.2715 88.4992 0.01
-  rotation 0 0 1 1.83259
-}
-Isc_Cone {
-  translation -32.0498 87.2373 0.01
-  rotation 0 0 1 1.83259
-}
-Isc_Cone {
-  translation -35.3052 85.7434 0.01
-  rotation 0 0 1 1.83259
-}
-Isc_Cone {
-  translation -37.6338 83.6181 0.01
-  rotation 0 0 1 2.61799
-}
-Isc_Cone {
-  translation -39.3838 80.5876 0.01
-  rotation 0 0 1 2.61799
-}
-Isc_Cone {
-  translation -40.6399 77.5717 0.01
-  rotation 0 0 1 2.61799
-}
-Isc_Cone {
-  translation -40.6399 74.3417 0.01
-  rotation 0 0 1 3.14159
-}
-Isc_Cone {
-  translation -40.0399 71.1317 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -38.8933 68.2405 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -33.7336 80.2041 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -35.787 76.5883 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -35.652 73.6105 0.01
-  rotation 0 0 -1 2.8798
-}
-Isc_Cone {
-  translation -34.4588 70.4716 0.01
-  rotation 0 0 -1 2.8798
-}
-Isc_Cone {
-  translation -33.1731 67.4509 0.01
-  rotation 0 0 -1 2.8798
-}
-Isc_Cone {
-  translation -31.9812 64.4673 0.01
-  rotation 0 0 -1 2.8798
-}
-Isc_Cone {
-  translation -31.1502 61.3661 0.01
-  rotation 0 0 -1 2.8798
-}
-Isc_Cone {
-  translation -30.3109 58.2355 0.01
-  rotation 0 0 -1 2.8798
-}
-Isc_Cone {
-  translation -29.4957 55.192 0.01
-  rotation 0 0 -1 2.8798
-}
-Isc_Cone {
-  translation -28.6316 51.9649 0.01
-  rotation 0 0 -1 2.8798
-}
-Isc_Cone {
-  translation -29.4879 48.7778 0.01
-  rotation 0 0 1 2.87979
-}
-Isc_Cone {
-  translation -31.6663 46.5994 0.01
-  rotation 0 0 -1 -2.3561953071795863
-}
-Isc_Cone {
-  translation -34.6213 44.7886 0.01
-  rotation 0 0 -1 -1.8325953071795862
-}
-Isc_Cone {
-  translation -37.1928 43.4889 0.01
-  rotation 0 0 -1 -1.8325953071795862
-}
-Isc_Cone {
-  translation -40.1803 41.8903 0.01
-  rotation 0 0 -1 -1.8325953071795862
-}
-Isc_Cone {
-  translation -43.3103 41.0509 0.01
-  rotation 0 0 1 2.61799
-}
-Isc_Cone {
-  translation -45.1453 37.8721 0.01
-  rotation 0 0 1 2.61799
-}
-Isc_Cone {
-  translation -44.2593 34.577 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -43.5155 31.8037 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -40.6494 30.1487 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -37.8809 28.3652 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -35.1964 26.8152 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -32.4083 25.2052 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -29.395 23.4652 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -26.6158 21.8602 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -23.9467 20.0648 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -21.1847 18.4698 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -18.362 16.8398 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -15.5487 15.2148 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -12.778 13.6148 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -9.94688 11.9798 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -7.16748 9.99408 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -4.327 8.35408 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -1.54714 6.74908 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation 0.574597 5.52408 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -37.7743 64.9998 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -36.6116 61.9366 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -35.8301 59.0191 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -34.9649 55.7929 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -34.104 52.5852 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -36.1899 49.5953 0.01
-  rotation 0 0 -1 -2.094395307179586
-}
-Isc_Cone {
-  translation -38.6057 48.2003 0.01
-  rotation 0 0 -1 -2.094395307179586
-}
-Isc_Cone {
-  translation -42.0103 47.2971 0.01
-  rotation 0 0 -1 -2.094395307179586
-}
-Isc_Cone {
-  translation -44.9291 45.6121 0.01
-  rotation 0 0 -1 -2.094395307179586
-}
-Isc_Cone {
-  translation -47.4301 43.3244 0.01
-  rotation 0 0 1 2.61799
-}
-Isc_Cone {
-  translation -49.0951 40.4381 0.01
-  rotation 0 0 1 2.61799
-}
-Isc_Cone {
-  translation -49.9613 37.4166 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -49.1915 34.5378 0.01
-  rotation 0 0 1 -2.8797953071795863
-}
-Isc_Cone {
-  translation -48.2402 31.4901 0.01
-  rotation 0 0 -1 2.618
-}
-Isc_Cone {
-  translation -46.6302 28.7018 0.01
-  rotation 0 0 -1 2.3562
-}
-Isc_Cone {
-  translation -44.0643 26.7005 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -41.0082 24.9355 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -38.3555 23.0918 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -35.5847 21.4918 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -32.6317 19.7868 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -29.8179 18.1618 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -27.0559 16.5668 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -24.3458 15.0018 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -21.5767 13.0795 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -18.6929 11.4145 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -15.9746 9.8445 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -12.9526 8.0995 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -10.2261 6.5245 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -7.50696 4.9545 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -4.69246 3.3295 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation -2.15508 1.8645 0.01
-  rotation 0 0 -1 2.0944
-}
-Isc_Cone {
-  translation 23.5101 29.7637 0.01
-  rotation 0 0 -1 -2.8797953071795863
-}
-Isc_Cone {
-  translation 21.2696 27.5232 0.01
-  rotation 0 0 -1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 18.6731 25.3377 0.01
-  rotation 0 0 -1 -2.3561953071795863
-}
-Isc_Cone {
-  translation 16.1382 24.2858 0.01
-  rotation 0 0 -1 -1.8325953071795862
-}
-Isc_Cone {
-  translation 13.0471 23.4577 0.01
-  rotation 0 0 -1 -1.8325953071795862
-}
-Isc_Cone {
-  translation 10.052 22.6544 0.01
-  rotation 0 0 -1 -1.3089953071795861
-}
-Isc_Cone {
-  translation 6.68133 23.0202 0.01
-  rotation 0 0 -1 -1.3089953071795861
-}
-Isc_Cone {
-  translation 3.57082 23.8565 0.01
-  rotation 0 0 -1 -1.3089953071795861
-}
-Isc_Cone {
-  translation 0.352498 25.3213 0.01
-  rotation 0 0 -1 -1.047195307179586
-}
-Isc_Cone {
-  translation -2.43606 26.9313 0.01
-  rotation 0 0 -1 -1.047195307179586
-}
-Isc_Cone {
-  translation -5.04959 28.8532 0.01
-  rotation 0 0 -1 -0.785395307179586
-}
-Isc_Cone {
-  translation 48.3129 40.0733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3129 43.3333 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3129 46.7533 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3129 50.2733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.3129 53.6933 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.1829 56.9633 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.1829 60.2433 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.1829 63.6133 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.1829 66.5233 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.1829 69.8233 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 48.1829 72.8733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 47.8829 75.5433 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 47.3329 78.5033 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 46.0029 81.2833 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 44.0129 84.2433 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 41.4029 86.2733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 38.3429 87.4033 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 35.3029 87.4033 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 32.3329 86.7433 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 29.8829 85.7033 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 27.3029 83.5733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 25.4329 80.6533 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 24.8429 76.5933 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 24.8429 73.3433 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 24.8429 69.9733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 23.6829 67.3233 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 21.5829 65.5433 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 19.2429 63.5433 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 16.6529 61.2533 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.6229 22.9133 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.6229 26.4733 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.6229 29.6033 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.3829 32.9533 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.3829 36.0833 0.01
-  rotation 0 0 1 2.85387e-06
-}
-Isc_Cone {
-  translation 43.3829 39.3433 0.01
-  rotation 0 0 1 2.85387e-06
-}
-homedepotbox {
-  translation 44.31 42.75 0.22
-  name "home depot box left"
-}
-homedepotbox {
-  translation 45 42.75 0.22
-  name "home depot box right"
-}
-homedepotbox {
-  translation 44.65 42.75 0.63
-  name "home depot box top"
+CurvedRoadSegment {
+  translation 38 13.35 -0.01
+  rotation 0 0 1 -1.4399003061004252
+  width 4
+  numberOfLanes 14
+  lines [
+    RoadLine {
+      type "continuous"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      type "none"
+    }
+    RoadLine {
+      width 0.099
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  curvatureRadius 8
+  totalAngle 1.05
+  subdivision 13
+  rightBarrierBoundingObject FALSE
+  leftBarrierBoundingObject FALSE
+}
+Road {
+  translation 46 11 -1
+  rotation 0 0 1 -1.4399003061004252
+  name "road(2)"
+  width 4
+  numberOfLanes 4
+  roadBorderWidth [
+    1
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  wayPoints [
+    1 0 0
+    5 -6 0
+  ]
+  splineSubdivision 8
 }
