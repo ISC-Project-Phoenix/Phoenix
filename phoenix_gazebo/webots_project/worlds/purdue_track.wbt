@@ -41,8 +41,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.14215005767242422 0.19556888607830872 -0.9703330211333715 1.2857864837508781
-  position -16.838710612429562 29.31532378499442 7.8818449730995095
+  orientation 0.1633231275134765 0.27030202346822235 -0.9488215702270902 1.134072594279942
+  position -45.93868036319526 63.942795818552945 19.479081996656504
   near 3
   followType "None"
 }
@@ -12350,6 +12350,18 @@ Pedestrian {
   translation -9.52246 -9.1351 1.27
   rotation 0 0 1 2.61799
   name "pedestrian(2)"
+  shoesColor 1 1 1
+}
+Pedestrian {
+  translation -30.9662 4.39991 1.27
+  rotation 0 0 -1 -1.047195307179586
+  name "pedestrian(3)"
+  shoesColor 1 1 1
+}
+Pedestrian {
+  translation -34.836 7.07299 1.25
+  rotation 0 0 -1 -1.047195307179586
+  name "pedestrian(4)"
   shoesColor 1 1 1
 }
 Bus {
