@@ -19,6 +19,7 @@ def generate_launch_description():
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     max_speed = LaunchConfiguration('max_speed', default='4.0')
+    use_ai = LaunchConfiguration('use_ai', default='false')
 
     # Misc utility nodes
     state_publishers = IncludeLaunchDescription(
@@ -45,28 +46,49 @@ def generate_launch_description():
     )
 
     # Autonomy pipeline
-    obj_detector_wb = GroupAction(actions=[
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([
-                os.path.join(pkg_phoenix_gazebo, 'launch'),
-                '/include/obj_detector/dual_camera.launch.py'
-            ]),
-            launch_arguments={
-                'use_sim_time': use_sim_time,
-                # Webots has odd outputs
-                'rgb_raw_postfix': "/rgb/image_color",
-                'depth_raw_postfix': "/depth/image",
-            }.items(),
-        )])
 
-    obj_tracker = IncludeLaunchDescription(
+    obj_detector_ai = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            '/include/obj_tracker/obj_tracker.launch.py'
+            '/include/road_detectors/obj_detector_ai.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
         }.items(),
+        condition=IfCondition(use_ai)
+    )
+
+    obj_detector_cv = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/road_detectors/obj_detector_cv.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+        condition=UnlessCondition(use_ai)
+    )
+
+    poly_plan_ai = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/polynomial_planner/polynomial_planner_ai.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+        condition=IfCondition(use_ai)
+    )
+
+    poly_plan = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/polynomial_planner/polynomial_planner.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+        condition=UnlessCondition(use_ai)
     )
 
     pp = IncludeLaunchDescription(
@@ -77,16 +99,6 @@ def generate_launch_description():
         launch_arguments={
             'use_sim_time': use_sim_time,
             'max_speed': max_speed,
-        }.items(),
-    )
-
-    planner = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([
-            os.path.join(pkg_phoenix_gazebo, 'launch'),
-            '/include/obj_planner/obj_planner.launch.py'
-        ]),
-        launch_arguments={
-            'use_sim_time': use_sim_time,
         }.items(),
     )
 
@@ -102,12 +114,18 @@ def generate_launch_description():
             default_value='4.0',
             description='The max allowed speed for the cart'),
 
+        DeclareLaunchArgument(
+            'use_ai',
+            default_value='false',
+            description='Uses the AI stack if true'),
+
         # Nodes
         state_publishers,
         ekf,
         webots,
-        obj_detector_wb,
-        obj_tracker,
+        obj_detector_ai,
+        obj_detector_cv,
         pp,
-        planner
+        poly_plan,
+        poly_plan_ai
     ])

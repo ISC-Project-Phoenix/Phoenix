@@ -20,10 +20,9 @@ find_package(twist_to_ackermann REQUIRED)
 find_package(robot_localization REQUIRED)
 find_package(rtabmap_odom REQUIRED)
 
-find_package(obj_detector REQUIRED)
-find_package(obj_planner REQUIRED)
-find_package(obj_tracker REQUIRED)
 find_package(hybrid_pp REQUIRED)
+find_package(polynomial_planner REQUIRED)
+# TODO obj_detectors are not present because they are in Python
 
 #INSTALL
 install(

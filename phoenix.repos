@@ -31,17 +31,13 @@ repositories:
       type: git
       url: git@github.com:luxonis/depthai-ros.git
       version: humble
-    obj_detector:
+    polynomial_planner:
       type: git
-      url: git@github.com:ISC-Project-Phoenix/obj_detector.git
+      url: git@github.com:ISC-Project-Phoenix/Polynomial_planner.git
       version: master
-    obj_planner:
+    road_detectors:
       type: git
-      url: git@github.com:ISC-Project-Phoenix/obj_planner.git
-      version: master
-    obj_tracker:
-      type: git
-      url: git@github.com:ISC-Project-Phoenix/obj_tracker.git
+      url: git@github.com:ISC-Project-Phoenix/road_detectors.git
       version: master
     hybrid_pp:
       type: git

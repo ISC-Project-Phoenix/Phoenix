@@ -486,72 +486,38 @@
 
     <!-- Webots Plugins NOTE: These must be all in one webots tag -->
     <webots>
-        <!-- Camera Left -->
-        <device reference="left_camera" type="Camera">
+        <!-- Camera Mid -->
+        <device reference="mid_camera" type="Camera">
             <ros>
-                <frameName>left_cam_link</frameName>
-                <topicName>/camera/left/rgb</topicName>
+                <frameName>mid_cam_link</frameName>
+                <topicName>/camera/mid/rgb</topicName>
                 <updateRate>30</updateRate>
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
 
-        <!-- Depth camera Left -->
-        <device reference="left_camera_depth" type="RangeFinder">
+        <!-- Depth camera Mid -->
+        <device reference="mid_camera_depth" type="RangeFinder">
             <ros>
                 <frameName>left_cam_link</frameName>
-                <topicName>/camera/left/depth</topicName>
+                <topicName>/camera/mid/depth</topicName>
                 <updateRate>30</updateRate>
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
 
-        <!-- IMU Left -->
+        <!-- IMU Mid -->
         <plugin type="webots_ros2_driver::Ros2IMU">
-            <topicName>/camera/left/imu</topicName>
-            <frameName>left_cam_link</frameName>
+            <topicName>/camera/mid/imu</topicName>
+            <frameName>mid_cam_link</frameName>
             <alwaysOn>true</alwaysOn>
 
             <!-- Indicates the name of the inertial unit device. -->
-            <inertialUnitName>left_camera_inert</inertialUnitName>
+            <inertialUnitName>mid_camera_inert</inertialUnitName>
             <!-- Indicates the name of the gyro device. -->
-            <gyroName>left_camera_gyro</gyroName>
+            <gyroName>mid_camera_gyro</gyroName>
             <!-- Indicates the name of the accelerometer device. -->
-            <accelerometerName>left_camera_accel</accelerometerName>
-        </plugin>
-
-        <!-- Camera Right -->
-        <device reference="right_camera" type="Camera">
-            <ros>
-                <frameName>right_cam_link</frameName>
-                <topicName>/camera/right/rgb</topicName>
-                <updateRate>30</updateRate>
-                <alwaysOn>true</alwaysOn>
-            </ros>
-        </device>
-
-        <!-- Depth camera Right -->
-        <device reference="right_camera_depth" type="RangeFinder">
-            <ros>
-                <frameName>right_cam_link</frameName>
-                <topicName>/camera/right/depth</topicName>
-                <updateRate>30</updateRate>
-                <alwaysOn>true</alwaysOn>
-            </ros>
-        </device>
-
-        <!-- IMU Right -->
-        <plugin type="webots_ros2_driver::Ros2IMU">
-            <topicName>/camera/right/imu</topicName>
-            <frameName>right_cam_link</frameName>
-            <alwaysOn>true</alwaysOn>
-
-            <!-- Indicates the name of the inertial unit device. -->
-            <inertialUnitName>right_camera_inert</inertialUnitName>
-            <!-- Indicates the name of the gyro device. -->
-            <gyroName>right_camera_gyro</gyroName>
-            <!-- Indicates the name of the accelerometer device. -->
-            <accelerometerName>right_camera_accel</accelerometerName>
+            <accelerometerName>mid_camera_accel</accelerometerName>
         </plugin>
 
         <!-- Lidar -->

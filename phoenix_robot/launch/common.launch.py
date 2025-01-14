@@ -22,6 +22,7 @@ def generate_launch_description():
     drive_mode_switch_button = LaunchConfiguration(
         'drive_mode_switch_button', default='7')
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    use_ai = LaunchConfiguration('use_ai', default='false')
 
     state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -51,11 +52,10 @@ def generate_launch_description():
         }.items(),
     )
 
-    # Connect to two cameras
-    cameras = IncludeLaunchDescription(
+    camera = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
-            '/include/oakd/dual_cameras.launch.py'
+            '/include/oakd/oakd.launch.py'
         ]),
         launch_arguments={'use_sim_time': use_sim_time}.items(),
     )
@@ -91,38 +91,48 @@ def generate_launch_description():
         }.items(),
     )
 
-    # Create a detector for each camera, and merge them
-    obj_detect = IncludeLaunchDescription(
+    obj_detector_ai = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            '/include/obj_detector/dual_camera.launch.py'
+            '/include/road_detectors/obj_detector_ai.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'transport': "compressed",
-            'debug': 'false'
         }.items(),
+        condition=IfCondition(use_ai)
     )
 
-    obj_tracker = IncludeLaunchDescription(
+    obj_detector_cv = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            '/include/obj_tracker/obj_tracker.launch.py'
+            '/include/road_detectors/obj_detector_cv.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
         }.items(),
+        condition=UnlessCondition(use_ai)
     )
 
-    planner = IncludeLaunchDescription(
+    poly_plan_ai = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            '/include/obj_planner/obj_planner.launch.py'
+            '/include/polynomial_planner/polynomial_planner_ai.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'debug': 'False',
         }.items(),
+        condition=IfCondition(use_ai)
+    )
+
+    poly_plan = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/polynomial_planner/polynomial_planner.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+        condition=UnlessCondition(use_ai)
     )
 
     return LaunchDescription([
@@ -136,16 +146,21 @@ def generate_launch_description():
             'use_sim_time',
             default_value='false',
             description='Use simulation (Gazebo) clock if true'),
+        DeclareLaunchArgument(
+            'use_ai',
+            default_value='false',
+            description='Use ai stack if true'),
 
         # Nodes
         robot_state_controller,
         state_publishers,
         ekf,
-        cameras,
+        camera,
         sick,
         pir,
         pp,
-        obj_detect,
-        obj_tracker,
-        planner
+        obj_detector_ai,
+        obj_detector_cv,
+        poly_plan,
+        poly_plan_ai
     ])
