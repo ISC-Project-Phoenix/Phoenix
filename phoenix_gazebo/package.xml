@@ -24,10 +24,10 @@
   <exec_depend>rtabmap_odom</exec_depend>
 
   <!-- ISC Auton Stack-->
-  <exec_depend>obj_detector</exec_depend>
-  <exec_depend>obj_planner</exec_depend>
-  <exec_depend>obj_tracker</exec_depend>
   <exec_depend>hybrid_pp</exec_depend>
+  <exec_depend>obj_detector_ai</exec_depend>
+  <exec_depend>obj_detector_cv</exec_depend>
+  <exec_depend>polynomial_planner</exec_depend>
 
   <exec_depend>ros2launch</exec_depend>
   <exec_depend>launch</exec_depend>

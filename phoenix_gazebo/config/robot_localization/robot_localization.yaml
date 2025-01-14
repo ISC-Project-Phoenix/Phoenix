@@ -169,7 +169,7 @@ ekf_filter_node:
     # offset from base_link.
 #    odom0_pose_use_child_frame: false
 
-    imu0: /camera/left/imu
+    imu0: /camera/mid/imu
     imu0_config: [false, false, false,
                   true, true,  true,
                   false, false, false,
@@ -186,22 +186,22 @@ ekf_filter_node:
     # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
     imu0_remove_gravitational_acceleration: true # We need this for the oak-d and gazebo
 
-    imu1: /camera/right/imu
-    imu1_config: [false, false, false,
-                  true, true,  true,
-                  false, false, false,
-                  true,  true,  true,
-                  true,  true,  true]
-    imu1_differential: false
-    imu1_relative: false
-    imu1_queue_size: 10
-    #imu0_pose_rejection_threshold: 0.8
-    #imu0_twist_rejection_threshold: 0.8
-    #imu0_linear_acceleration_rejection_threshold: 0.8
-
-    # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
-    # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
-    imu1_remove_gravitational_acceleration: true # We need this for the oak-d and gazebo
+#    imu1: /camera/right/imu
+#    imu1_config: [false, false, false,
+#                  true, true,  true,
+#                  false, false, false,
+#                  true,  true,  true,
+#                  true,  true,  true]
+#    imu1_differential: false
+#    imu1_relative: false
+#    imu1_queue_size: 10
+#    #imu0_pose_rejection_threshold: 0.8
+#    #imu0_twist_rejection_threshold: 0.8
+#    #imu0_linear_acceleration_rejection_threshold: 0.8
+#
+#    # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
+#    # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
+#    imu1_remove_gravitational_acceleration: true # We need this for the oak-d and gazebo
 
     # [ADVANCED]  The EKF and UKF models follow a standard predict/correct cycle. During prediction, if there is no
     # acceleration reference, the velocity at time t+1 is simply predicted to be the same as the velocity at time t. During

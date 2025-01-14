@@ -66,11 +66,10 @@ def generate_launch_description():
         }.items(),
     )
 
-    # Connect to two cameras
     cameras = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch'),
-            '/include/oakd/dual_cameras.launch.py'
+            '/include/oakd/oadkd.launch.py'
         ]),
         launch_arguments={'use_sim_time': use_sim_time}.items(),
         condition=UnlessCondition(encoder_only)
