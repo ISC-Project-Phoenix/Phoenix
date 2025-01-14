@@ -21,7 +21,7 @@ If using Webots, you must install webots separately.
 5. Still in `src`, run `cat Phoenix/phoenix.repos | vcs import` to import source dependencies
 6. Cd to the workspace root, and run `rosdep install --from-paths src --ignore-src -r -y` to install binary dependencies
 7. Still in workspace root, run `colcon build` to build the workspace. If using clang in your IDE,
-   run `colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON`
+   run `colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON` (this command takes care of depthai errors)
     1. If using the compile commands, they are often created in build. Move it to the workspace root, and import it into
        your IDE tooling.
 8. Make sure your user is a part of the unix `dialout` group. This allows for it to connect to USB devices. In addition,
