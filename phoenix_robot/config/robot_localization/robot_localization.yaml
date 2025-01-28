@@ -1,3 +1,4 @@
+
 ### ekf config file ###
 ekf_filter_node:
   ros__parameters:
@@ -136,15 +137,15 @@ ekf_filter_node:
     # do not provide some of the state variables estimated by the filter. For example, a TwistWithCovarianceStamped message
     # has no pose information, so the first six values would be meaningless in that case. Each vector defaults to all false
     # if unspecified, effectively making this parameter required for each sensor.
-#    odom1_config: [false, false, false, # x y z
-#                   false, false, false, # r p y
-#                   true, false, false, # vx vy vz
-#                   false, false, false, # vr vp vy
-#                   false, false, false] # ax ay az
+    #    odom1_config: [false, false, false, # x y z
+    #                   false, false, false, # r p y
+    #                   true, false, false, # vx vy vz
+    #                   false, false, false, # vr vp vy
+    #                   false, false, false] # ax ay az
 
     # If you have high-frequency data or are running with a low frequency parameter value, then you may want to increase
     # the size of the subscription queue so that more measurements are fused.
-#    odom1_queue_size: 2
+    #    odom1_queue_size: 2
 
     # [ADVANCED] When measuring one pose variable with two sensors, a situation can arise in which both sensors under-
     # report their covariances. This can lead to the filter rapidly jumping back and forth between each measurement as they
@@ -154,22 +155,22 @@ ekf_filter_node:
     # data is converted to velocity data by differentiating the absolute pose measurements. These velocities are then
     # integrated as usual. NOTE: this only applies to sensors that provide pose measurements; setting differential to true
     # for twist measurements has no effect.
-#    odom0_differential: false
+    #    odom0_differential: false
 
     # [ADVANCED] When the node starts, if this parameter is true, then the first measurement is treated as a "zero point"
     # for all future measurements. While you can achieve the same effect with the differential paremeter, the key
     # difference is that the relative parameter doesn't cause the measurement to be converted to a velocity before
     # integrating it. If you simply want your measurements to start at 0 for a given sensor, set this to true.
-#    odom0_relative: false
+    #    odom0_relative: false
 
     # [ADVANCED] Whether to use the starting pose of child_frame_id as the origin of odometry.
     # Note: this is different from setting odom0_relative to true, as when child_frame is different from
     # base_link_frame, the rotation of base_link will be coupled into the translation of child_frame.
     # Set to true for fusing secondary odometry sources that are rigidly connected to base_link but has a non-zero
     # offset from base_link.
-#    odom0_pose_use_child_frame: false
+    #    odom0_pose_use_child_frame: false
 
-    imu0: /camera/left/imu
+    imu0: /camera/mid/imu
     imu0_config: [false, false, false,
                   true, true,  true,
                   false, false, false,
@@ -186,22 +187,22 @@ ekf_filter_node:
     # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
     imu0_remove_gravitational_acceleration: true # We need this for the oak-d and gazebo
 
-    imu1: /camera/right/imu
-    imu1_config: [false, false, false,
-                  true, true,  true,
-                  false, false, false,
-                  true,  true,  true,
-                  true,  true,  true]
-    imu1_differential: false
-    imu1_relative: false
-    imu1_queue_size: 10
-    #imu0_pose_rejection_threshold: 0.8
-    #imu0_twist_rejection_threshold: 0.8
-    #imu0_linear_acceleration_rejection_threshold: 0.8
-
-    # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
-    # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
-    imu1_remove_gravitational_acceleration: true # We need this for the oak-d and gazebo
+    #    imu1: /camera/right/imu
+    #    imu1_config: [false, false, false,
+    #                  true, true,  true,
+    #                  false, false, false,
+    #                  true,  true,  true,
+    #                  true,  true,  true]
+    #    imu1_differential: false
+    #    imu1_relative: false
+    #    imu1_queue_size: 10
+    #    #imu0_pose_rejection_threshold: 0.8
+    #    #imu0_twist_rejection_threshold: 0.8
+    #    #imu0_linear_acceleration_rejection_threshold: 0.8
+    #
+    #    # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
+    #    # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
+    #    imu1_remove_gravitational_acceleration: true # We need this for the oak-d and gazebo
 
     # [ADVANCED]  The EKF and UKF models follow a standard predict/correct cycle. During prediction, if there is no
     # acceleration reference, the velocity at time t+1 is simply predicted to be the same as the velocity at time t. During
