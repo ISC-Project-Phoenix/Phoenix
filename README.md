@@ -20,11 +20,12 @@ If using Webots, you must install webots separately.
 4. In `src`, clone this repo with Git
 5. Still in `src`, run `cat Phoenix/phoenix.repos | vcs import` to import source dependencies
 6. Cd to the workspace root, and run `rosdep install --from-paths src --ignore-src -r -y` to install binary dependencies
-7. Still in workspace root, run `colcon build` to build the workspace. If using clang in your IDE,
+7. Still in the workspace root, build the ros-controls package from source following the [instructions provided here](https://control.ros.org/humble/doc/getting_started/getting_started.html#building-from-source)
+8. Still in workspace root, run `colcon build` to build the workspace. If using clang in your IDE,
    run `colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON`
     1. If using the compile commands, they are often created in build. Move it to the workspace root, and import it into
        your IDE tooling.
-8. Make sure your user is a part of the unix `dialout` group. This allows for it to connect to USB devices. In addition,
+9. Make sure your user is a part of the unix `dialout` group. This allows for it to connect to USB devices. In addition,
    make sure you
    have [set the udev rules for the OAK-d camera](https://docs.luxonis.com/en/latest/pages/troubleshooting/#udev-rules-on-linux),
    to allow for it to connect.
