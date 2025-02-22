@@ -19,6 +19,14 @@ repositories:
       type: git
       url: git@github.com:ISC-Project-Phoenix/phnx_io_ros.git
       version: main
+    polynomial_planner:
+          type: git
+          url: git@github.com:ISC-Project-Phoenix/Polynomial_planner.git
+          version: master
+    road_detectors:
+          type: git
+          url: git@github.com:ISC-Project-Phoenix/road_detectors.git
+          version: master
     logi_g29:
       type: git
       url: git@github.com:ISC-Project-Phoenix/logi_g29.git
@@ -30,19 +38,7 @@ repositories:
     depthai-ros:
       type: git
       url: git@github.com:luxonis/depthai-ros.git
-      version: humble
-    obj_detector:
-      type: git
-      url: git@github.com:ISC-Project-Phoenix/obj_detector.git
-      version: master
-    obj_planner:
-      type: git
-      url: git@github.com:ISC-Project-Phoenix/obj_planner.git
-      version: master
-    obj_tracker:
-      type: git
-      url: git@github.com:ISC-Project-Phoenix/obj_tracker.git
-      version: master
+      version: da0463f
     hybrid_pp:
       type: git
       url: git@github.com:ISC-Project-Phoenix/hybrid_pp.git
