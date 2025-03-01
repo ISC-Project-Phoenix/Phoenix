@@ -38,7 +38,7 @@ repositories:
     depthai-ros:
       type: git
       url: git@github.com:luxonis/depthai-ros.git
-      version: da0463f
+      version: 82ce67c
     hybrid_pp:
       type: git
       url: git@github.com:ISC-Project-Phoenix/hybrid_pp.git
