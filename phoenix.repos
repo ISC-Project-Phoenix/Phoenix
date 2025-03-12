@@ -38,7 +38,15 @@ repositories:
     depthai-ros:
       type: git
       url: git@github.com:luxonis/depthai-ros.git
-      version: 82ce67c
+      version: humble
+    polynomial_planner:
+      type: git
+      url: git@github.com:ISC-Project-Phoenix/Polynomial_planner.git
+      version: master
+    road_detectors:
+      type: git
+      url: git@github.com:ISC-Project-Phoenix/road_detectors.git
+      version: master
     hybrid_pp:
       type: git
       url: git@github.com:ISC-Project-Phoenix/hybrid_pp.git

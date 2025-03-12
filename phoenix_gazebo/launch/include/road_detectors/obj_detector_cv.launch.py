@@ -32,9 +32,9 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
     det = Node(
-        package='obj_detector_ai',
-        executable='yolo_subscriber_node_new',
-        name='yolo_subscriber_node_new',
+        package='obj_detector_cv',
+        executable='obj_detector_cv',
+        name='obj_detector_cv',
         output='screen',
         parameters=[{
             'use_sim_time': use_sim_time,
