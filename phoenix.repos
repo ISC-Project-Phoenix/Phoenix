@@ -19,6 +19,14 @@ repositories:
       type: git
       url: git@github.com:ISC-Project-Phoenix/phnx_io_ros.git
       version: main
+    polynomial_planner:
+          type: git
+          url: git@github.com:ISC-Project-Phoenix/Polynomial_planner.git
+          version: master
+    road_detectors:
+          type: git
+          url: git@github.com:ISC-Project-Phoenix/road_detectors.git
+          version: master
     logi_g29:
       type: git
       url: git@github.com:ISC-Project-Phoenix/logi_g29.git

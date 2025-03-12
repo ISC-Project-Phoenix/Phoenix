@@ -178,9 +178,9 @@ ekf_filter_node:
     imu0_differential: false
     imu0_relative: false
     imu0_queue_size: 10
-    #imu0_pose_rejection_threshold: 0.8
-    #imu0_twist_rejection_threshold: 0.8
-    #imu0_linear_acceleration_rejection_threshold: 0.8
+      #imu0_pose_rejection_threshold: 0.8
+      #imu0_twist_rejection_threshold: 0.8
+      #imu0_linear_acceleration_rejection_threshold: 0.8
 
     # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
     # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
@@ -195,12 +195,13 @@ ekf_filter_node:
 #    imu1_differential: false
 #    imu1_relative: false
 #    imu1_queue_size: 10
-#    #imu0_pose_rejection_threshold: 0.8
-#    #imu0_twist_rejection_threshold: 0.8
-#    #imu0_linear_acceleration_rejection_threshold: 0.8
-#
-#    # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
-#    # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
+
+    #imu0_pose_rejection_threshold: 0.8
+    #imu0_twist_rejection_threshold: 0.8
+    #imu0_linear_acceleration_rejection_threshold: 0.8
+
+    # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
+    # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
 #    imu1_remove_gravitational_acceleration: true # We need this for the oak-d and gazebo
 
     # [ADVANCED]  The EKF and UKF models follow a standard predict/correct cycle. During prediction, if there is no

@@ -1,19 +1,18 @@
 #VRML_SIM R2023b utf8
 # license: Apache License 2.0
 # license url: http://www.apache.org/licenses/LICENSE-2.0
-# This is a proto file for Webots for the Phoenix
-# Extracted from: /home/andy/Documents/dev/phoenix/src/Phoenix/phoenix_description/urdf/phoenix.urdf
-# Phoenix model by Derek Servin
+# This is a proto file for Phoenix
+# Cyberbotics model by Derek Servin
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/abstract/Car.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/abstract/VehicleWheel.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/devices/sick/protos/SickS300.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/appearances/protos/GlossyPaint.proto"
 
-PROTO Phoenix [
+PROTO Phoenix2 [
   field  SFVec3f     translation     0 0 0
   field  SFRotation  rotation        0 0 1 0
-  field  SFString    name            "Phoenix"  # Is `Robot.name`.
+  field  SFString    name            "Phoenix"  # Is PHOENIX V2 By Derek Servin <deservin@umich.edu>
   field  SFString    controller      "<extern>"     # Is `Robot.controller`.
   field  MFString    controllerArgs  []         # Is `Robot.controllerArgs`.
   field  SFBool      supervisor      FALSE      # Is `Robot.supervisor`.
@@ -89,60 +88,60 @@ PROTO Phoenix [
       }
 
       # Camera
-        extensionSlot [
+            extensionSlot [
 
-        # Mid camera
-        Solid {
-            translation 1.050000 0.0 0.400000
-            rotation 0 0 1 0.0
-            children [
-              Shape {
-                appearance PBRAppearance {
-                  baseColor 0.500000 0.500000 0.500000
-                  roughness 1.000000
-                  metalness 0
-                }
-                geometry Box {
+            # Mid camera
+            Solid {
+                translation 1.050000 0.0 0.400000
+                rotation 0 0 1 0.0
+                children [
+                  Shape {
+                    appearance PBRAppearance {
+                      baseColor 0.500000 0.500000 0.500000
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry Box {
+                       size 0.020000 0.050000 0.020000
+                    }
+                  }
+                  # Mid camera
+                  Camera {
+                    name "mid_camera"
+                    fieldOfView 1.65806
+                    width 1280
+                    height 720
+                  }
+                  RangeFinder {
+                    name "mid_camera_depth"
+                    fieldOfView 1.65806
+                    width 1280
+                    height 720
+                    near 0.2
+                    minRange 0.2
+                    maxRange 10.0
+                  }
+                  # IMU part
+                  Gyro {
+                    name "mid_camera_gyro"
+                  }
+                  Accelerometer {
+                    name "mid_camera_accel"
+                  }
+                  InertialUnit {
+                    name "mid_camera_inert"
+                  }
+                ]
+                name "mid_cam_link"
+                boundingObject Box {
                    size 0.020000 0.050000 0.020000
                 }
+                physics Physics {
+                  density -1
+                  mass 0.100000
+                  centerOfMass [ 0.000000 0.000000 0.000000 ]
+                }
               }
-              # Mid camera
-              Camera {
-                name "mid_camera"
-                fieldOfView 1.65806
-                width 1280
-                height 720
-              }
-              RangeFinder {
-                name "mid_camera_depth"
-                fieldOfView 1.65806
-                width 1280
-                height 720
-                near 0.2
-                minRange 0.2
-                maxRange 10.0
-              }
-              # IMU part
-              Gyro {
-                name "mid_camera_gyro"
-              }
-              Accelerometer {
-                name "mid_camera_accel"
-              }
-              InertialUnit {
-                name "mid_camera_inert"
-              }
-            ]
-            name "mid_cam_link"
-            boundingObject Box {
-               size 0.020000 0.050000 0.020000
-            }
-            physics Physics {
-              density -1
-              mass 0.100000
-              centerOfMass [ 0.000000 0.000000 0.000000 ]
-            }
-          }
 
         # Lidar
         Solid {
@@ -154,8 +153,8 @@ PROTO Phoenix [
 
         # Main body visual
         Pose {
-          translation -1.28741e-08 1.96421e-07 0.05
-          rotation 0.9957315045161607 0.06526396752413573 0.06526396752413573 1.57507
+          translation 0.65 3.64684e-06 -0.13
+          rotation 0.5773509358554485 0.5773489358556708 0.5773509358554485 2.0944
           children [
             DEF YellowM Shape {
               appearance PBRAppearance {
@@ -164,7 +163,7 @@ PROTO Phoenix [
               }
               geometry Mesh {
                 url [
-                  "../../Blender Creations/2024/phoenix_elements/phoenix_3Dmodel__yellowMichigan.obj"
+                  "../../models/phoenix_elements/phoenix_3Dmodel__yellowMichigan.obj"
                 ]
               }
             }
@@ -176,7 +175,7 @@ PROTO Phoenix [
               }
               geometry Mesh {
                 url [
-                  "../../Blender Creations/2024/phoenix_elements/phoenix_3Dmodel__redEstop.obj"
+                  "../../models/phoenix_elements/phoenix_3Dmodel__redEstop.obj"
                 ]
               }
             }
@@ -188,7 +187,7 @@ PROTO Phoenix [
               }
               geometry Mesh {
                 url [
-                  "../../Blender Creations/2024/phoenix_elements/phoenix_3Dmodel__blueStructure.obj"
+                  "../../models/phoenix_elements/phoenix_3Dmodel__blueStructure.obj"
                 ]
               }
             }
@@ -200,7 +199,7 @@ PROTO Phoenix [
               }
               geometry Mesh {
                 url [
-                  "../../Blender Creations/2024/phoenix_elements/phoenix_3Dmodel__blackStructure.obj"
+                  "../../models/phoenix_elements/phoenix_3Dmodel__blackStructure.obj"
                 ]
               }
             }
@@ -212,7 +211,7 @@ PROTO Phoenix [
               }
               geometry Mesh {
                 url [
-                  "../../Blender Creations/2024/phoenix_elements/phoenix_3Dmodel__backBumper.obj"
+                  "../../models/phoenix_elements/phoenix_3Dmodel__backBumper.obj"
                 ]
               }
             }
@@ -226,7 +225,7 @@ PROTO Phoenix [
                   }
                   geometry Mesh {
                     url [
-                      "../../Blender Creations/2024/phoenix_elements/phoenix_3Dmodel__frontBumper.obj"
+                      "../../models/phoenix_elements/phoenix_3Dmodel__frontBumper.obj"
                     ]
                   }
                 }
@@ -238,7 +237,7 @@ PROTO Phoenix [
               }
               geometry Mesh {
                 url [
-                  "../../Blender Creations/2024/phoenix_elements/phoenix_3Dmodel__metalStructure.obj"
+                  "../../models/phoenix_elements/phoenix_3Dmodel__metalStructure.obj"
                 ]
               }
             }
@@ -263,7 +262,7 @@ PROTO Phoenix [
        }
        physics Physics {
          density -1
-         mass 136.078 # TODO make accurate
+         mass 136.078    # TODO Accurate weight is 400lbs
          centerOfMass [ 0.400000 0.000000 0.10000 ]
        }
     }

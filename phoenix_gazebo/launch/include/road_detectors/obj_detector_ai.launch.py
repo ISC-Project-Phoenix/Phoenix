@@ -33,8 +33,8 @@ def generate_launch_description():
 
     det = Node(
         package='obj_detector_ai',
-        executable='obj_detector_ai',
-        name='obj_detector_ai',
+        executable='yolo_subscriber_node_new',
+        name='yolo_subscriber_node_new',
         output='screen',
         parameters=[{
             'use_sim_time': use_sim_time,

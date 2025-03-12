@@ -534,4 +534,3 @@
         <plugin type="wb_io_ros::WbIoRos" />
     </webots>
 </robot>
-            
