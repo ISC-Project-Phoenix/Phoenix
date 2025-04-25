@@ -16,7 +16,7 @@ def generate_launch_description():
     pkg_phoenix_robot = get_package_share_directory('phoenix_robot')
     pkg_robot_state_controller = get_package_share_directory(
         'robot_state_controller')
-    pkg_isc_sick = get_package_share_directory('ros2_sick')
+    # pkg_isc_sick = get_package_share_directory('ros2_sick')
 
     # Launch arguments
     drive_mode_switch_button = LaunchConfiguration(
@@ -67,7 +67,7 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'config_file': PathJoinSubstitution([pkg_phoenix_robot, 'config', 'ros2_sick', 'sick_lms111.yaml'])
+            'config_file': PathJoinSubstitution([pkg_phoenix_robot, 'config' ]) # , 'ros2_sick', 'sick_lms111.yaml'])
         }.items(),
     )
 
