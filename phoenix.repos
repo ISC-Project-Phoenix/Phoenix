@@ -38,7 +38,7 @@ repositories:
     depthai-ros:
       type: git
       url: git@github.com:luxonis/depthai-ros.git
-      version: humble
+      version: 82ce67c
     polynomial_planner:
       type: git
       url: git@github.com:ISC-Project-Phoenix/Polynomial_planner.git
