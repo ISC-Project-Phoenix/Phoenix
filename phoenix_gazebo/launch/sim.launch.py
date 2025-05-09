@@ -116,7 +116,7 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'use_ai',
-            default_value='true',
+            default_value='false',
             description='Uses the AI stack if true'),
 
         # Nodes
