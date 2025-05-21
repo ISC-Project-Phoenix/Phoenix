@@ -66,14 +66,14 @@ def generate_launch_description():
             description='Use ai stack if true'),
 
         # Nodes
-        robot_state_controller,
-        state_publishers,
-        ekf,
+        # robot_state_controller,
+        # state_publishers,
+        # ekf,
         camera,
-        pir,
-        pp,
-        obj_detector_ai,
-        obj_detector_cv,
-        poly_plan,
-        poly_plan_ai
+        # pir,
+        # pp,
+        # obj_detector_ai,
+        # obj_detector_cv,
+        # poly_plan,
+        # poly_plan_ai
     ])
