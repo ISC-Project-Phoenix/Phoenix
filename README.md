@@ -31,6 +31,10 @@ If using Webots, you must install webots separately.
 
 The repo should now be built, and launch-able in sim or on the kart.
 
+*Note:* If you want to run Phoenix via your PC then connect via ssh using following commamnd
+
+`ssh -X isc@isc-onboard-1.local`
+
 ## Launching
 
 ### Sim
