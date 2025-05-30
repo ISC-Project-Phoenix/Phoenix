@@ -31,10 +31,6 @@ If using Webots, you must install webots separately.
 
 The repo should now be built, and launch-able in sim or on the kart.
 
-*Note:* If you want to run Phoenix via your PC then connect via ssh using following commamnd
-
-`ssh -X isc@isc-onboard-1.local`
-
 ## Launching
 
 ### Sim
@@ -48,15 +44,18 @@ By default, webots will be launched:
 
 This repo is designed to be launched on a headless computer on the go-kart. To do this setup the computer with:
 
-- Two Oak-d-w cameras plugged into fast USB ports
-- The SICK LiDAR networked to the computer via a switch
-- A router connected to the lidar and computer
+- One Oak-d-w camera plugged into fast USB ports
+- A router to connected to the computer
+
+In the root of your workspace you can split the terminal, and connect to the router with the command `ssh -X isc@isc-onboard-1.local`
 
 Once this is done, the kart half of the stack can be launched with:
 
 `ros2 launch phoenix_robot common.launch.py`
 
-This will spawn the autonomy stack, connecting to sensors and the CAN bus. This boots into teleop mode, so it will
+*Note that this must be done in the root of the workspace on phnx, or '~/Documents/dev/ws_phnx/'
+
+Doing this will spawn the autonomy stack, connecting to sensors and the CAN bus. This boots into teleop mode, so it will
 not output outputs of the autonomous stack (although it will be running).
 
 It is often useful to start this process on user log on (via chronjob or some feature of a DE like KDE), to allow for
