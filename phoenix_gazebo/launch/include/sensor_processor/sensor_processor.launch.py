@@ -37,9 +37,6 @@ def generate_launch_description():
         executable='sensor_processor',
         name='sensor_processor',
         output='screen',
-        remappings=[
-            ('/lidar/filtered_scan', '/scan'),
-        ],
         parameters=[{
             'use_sim_time': use_sim_time
         }])

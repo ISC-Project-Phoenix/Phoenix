@@ -81,7 +81,7 @@ def generate_launch_description():
                               default_value='4.0',
                               description='Maximum speed'),
         DeclareLaunchArgument('min_speed',
-                              default_value='0.5',
+                              default_value='1.0',
                               description='Minimum speed'),
         DeclareLaunchArgument('avoidance_radius',
                               default_value='2.0',

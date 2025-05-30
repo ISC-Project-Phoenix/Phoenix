@@ -19,10 +19,7 @@ def generate_launch_description():
     cameral = GroupAction(
         actions=[
             # Topic remaps
-            SetRemap('/oakl/stereo/image_raw', '/camera/left/depth'),
-            SetRemap('/oakl/stereo/camera_info', '/camera/left/depth/camera_info'),
-            SetRemap('/oakl/stereo/image_raw/compressed', '/camera/left/depth/compressed'),
-            SetRemap('/oakl/rgb/image_raw', '/camera/left/rgb'),
+            SetRemap('/oakl/sIncludeLaunchDescriptiongb/image_raw', '/camera/left/rgb'),
             SetRemap('/oakl/rgb/image_raw/compressed', '/camera/left/rgb/compressed'),
             SetRemap('/oakl/rgb/image_raw/theora', '/camera/left/rgb/compressed/theora'),
             SetRemap('/oakl/rgb/camera_info', '/camera/left/rgb/camera_info'),

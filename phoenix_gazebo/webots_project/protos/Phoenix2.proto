@@ -12,7 +12,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/proje
 PROTO Phoenix2 [
   field  SFVec3f     translation     0 0 0
   field  SFRotation  rotation        0 0 1 0
-  field  SFString    name            "Phoenix"  # Is PHOENIX V2 By Derek Servin <deservin@umich.edu>
+  field  SFString    name            "Phoenix"  # Is Phoenix2 By Derek Servin <deservin@umich.edu>
   field  SFString    controller      "<extern>"     # Is `Robot.controller`.
   field  MFString    controllerArgs  []         # Is `Robot.controllerArgs`.
   field  SFBool      supervisor      FALSE      # Is `Robot.supervisor`.
@@ -145,7 +145,7 @@ PROTO Phoenix2 [
 
         # Lidar
         Solid {
-          translation 1.40000 0.000000 0.250000
+          translation 1.2 -0.01 0.25 #1.40000 0.000000 0.250000
           children [
              SickS300 { enablePhysics FALSE noise 0.05 }
           ]
@@ -191,17 +191,24 @@ PROTO Phoenix2 [
                 ]
               }
             }
-            DEF Blackstruct Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.2
-                metalness 0.5
-              }
-              geometry Mesh {
-                url [
-                  "../../models/phoenix_elements/phoenix_3Dmodel__blackStructure.obj"
-                ]
-              }
+            DEF Blackstruct Transform {
+              translation 0 0.04 0
+              scale 1 0.9 1
+              children [
+                DEF Blackstruct Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 0
+                    roughness 0.2
+                    metalness 0.5
+                  }
+                  geometry Mesh {
+                    url [
+                      "/home/derek/Phoenix_ws/src/Phoenix/phoenix_gazebo/models/phoenix_elements/phoenix_3Dmodel__blackStructure.obj"
+                    ]
+                  }
+                  castShadows FALSE
+                }
+              ]
             }
             DEF RRBumper Shape {
               appearance PBRAppearance {
@@ -216,18 +223,25 @@ PROTO Phoenix2 [
               }
             }
             Pose {
-              translation 0 0.04 0
+              translation 0 0.04 -0.14
               children [
-                DEF FRBumper Shape {
-                  appearance PBRAppearance {
-                    roughness 1
-                    metalness 0
-                  }
-                  geometry Mesh {
-                    url [
-                      "../../models/phoenix_elements/phoenix_3Dmodel__frontBumper.obj"
-                    ]
-                  }
+                Transform {
+                  translation 0 0 0.41
+                  scale 1 0.8 0.6
+                  children [
+                    DEF FRBumper Shape {
+                      appearance PBRAppearance {
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Mesh {
+                        url [
+                          "/home/derek/Phoenix_ws/src/Phoenix/phoenix_gazebo/models/phoenix_elements/phoenix_3Dmodel__frontBumper.obj"
+                        ]
+                      }
+                      castShadows FALSE
+                    }
+                  ]
                 }
               ]
               translationStep 0.02

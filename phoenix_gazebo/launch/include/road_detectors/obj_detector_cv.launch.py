@@ -33,8 +33,8 @@ def generate_launch_description():
 
     det = Node(
         package='obj_detector_cv',
-        executable='obj_detector_cv',
-        name='obj_detector_cv',
+        executable='cv_subscriber',
+        name='cv_subscriber',
         output='screen',
         parameters=[{
             'use_sim_time': use_sim_time,

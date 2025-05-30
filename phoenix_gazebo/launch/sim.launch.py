@@ -83,7 +83,7 @@ def generate_launch_description():
     poly_plan = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
-            '/include/polynomial_planner/polynomial_planner.launch.py'
+            '/include/polynomial_planner/polynomial_planner_ai.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
