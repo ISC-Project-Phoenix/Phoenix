@@ -67,7 +67,7 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'config_file': PathJoinSubstitution([pkg_phoenix_robot, 'config', 'ros2_sick', 'sick_lms111.yaml'])
+            'config_file': PathJoinSubstitution([pkg_phoenix_robot, 'config' ]) # , 'ros2_sick', 'sick_lms111.yaml'])
         }.items(),
     )
 
@@ -156,7 +156,6 @@ def generate_launch_description():
         state_publishers,
         ekf,
         camera,
-        sick,
         pir,
         pp,
         obj_detector_ai,
