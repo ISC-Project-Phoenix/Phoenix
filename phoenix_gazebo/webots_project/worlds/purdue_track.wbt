@@ -1,4 +1,4 @@
-#VRML_SIM R2023b utf8
+#VRML_SIM R2025a utf8
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
@@ -12342,62 +12342,12 @@ Bus {
   color 0.4 0.4 0.4
   name "vehicle(3)"
 }
-homedepotbox {
-  translation 45.02 44.06 0.23
-  name "home depot box right"
-}
 Phoenix2 {
   translation -19.1039 14.4835 0.47
   rotation 0 0 1 -0.523595307179586
 }
-Solid {
-  translation 44.31 44.05 0.23
-  children [
-    DEF BOX_SHAPE Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            ""
-          ]
-        }
-        roughnessMap ImageTexture {
-          url [
-            "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/objects/factory/containers/protos/textures/wooden_box_roughness.jpg"
-          ]
-        }
-        metalness 0
-        normalMap ImageTexture {
-          url [
-            "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/objects/factory/containers/protos/textures/wooden_box_normal.jpg"
-          ]
-        }
-        occlusionMap ImageTexture {
-          url [
-            "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/objects/factory/containers/protos/textures/wooden_box_occlusion.jpg"
-          ]
-        }
-      }
-      geometry Box {
-        size 0.6858 0.381 0.4064
-      }
-    }
-  ]
-  name "home depot box left(1)"
-  model "wooden box"
-  boundingObject USE BOX_SHAPE
-  physics Physics {
-    density -1
-    mass 0.22424224729398054
-    centerOfMass [
-      0 0 0
-    ]
-    inertiaMatrix [
-      0.005798941141256061 0.011875170528351806 0.011501434197002664
-      0 0 0
-    ]
-  }
-}
-homedepotbox {
-  translation 44.65 44.05 0.65
-  name "home depot box top"
+Robot {
+  name "Ros2Supervisor"
+  controller "<extern>"
+  supervisor TRUE
 }
