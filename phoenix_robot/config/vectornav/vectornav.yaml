@@ -6,7 +6,7 @@ vectornav:
     # port: "/dev/ttyUSB0" #TODO make this correct
     # raw line form my device /dev/serial/by-id/usb-FTDI_USB-RS232_Cable_FTZ8EVOV-if00-port0
     # TODO vertify on phoenix pc. 
-    port: "/dev/serial/by-id/usb-FTDI_USB-RS232_Cable_FTZ8EVOV-if00-port*"
+    port: "/dev/serial/by-id/usb-FTDI_USB-RS232_Cable_FTZ8EVOV-if00-port0"
     baud: 115200
     reconnect_ms: 500
     # Reference vnproglib-1.2.0.0 headers for enum definitions
