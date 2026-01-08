@@ -32,16 +32,11 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from nav2_common.launch import RewrittenYaml
 
 def generate_launch_description():
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     config_file_name = LaunchConfiguration('config_file_name')
-    configured_params = RewrittenYaml(source_file=vn300_conf,
-                                      root_key='',
-                                      param_rewrites=param_substitutions,
-                                      convert_types=True)
 
 
     # Vectornav
@@ -75,7 +70,7 @@ def generate_launch_description():
                               default_value='false',
                               description='Use simulation clock if true'),
         DeclareLaunchArgument('config_file_name',
-                              default_value='robot_localization.yaml',
+                              default_value='vectrnav.yaml',
                               description='Name of the config file to load'),
         # Nodes
         start_vectornav_cmd,

@@ -143,7 +143,6 @@ def generate_launch_description():
         launch_arguments={
             'use_sim_time': use_sim_time,
         }.items(),
-        condition=UnlessCondition(use_ai)
     )
 
     return LaunchDescription([
