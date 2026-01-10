@@ -58,8 +58,11 @@ def generate_launch_description():
         package='vectornav',
         executable='vn_sensor_msgs',
         output='screen',
-        remappings=[('/vectornav/imu', '/kohm/gps/imu'), ('vectornav/gnss',
-                                                          '/kohm/navsat'), ('/vectornav/magnetic', '/kohm/mag')],
+        remappings=[
+            ('/vectornav/imu', '/phoenix/imu'),
+            ('vectornav/gnss', '/phoenix/navsat'),
+            ('/vectornav/magnetic', '/phoenix/mag'),
+        ],
         parameters=[PathJoinSubstitution(
             [get_package_share_directory('phoenix_robot'), 'config', 'vn_sensor_msgs', config_file_name])],
     )
@@ -70,7 +73,7 @@ def generate_launch_description():
                               default_value='false',
                               description='Use simulation clock if true'),
         DeclareLaunchArgument('config_file_name',
-                              default_value='vectrnav.yaml',
+                              default_value='vectornav.yaml',
                               description='Name of the config file to load'),
         # Nodes
         start_vectornav_cmd,
