@@ -170,7 +170,8 @@ ekf_filter_node:
     # offset from base_link.
     #    odom0_pose_use_child_frame: false
 
-    imu0: /camera/mid/imu
+    #imu0: /camera/mid/imu
+    imu0: /phoenix/gps/imu
     imu0_config: [false, false, false,
                   true, true,  true,
                   false, false, false,
