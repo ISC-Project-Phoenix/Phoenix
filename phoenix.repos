@@ -67,3 +67,7 @@ repositories:
       type: git
       url: https://github.com/dawonn/vectornav.git
       version: ros2
+    gps_publisher:
+      type: git
+      url: git@github.com:Redderpears/gps-publisher.git
+      version: master
