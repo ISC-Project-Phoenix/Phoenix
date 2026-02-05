@@ -135,6 +135,16 @@ def generate_launch_description():
         condition=UnlessCondition(use_ai)
     )
 
+    vectornav = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_robot, 'launch'),
+            '/include/vectornav/vectornav.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+    )
+
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument(
@@ -155,11 +165,12 @@ def generate_launch_description():
         robot_state_controller,
         state_publishers,
         ekf,
-        camera,
+        # camera,
         pir,
         pp,
         obj_detector_ai,
         obj_detector_cv,
         poly_plan,
-        poly_plan_ai
+        poly_plan_ai,
+        vectornav,
     ])
