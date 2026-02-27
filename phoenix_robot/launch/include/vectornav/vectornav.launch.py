@@ -58,6 +58,7 @@ def generate_launch_description():
         package='vectornav',
         executable='vn_sensor_msgs',
         output='screen',
+        # confirm remappings for the vectornav.
         remappings=[
             ('/vectornav/imu', '/phoenix/imu'),
             ('vectornav/gnss', '/phoenix/navsat'),

@@ -51,7 +51,21 @@ def generate_launch_description():
             ('/odometry/filtered', '/odom'),
         ],
     )
-
+    # The NavSat Transform Node
+    start_navsat_transform_cmd = Node(
+        package='robot_localization',
+        executable='navsat_transform_node',
+        name='navsat_transform',
+        output='screen',
+        # Point this to your YAML config file!
+        parameters=[os.path.join(get_package_share_directory('phoenix_robot'), 'config', 'navsat_transform.yaml')],
+        remappings=[
+            # these topics need to match what the topic that the robot is using
+            ('imu', '/phoenix/gps/imu'),             # Matches your EKF imu0
+            ('gps/fix', '/phoenix/navsat'),          # From your Vectornav
+            ('odometry/filtered', '/odometry/global') # The output of your EKF
+        ]
+    )
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument('use_sim_time',
@@ -62,4 +76,5 @@ def generate_launch_description():
                               description='Name of the config file to load'),
         # Nodes
         rl,
+        start_navsat_transform_cmd,
     ])
