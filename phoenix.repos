@@ -63,3 +63,7 @@ repositories:
       type: git
       url: git@github.com:iscumd/teleop_ack_joy.git
       version: master
+    design:
+      type: git
+      url:  git@github.com:ISC-Project-Phoenix/design.git
+      version: main
