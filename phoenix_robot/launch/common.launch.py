@@ -145,6 +145,16 @@ def generate_launch_description():
         }.items(),
     )
 
+    GPS_waypoints = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/gps_waypoint_publisher/gps_waypoint_publisher.launch.py' 
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+    )
+
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument(
@@ -173,4 +183,5 @@ def generate_launch_description():
         poly_plan,
         poly_plan_ai,
         vectornav,
+        GPS_waypoints,
     ])
