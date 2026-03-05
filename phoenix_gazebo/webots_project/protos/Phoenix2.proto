@@ -151,6 +151,26 @@ PROTO Phoenix2 [
           ]
         }
 
+        # VectorNav VN-300
+        Solid {
+          translation 1.0 0.0 0.5  # Matches your URDF gps_link position
+          children [
+            GPS {
+              name "vectornav_gps"
+            }
+            Gyro {
+              name "vectornav_gyro"
+            }
+            Accelerometer {
+              name "vectornav_accel"
+            }
+            InertialUnit {
+              name "vectornav_inert"
+            }
+          ]
+          name "vectornav"
+        }
+
         # Main body visual
         Pose {
           translation 0.65 3.64684e-06 -0.13

@@ -377,6 +377,22 @@
         <child link="lidar_link"/>
     </joint>
 
+    <!-- TODO finalize location for GPS -->
+    <link name="vectornav">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.05 0.05 0.05"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="vectornav_to_rear_axle" type="fixed">
+        <origin rpy="0 0 0" xyz="1.0 0 0.5"/> 
+        <parent link="rear_axle"/>
+        <child link="vectornav"/>
+    </joint>
+
 <!-- Gazebo Plugins -->
     
   <gazebo>
@@ -526,6 +542,26 @@
                 <frameName>lidar_link</frameName>
                 <topicName>/scan</topicName>
                 <updateRate>20</updateRate>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
+
+        <!-- GPS -->
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <topicName>/vectornav/imu</topicName>
+            <frameName>vectornav</frameName>
+            <alwaysOn>true</alwaysOn>
+            
+            <inertialUnitName>vectornav_inert</inertialUnitName>
+            <gyroName>vectornav_gyro</gyroName>
+            <accelerometerName>vectornav_accel</accelerometerName>
+        </plugin>
+
+        <device reference="vectornav_gps" type="GPS">
+            <ros>
+                <frameName>vectornav</frameName>
+                <topicName>/vectornav/gnss</topicName>
+                <updateRate>10</updateRate>
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
