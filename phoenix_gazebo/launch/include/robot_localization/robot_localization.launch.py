@@ -38,16 +38,37 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     rl_p = get_package_share_directory('robot_localization')
 
+    # Paths to the separate config files
+    rl_config_path = os.path.join(
+        get_package_share_directory("phoenix_gazebo"), 
+        'config', 'robot_localization', 'robot_localization.yaml'
+    )
+    navsat_config_path = os.path.join(
+        get_package_share_directory("phoenix_gazebo"), 
+        'config', 'robot_localization', 'navsat_transform.yaml'
+    )
     rl = Node(
         package='robot_localization',
         executable='ekf_node',
         name='ekf_filter_node',
         output='screen',
-        parameters=[os.path.join(get_package_share_directory("phoenix_gazebo"), 'config', 'robot_localization',
-                                 'robot_localization.yaml')],
+        parameters=[rl_config_path],
         remappings=[
             ('/odometry/filtered', '/odom'),
         ],
+    )
+
+    navsat_transform = Node(
+        package='robot_localization',
+        executable='navsat_transform_node',
+        name='navsat_transform_node',
+        output='screen',
+        parameters=[navsat_config_path],
+        remappings=[
+            ('imu', '/camera/mid/imu'), # Using  Webots IMU topic
+            ('gps/fix', '/gps/fix'),
+            ('odometry/filtered', '/odom'), # This feeds the EKF pose to navsat
+        ]
     )
 
     return LaunchDescription([
@@ -57,4 +78,5 @@ def generate_launch_description():
                               description='Use simulation clock if true'),
         # Nodes
         rl,
+        navsat_transform,
     ])
