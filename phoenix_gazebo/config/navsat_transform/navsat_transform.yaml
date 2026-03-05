@@ -1,5 +1,19 @@
 navsat_transform_node:
     ros__parameters:
+        # Match the base frame to what your EKF uses
+        base_link_frame: base_footprint
+
+        # Force the subscriber to accept Webots' Best Effort QoS
+        # this is a quick fix to allow GPS to work in the EKF and NAVSAT. 
+        # ideally Reliable is better. TODO
+        qos_overrides:
+          /vectornav/imu:
+            subscription:
+              reliability: best_effort
+          /vectornav/gnss:
+            subscription:
+              reliability: best_effort
+
 # Frequency of the main run loop
         frequency: 30.0
 

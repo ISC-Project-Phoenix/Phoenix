@@ -169,6 +169,9 @@ PROTO Phoenix2 [
             }
           ]
           name "vectornav"
+
+          boundingObject Box { size 0.1 0.1 0.1 }
+          physics Physics { mass 0.5 }
         }
 
         # Main body visual
