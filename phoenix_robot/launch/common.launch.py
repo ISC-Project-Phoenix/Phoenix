@@ -23,6 +23,7 @@ def generate_launch_description():
         'drive_mode_switch_button', default='7')
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     use_ai = LaunchConfiguration('use_ai', default='false')
+    # max_throttle_speed = LaunchConfiguration('max_speed', default='4.0')
 
     state_publishers = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -156,12 +157,11 @@ def generate_launch_description():
     )
     teleop_ack_rc = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'teleop_ack_rc/teleop_ack_rc.launch.py')),
+            os.path.join(pkg_phoenix_robot, 'launch', 'include', 'teleop_ack_rc/teleop_ack_rc.launch.py')),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'max_speed': max_throttle_speed
+            'max_speed': "4.0"
         }.items(),
-        condition=UnlessCondition(use_wheel)
     )
 
     return LaunchDescription([
@@ -187,11 +187,11 @@ def generate_launch_description():
         # camera,
         pir,
         pp,
-        obj_detector_ai,
-        obj_detector_cv,
-        poly_plan,
-        poly_plan_ai,
-        vectornav,
-        GPS_waypoints,
-        teleop_ack_rc, 
+        # obj_detector_ai,
+        # obj_detector_cv,
+        # poly_plan,
+        # poly_plan_ai,
+        # vectornav,
+        # GPS_waypoints,
+        # teleop_ack_rc,
     ])

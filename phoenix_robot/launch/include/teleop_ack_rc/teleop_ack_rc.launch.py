@@ -13,11 +13,11 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
-    port = LaunchConfiguration('port', default='/dev/ttyUSB0')
+    port = LaunchConfiguration('port', default='/dev/ttyACM1')
     max_speed = LaunchConfiguration('max_speed', default='4.0')
     max_steering_angle = LaunchConfiguration('max_steering_angle', default='0.2733')
 
-    pir = Node(package='teleop_ack_rc',
+    ack_joy = Node(package='teleop_ack_rc',
                executable='teleop_ack_rc',
                 name='teleop_ack_rc',
                parameters=[{
@@ -33,6 +33,15 @@ def generate_launch_description():
                     'max_steering_angle': max_steering_angle,
                }],
                )
+    joy = Node(
+        package='joy',
+        executable='joy_node',
+        name='joy',
+        output='screen',
+        parameters=[{
+            'use_sim_time': use_sim_time,
+        }], )
+
 
     return LaunchDescription([
         # Launch Arguments
@@ -40,7 +49,7 @@ def generate_launch_description():
                               default_value='true',
                               description='Use simulation clock if true'),
         DeclareLaunchArgument('port',
-                              default_value='/dev/ttyUSB0',
+                              default_value='/dev/ttyACM1',
                               description='Serial port for RC receiver'),
         DeclareLaunchArgument('max_speed',
                               default_value='4.0',
@@ -48,5 +57,6 @@ def generate_launch_description():
         DeclareLaunchArgument('max_steering_angle',
                               default_value='0.2733',
                               description='Maximum steering angle in radians'),
-        pir
+        ack_joy, 
+        joy
     ])

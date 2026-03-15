@@ -58,7 +58,7 @@ def generate_launch_description():
         name='navsat_transform',
         output='screen',
         # Point this to your YAML config file!
-        parameters=[os.path.join(get_package_share_directory('phoenix_robot'), 'config', 'navsat_transform.yaml')],
+        parameters=[os.path.join(get_package_share_directory('phoenix_robot'), 'config','navsat_transform', 'navsat_transform' ,'navsat_transform.yaml')],
         remappings=[
             # these topics need to match what the topic that the robot is using
             ('imu', '/phoenix/gps/imu'),             # Matches your EKF imu0
