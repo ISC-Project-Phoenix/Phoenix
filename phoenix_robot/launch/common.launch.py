@@ -154,6 +154,15 @@ def generate_launch_description():
             'use_sim_time': use_sim_time,
         }.items(),
     )
+    teleop_ack_rc = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'teleop_ack_rc/teleop_ack_rc.launch.py')),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+            'max_speed': max_throttle_speed
+        }.items(),
+        condition=UnlessCondition(use_wheel)
+    )
 
     return LaunchDescription([
         # Launch Arguments
@@ -184,4 +193,5 @@ def generate_launch_description():
         poly_plan_ai,
         vectornav,
         GPS_waypoints,
+        teleop_ack_rc, 
     ])

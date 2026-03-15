@@ -67,7 +67,7 @@ repositories:
       type: git
       url:  git@github.com:ISC-Project-Phoenix/design.git
       version: main
-    RC:
+    teleop_ack_rc:
       type: git
       url:  git@github.com:estickel/teleop_ack_rc.git
       verison: main
