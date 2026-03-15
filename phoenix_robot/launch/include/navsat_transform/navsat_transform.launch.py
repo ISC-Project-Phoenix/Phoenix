@@ -35,46 +35,58 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    # Launch arguments
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    config_file_name = LaunchConfiguration('config_file_name')
-
-    rl = Node(
-        package='robot_localization',
-        executable='ekf_node',
-        name='ekf_filter_node',
-        output='screen',
-        parameters=[PathJoinSubstitution(
-            [get_package_share_directory('phoenix_robot'), 'config', 'robot_localization', config_file_name])
-        ],
-        remappings=[
-            ('/odometry/filtered', '/odom'),
-        ],
+    # 1. Define Arguments
+    # We change the default to include .yaml so we can just join paths easily
+    location_arg = DeclareLaunchArgument(
+        'location_file',
+        default_value='dearborn.yaml', 
+        description='Name of location file (e.g., dearborn.yaml)'
     )
-    # The NavSat Transform Node
-    start_navsat_transform_cmd = Node(
-        package='robot_localization',
+
+    use_sim_time_arg = DeclareLaunchArgument(
+        'use_sim_time',
+        default_value='false',
+        description='Use simulation time'
+    )
+
+    # 2. Setup Configuration Variables
+    pkg_phoenix_robot = get_package_share_directory('phoenix_robot')
+    location_file = LaunchConfiguration('location_file')
+    use_sim_time = LaunchConfiguration('use_sim_time')
+
+    # 3. Build Paths using Substitutions (No Python string manipulation needed)
+    common_yaml_path = PathJoinSubstitution([
+        pkg_phoenix_robot, 
+        'config', 'navsat_transform', 'navsat_common.yaml'
+    ])
+    
+    location_yaml_path = PathJoinSubstitution([
+        pkg_phoenix_robot, 
+        'config', 'navsat_transform', 'locations', location_file
+    ])
+
+    # 4. Define the Node
+    navsat_node = Node(
+        package='robot_localization', # Fixed package name
         executable='navsat_transform_node',
-        name='navsat_transform',
+        name='navsat_transform_node',
         output='screen',
-        # Point this to your YAML config file!
-        parameters=[os.path.join(get_package_share_directory('phoenix_robot'), 'config', 'navsat_transform.yaml')],
+        parameters=[
+            common_yaml_path,   # Defaults
+            location_yaml_path, # Location Specifics
+            {'use_sim_time': use_sim_time}
+        ],
         remappings=[
-            # these topics need to match what the topic that the robot is using
-            ('imu', '/phoenix/gps/imu'),             # Matches your EKF imu0
-            ('gps/fix', '/phoenix/navsat'),          # From your Vectornav
-            ('odometry/filtered', '/odometry/global') # The output of your EKF
+            ('imu/data', '/vectornav/imu'), 
+            ('gps/fix', '/gps/fix'), 
+            ('odometry/filtered', '/odometry/global'),
+            ('odometry/gps', '/odometry/gps'),
+            ('gps/filtered', '/gps/filtered')
         ]
     )
+
     return LaunchDescription([
-        # Launch Arguments
-        DeclareLaunchArgument('use_sim_time',
-                              default_value='false',
-                              description='Use simulation clock if true'),
-        DeclareLaunchArgument('config_file_name',
-                              default_value='robot_localization.yaml',
-                              description='Name of the config file to load'),
-        # Nodes
-        rl,
-        start_navsat_transform_cmd,
+        location_arg,
+        use_sim_time_arg,
+        navsat_node
     ])
