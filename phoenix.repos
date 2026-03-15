@@ -46,7 +46,7 @@ repositories:
     gps_publisher:
       type: git
       url: git@github.com:ISC-Project-Phoenix/GPS-publisher.git
-      version: master
+      version: redtoo_dev_experiements
     hybrid_pp:
       type: git
       url: git@github.com:ISC-Project-Phoenix/hybrid_pp.git
@@ -67,3 +67,7 @@ repositories:
       type: git
       url:  git@github.com:ISC-Project-Phoenix/design.git
       version: main
+    RC:
+      type: git
+      url:  git@github.com:estickel/teleop_ack_rc.git
+      verison: main
