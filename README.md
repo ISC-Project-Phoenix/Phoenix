@@ -15,17 +15,18 @@ If using Webots, you must install webots separately.
 ## Building
 
 1. Install ROS2 Humble, and ROS2 tools
-2. Install Webots
-3. Create your ros workspace, a dir of `ws_name/src`
-4. In `src`, clone this repo with Git
-5. Still in `src`, run `cat Phoenix/phoenix.repos | vcs import` to import source dependencies
-6. Cd to the workspace root, and run `rosdep install --from-paths src --ignore-src -r -y` to install binary dependencies
-7. Remember to source ROS2 before building `source /opt/ros/humble/setup.bash` and and to your bashrc with 'echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc'
-8. Still in workspace root, run `colcon build` to build the workspace. If using clang in your IDE,
+2. Install `sudo apt install python3-vcstool`
+3. Install Webots
+4. Create your ros workspace, a dir of `ws_name/src`
+5. In `src`, clone this repo with Git
+6. Still in `src`, run `cat Phoenix/phoenix.repos | vcs import` to import source dependencies
+7. Cd to the workspace root, and run `rosdep install --from-paths src --ignore-src -r -y` to install binary dependencies
+8. Remember to source ROS2 before building `source /opt/ros/humble/setup.bash` and and to your bashrc with 'echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc'
+9. Still in workspace root, run `colcon build` to build the workspace. If using clang in your IDE,
    run `colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON` (this command takes care of depthai errors)
     1. If using the compile commands, they are often created in build. Move it to the workspace root, and import it into
        your IDE tooling.
-9. Make sure your user is a part of the unix `dialout` group. This allows for it to connect to USB devices. In addition,
+10. Make sure your user is a part of the unix `dialout` group. This allows for it to connect to USB devices. In addition,
    make sure you
    have [set the udev rules for the OAK-d camera](https://docs.luxonis.com/en/latest/pages/troubleshooting/#udev-rules-on-linux),
    to allow for it to connect.
