@@ -25,7 +25,6 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch.conditions import IfCondition, UnlessCondition
-from launch.substitutions import PathJoinSubstitution
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
@@ -35,46 +34,56 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    # Launch arguments
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    config_file_name = LaunchConfiguration('config_file_name')
+    pkg_share = get_package_share_directory('phoenix_robot')
+    
+    # /home/redtoo/Documents/ws-phnx-gps/src/Phoenix/phoenix_robot/config/robot_localization/robot_localization_dual_ekf.yaml
+    rl_config = PathJoinSubstitution([pkg_share, 'config', 'robot_localization', 'robot_localization_dual_ekf.yaml'])
+    navsat_config = PathJoinSubstitution([pkg_share, 'config', 'navsat_transform', 'navsat_transform','navsat_transform.yaml'])
 
-    rl = Node(
+    # LOCAL EKF (odom -> base_link)
+    # No gps instead a smooth transtion. 
+    local_ekf = Node(
         package='robot_localization',
         executable='ekf_node',
-        name='ekf_filter_node',
+        name='ekf_filter_node_odom',
         output='screen',
-        parameters=[PathJoinSubstitution(
-            [get_package_share_directory('phoenix_robot'), 'config', 'robot_localization', config_file_name])
-        ],
-        remappings=[
-            ('/odometry/filtered', '/odom'),
-        ],
+        parameters=[rl_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
+        remappings=[('/odometry/filtered', '/odom')]
     )
-    # The NavSat Transform Node
-    start_navsat_transform_cmd = Node(
+
+    # GLOBAL EKF (map -> odom)
+    # This node provides the 'map' frame and is fed by the NavSat Transform Node
+    global_ekf = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node_map',
+        output='screen',
+        parameters=[rl_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
+        remappings=[('/odometry/filtered', '/odometry/global')]
+    )
+
+    # NAVSAT TRANSFORM NODE
+    # Converts Lat/Lon to X/Y and bridges the GPS into the Global EKF
+    navsat_transform = Node(
         package='robot_localization',
         executable='navsat_transform_node',
         name='navsat_transform',
         output='screen',
-        # Point this to your YAML config file!
-        parameters=[os.path.join(get_package_share_directory('phoenix_robot'), 'config','navsat_transform', 'navsat_transform' ,'navsat_transform.yaml')],
+        parameters=[navsat_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
         remappings=[
-            # these topics need to match what the topic that the robot is using
-            ('imu', '/phoenix/gps/imu'),             # Matches your EKF imu0
-            ('gps/fix', '/phoenix/navsat'),          # From your Vectornav
-            ('odometry/filtered', '/odometry/global') # The output of your EKF
+            ('imu', '/phoenix/imu'),           # Data from VectorNav
+            ('gps/fix', '/phoenix/navsat'),    # Data from VectorNav
+            ('odometry/filtered', '/odom'),    # Input from LOCAL EKF
+            ('odometry/gps', '/odometry/gps')  # Output to GLOBAL EKF
         ]
     )
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument('use_sim_time',
-                              default_value='false',
+                              default_value='true',
                               description='Use simulation clock if true'),
-        DeclareLaunchArgument('config_file_name',
-                              default_value='robot_localization.yaml',
-                              description='Name of the config file to load'),
         # Nodes
-        rl,
-        start_navsat_transform_cmd,
+        local_ekf,
+        global_ekf,
+        navsat_transform,
     ])

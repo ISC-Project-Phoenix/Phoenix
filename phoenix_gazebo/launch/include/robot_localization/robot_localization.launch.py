@@ -34,49 +34,55 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    # Launch arguments
-    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
-    rl_p = get_package_share_directory('robot_localization')
+    pkg_share = get_package_share_directory('phoenix_robot')
+    
+    rl_config = PathJoinSubstitution([pkg_share, 'config', 'robot_localization.yaml'])
+    navsat_config = PathJoinSubstitution([pkg_share, 'config', 'navsat_transform.yaml'])
 
-    # Paths to the separate config files
-    rl_config_path = os.path.join(
-        get_package_share_directory("phoenix_gazebo"), 
-        'config', 'robot_localization', 'robot_localization.yaml'
-    )
-    navsat_config_path = os.path.join(
-        get_package_share_directory("phoenix_gazebo"), 
-        'config', 'robot_localization', 'navsat_transform.yaml'
-    )
-    rl = Node(
+    # LOCAL EKF (odom -> base_link)
+    # No gps instead a smooth transtion. 
+    local_ekf = Node(
         package='robot_localization',
         executable='ekf_node',
-        name='ekf_filter_node',
+        name='ekf_filter_node_odom',
         output='screen',
-        parameters=[rl_config_path],
-        remappings=[
-            ('/odometry/filtered', '/odom'),
-        ],
+        parameters=[rl_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
+        remappings=[('/odometry/filtered', '/odom')]
     )
 
+    # GLOBAL EKF (map -> odom)
+    # This node provides the 'map' frame. It consumes the GPS odometry.
+    global_ekf = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node_map',
+        output='screen',
+        parameters=[rl_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
+        remappings=[('/odometry/filtered', '/odometry/global')]
+    )
+
+    # 3. NAVSAT TRANSFORM NODE
+    # Converts Lat/Lon to X/Y and bridges the GPS into the Global EKF
     navsat_transform = Node(
         package='robot_localization',
         executable='navsat_transform_node',
-        name='navsat_transform_node',
+        name='navsat_transform',
         output='screen',
-        parameters=[navsat_config_path],
+        parameters=[navsat_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
         remappings=[
-            ('imu', '/camera/mid/imu'), # Using  Webots IMU topic
-            ('gps/fix', '/gps/fix'),
-            ('odometry/filtered', '/odom'), # This feeds the EKF pose to navsat
+            ('imu', '/phoenix/imu'),           # Data from VectorNav
+            ('gps/fix', '/phoenix/navsat'),    # Data from VectorNav
+            ('odometry/filtered', '/odom'),    # Input from LOCAL EKF
+            ('odometry/gps', '/odometry/gps')  # Output to GLOBAL EKF
         ]
     )
-
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument('use_sim_time',
                               default_value='true',
                               description='Use simulation clock if true'),
         # Nodes
-        rl,
+        local_ekf,
+        global_ekf,
         navsat_transform,
     ])
