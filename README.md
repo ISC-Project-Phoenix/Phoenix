@@ -15,7 +15,7 @@ If using Webots, you must install webots separately.
 ## Building
 
 1. Install ROS2 Humble, and ROS2 tools
-2. Install `sudo apt install python3-vcstool`
+2. Install `sudo apt install python3-vcstool` & ` sudo apt install python3-rosdep2`
 3. Install Webots
 4. Create your ros workspace, a dir of `ws_name/src`
 5. In `src`, clone this repo with Git
