@@ -202,7 +202,6 @@ def generate_launch_description():
         poly_plan,
         poly_plan_ai,
         # vectornav,
-        GPS_waypoints,
+        # GPS_waypoints,
         teleop_ack_rc,
-        # teleop_ack_joy,
     ])

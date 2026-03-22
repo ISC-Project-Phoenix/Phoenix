@@ -31,8 +31,12 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+<<<<<<< HEAD
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 
+=======
+from launch.substitutions import PathJoinSubstitution
+>>>>>>> 81e19a3 (Fixed: PathJoinSubstitution updated teleop_ack_Rc included in gazeebo and robot)
 
 def generate_launch_description():
     pkg_share = get_package_share_directory('phoenix_robot')

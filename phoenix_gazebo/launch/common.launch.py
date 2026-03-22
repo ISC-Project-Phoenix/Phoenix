@@ -43,6 +43,19 @@ def generate_launch_description():
         }.items(),
         condition=UnlessCondition(use_wheel)
     )
+    # Your RC node
+    
+    teleop_ack_rc = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('teleop_ack_rc'),
+                        'launch',
+                        'teleop_ack_rc.launch.py')
+        ),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+        condition=UnlessCondition(use_wheel)  # optional: same condition as teleop_ack_joy
+    )
 
     logi_g29 = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -130,8 +143,9 @@ def generate_launch_description():
 
         # Nodes
         sim,
-        teleop_ack_joy,
+        #teleop_ack_joy,
         logi_g29,
         rviz,
-        robot_state_controller
+        robot_state_controller,
+        teleop_ack_rc
     ])
