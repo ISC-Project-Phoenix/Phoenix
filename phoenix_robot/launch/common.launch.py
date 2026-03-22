@@ -157,11 +157,21 @@ def generate_launch_description():
     )
     teleop_ack_rc = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
+            # /home/isc-learning2/Documents/dev/testing-2026-ws/src/Phoenix/phoenix_robot/launch/include/teleop_ack_rc/teleop_ack_rc.launch.py
             os.path.join(pkg_phoenix_robot, 'launch', 'include', 'teleop_ack_rc/teleop_ack_rc.launch.py')),
         launch_arguments={
             'use_sim_time': use_sim_time,
             'max_speed': "4.0"
         }.items(),
+    )
+
+    teleop_ack_joy = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_phoenix_gazebo, 'launch', 'include', 'teleop_ack_joy/teleop_ack_joy.launch.py')),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+            'max_speed': "4.0",
+        }.items()
     )
 
     return LaunchDescription([
@@ -187,11 +197,12 @@ def generate_launch_description():
         # camera,
         pir,
         pp,
-        # obj_detector_ai,
-        # obj_detector_cv,
-        # poly_plan,
-        # poly_plan_ai,
+        obj_detector_ai,
+        obj_detector_cv,
+        poly_plan,
+        poly_plan_ai,
         # vectornav,
-        # GPS_waypoints,
-        # teleop_ack_rc,
+        GPS_waypoints,
+        teleop_ack_rc,
+        # teleop_ack_joy,
     ])
