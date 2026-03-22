@@ -69,5 +69,5 @@ repositories:
       version: main
     teleop_ack_rc:
       type: git
-      url:  git@github.com:estickel/teleop_ack_rc.git
+      url:  git@github.com:ISC-Project-Phoenix/teleop_ack_rc.git
       verison: main
