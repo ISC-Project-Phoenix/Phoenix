@@ -1,5 +1,0 @@
-/phnx_io_ros:
-  ros__parameters:
-    kP: 1.0
-    kI: 1.0
-    kD: 0.1
