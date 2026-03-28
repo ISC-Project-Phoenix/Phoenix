@@ -1,6 +1,5 @@
-phnx_io_ros:
-  phnx_io_ros_node:
-    ros__parameters:
-      kP: 3.0
-      kI: 2.0
-      kD: 1.0
+/phnx_io_ros:
+  ros__parameters:
+    kP: 1.0
+    kI: 1.0
+    kD: 0.1
