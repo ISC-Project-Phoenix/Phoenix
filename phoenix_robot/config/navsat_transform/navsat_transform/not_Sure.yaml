@@ -17,10 +17,10 @@ navsat_transform_node:
 
 # Your IMU's yaw, once the magentic_declination_radians value is added to it, should report 0 when facing east. If it
 # doesn't, enter the offset here. Defaults to 0.
-        yaw_offset: 0.0
+        yaw_offset: 90.0
 
 # If this is true, the altitude is set to 0 in the output odometry message. Defaults to false.
-        zero_altitude: false
+        zero_altitude: true
 
 # If this is true, the transform world_frame->utm transform is broadcast for use by other nodes. Defaults to false.
         broadcast_utm_transform: false
@@ -31,7 +31,7 @@ navsat_transform_node:
 
 # If this is true, all received odometry data is converted back to a lat/lon and published as a NavSatFix message as
 # /gps/filtered. Defaults to false.
-        publish_filtered_gps: true
+        publish_filtered_gps: false
 
 # If this is true, the node ignores the IMU data and gets its heading from the odometry source (typically the
 # /odometry/filtered topic coming from one of robot_localization's state estimation nodes). BE CAREFUL when using this!

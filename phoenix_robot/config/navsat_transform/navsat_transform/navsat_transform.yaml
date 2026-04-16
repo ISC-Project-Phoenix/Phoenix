@@ -31,7 +31,7 @@ navsat_transform_node:
 
 # If this is true, all received odometry data is converted back to a lat/lon and published as a NavSatFix message as
 # /gps/filtered. Defaults to false.
-        publish_filtered_gps: true
+        publish_filtered_gps: false
 
 # If this is true, the node ignores the IMU data and gets its heading from the odometry source (typically the
 # /odometry/filtered topic coming from one of robot_localization's state estimation nodes). BE CAREFUL when using this!

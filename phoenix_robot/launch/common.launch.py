@@ -87,7 +87,7 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'max_speed': '8.0',
+            'max_speed': '4.0',
             'min_speed': '0.5'
         }.items(),
     )
@@ -197,11 +197,11 @@ def generate_launch_description():
         # camera,
         pir,
         pp,
-        obj_detector_ai,
-        obj_detector_cv,
-        poly_plan,
-        poly_plan_ai,
-        # vectornav,
-        # GPS_waypoints,
+        # obj_detector_ai,
+        # obj_detector_cv,
+        # poly_plan,
+        # poly_plan_ai,
+        vectornav,
+        GPS_waypoints,
         teleop_ack_rc,
     ])
