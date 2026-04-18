@@ -59,7 +59,7 @@ def generate_launch_description():
         name='ekf_filter_node_map',
         output='screen',
         parameters=[rl_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
-        remappings=[('/odometry/filtered', '/odometry/global')]
+        remappings=[('/odometry/filtered', '/odometry/gps')] # TODO make this '/odom_global/filtered' and change in GPS
     )
 
     # NAVSAT TRANSFORM NODE
@@ -69,12 +69,16 @@ def generate_launch_description():
         executable='navsat_transform_node',
         name='navsat_transform',
         output='screen',
-        parameters=[navsat_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
+        parameters=[navsat_config, 
+                    {'use_sim_time': LaunchConfiguration('use_sim_time'), 
+                     'yaw_offset':   LaunchConfiguration('yaw_offset')
+                     }],
         remappings=[
             ('imu', '/phoenix/imu'),           # Data from VectorNav
             ('gps/fix', '/phoenix/navsat'),    # Data from VectorNav
             ('odometry/filtered', '/odom'),    # Input from LOCAL EKF
-            ('odometry/gps', '/odometry/gps')  # Output to GLOBAL EKF
+            ('odometry/gps', '/odometry/gps'), # Output to GLOBAL EKF
+            ('gps/filtered', 'gps/filtered'),  # Extra gps/filtered sensor_msgs/NavSatFix 
         ]
     )
     return LaunchDescription([
@@ -82,6 +86,10 @@ def generate_launch_description():
         DeclareLaunchArgument('use_sim_time',
                               default_value='true',
                               description='Use simulation clock if true'),
+        DeclareLaunchArgument('yaw_offset',
+                              default_value='-0.105', # flaot for dearborn, needto change for purdue
+                              description='magnetic_declination_radians paramter'),
+        
         # Nodes
         local_ekf,
         global_ekf,
