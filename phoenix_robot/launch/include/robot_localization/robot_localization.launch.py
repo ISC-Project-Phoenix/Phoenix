@@ -59,7 +59,11 @@ def generate_launch_description():
         name='ekf_filter_node_map',
         output='screen',
         parameters=[rl_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
+<<<<<<< HEAD
         remappings=[('/odometry/filtered', '/odometry/gps')] # TODO make this '/odom_global/filtered' and change in GPS
+=======
+        remappings=[('/odometry/filtered', '/odometry/gps')]
+>>>>>>> 442b6ae (Alex's wonderful changes of many lines)
     )
 
     # NAVSAT TRANSFORM NODE
