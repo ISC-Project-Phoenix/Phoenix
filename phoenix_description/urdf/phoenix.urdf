@@ -393,6 +393,25 @@
         <child link="vectornav"/>
     </joint>
 
+    <!-- Dummy link to match the GPS frame_id -->
+    <link name="imu_link">
+        <visual>
+            <geometry>
+                <box size="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+        </inertial>
+    </link>
+
+    <joint name="imu_link_to_vectornav" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="vectornav"/>
+        <child link="imu_link"/>
+    </joint>
+
 <!-- Gazebo Plugins -->
     
   <gazebo>
