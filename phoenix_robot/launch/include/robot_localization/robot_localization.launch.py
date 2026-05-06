@@ -59,11 +59,7 @@ def generate_launch_description():
         name='ekf_filter_node_map',
         output='screen',
         parameters=[rl_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
-<<<<<<< HEAD
-        remappings=[('/odometry/filtered', '/odometry/gps')] # TODO make this '/odom_global/filtered' and change in GPS
-=======
-        remappings=[('/odometry/filtered', '/odometry/gps')]
->>>>>>> 442b6ae (Alex's wonderful changes of many lines)
+        remappings=[('/odometry/filtered', '/odometry/gps/filter')] # TODO make this '/odom_global/filtered' and change in GPS
     )
 
     # NAVSAT TRANSFORM NODE
@@ -71,7 +67,7 @@ def generate_launch_description():
     navsat_transform = Node(
         package='robot_localization',
         executable='navsat_transform_node',
-        name='navsat_transform',
+        name='navsat_transform_node',
         output='screen',
         parameters=[navsat_config, 
                     {'use_sim_time': LaunchConfiguration('use_sim_time'), 
@@ -81,7 +77,7 @@ def generate_launch_description():
             ('imu', '/phoenix/imu'),           # Data from VectorNav
             ('gps/fix', '/phoenix/navsat'),    # Data from VectorNav
             ('odometry/filtered', '/odom'),    # Input from LOCAL EKF
-            ('odometry/gps', '/odometry/gps'), # Output to GLOBAL EKF
+            ('odometry/gps', '/odometry/navsat_gps'), # Output to GLOBAL EKF
             ('gps/filtered', 'gps/filtered'),  # Extra gps/filtered sensor_msgs/NavSatFix 
         ]
     )
