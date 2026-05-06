@@ -194,7 +194,7 @@ def generate_launch_description():
         robot_state_controller,
         state_publishers,
         robot_localization,
-        # camera,
+        camera,
         pir,
         pp,
         # obj_detector_ai,
