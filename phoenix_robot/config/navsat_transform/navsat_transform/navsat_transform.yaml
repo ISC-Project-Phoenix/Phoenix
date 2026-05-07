@@ -47,5 +47,6 @@ navsat_transform_node:
 # origin (datum) using this parameter. The fields in the parameter represent latitude and longitude in decimal degrees,
 # and heading in radians. As navsat_transform_node assumes an ENU standard, a 0 heading corresponds to east.
 # wait this might actually be usefully for translating over maps lol -AFB
+# NOTE WE 
         datum: [55.944904, -3.186693, 0.0]
 
