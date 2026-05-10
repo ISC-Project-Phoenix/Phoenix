@@ -33,7 +33,7 @@ def generate_launch_description():
         launch_arguments={'use_sim_time': use_sim_time}.items(),
     )
 
-    ekf = IncludeLaunchDescription(
+    robot_localization = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_robot, 'launch')
             , '/include/robot_localization/robot_localization.launch.py'
@@ -87,7 +87,7 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'max_speed': '8.0',
+            'max_speed': '4.0',
             'min_speed': '0.5'
         }.items(),
     )
@@ -193,15 +193,15 @@ def generate_launch_description():
         # Nodes
         robot_state_controller,
         state_publishers,
-        ekf,
-        # camera,
+        robot_localization,
+        camera,
         pir,
         pp,
-        obj_detector_ai,
-        obj_detector_cv,
-        poly_plan,
-        poly_plan_ai,
-        # vectornav,
-        # GPS_waypoints,
+        # obj_detector_ai,
+        # obj_detector_cv,
+        # poly_plan,
+        # poly_plan_ai,
+        vectornav,
+        GPS_waypoints,
         teleop_ack_rc,
     ])
