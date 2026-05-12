@@ -34,8 +34,8 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
     # Hardcoded paths, so you should update these to use path join at some point
-    sim_waypoints = '/home/redtoo/Documents/ws-gps-phoenix/src/gps_publisher/src/gps_waypoints_purdue_sim_mk1.txt'
-    real_waypoints = '/home/isc/Documents/dev/phnx_ws_2026/data/gps_publisher/src/gps_waypoints_parking_lot_mk1.txt'
+    sim_waypoints = '/home/redtoo/Documents/ws-gps-phoenix/src/gps_publisher/data/gps_waypoints_purdue_sim_mk2.txt'
+    real_waypoints = '/home/isc/Documents/dev/phnx_ws_2026/src/gps_publisher/data/gps_waypoints_parking_lot_mk1.txt'
 
     # This expression picks the real path if use_sim_time is 'false', else sim path
     chosen_file = PythonExpression([

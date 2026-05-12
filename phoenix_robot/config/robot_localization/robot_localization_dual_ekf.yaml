@@ -65,13 +65,13 @@ ekf_filter_node_map:
     #         x_accel , y_accel  , z_accel]
 
     
-    imu0: /phoenix/gps/imu
+    imu0: /phoenix/imu
     imu0_config: [false, false, false, 
                   false, false, true, 
                   false, false, false, 
                   false, false, true, 
-                  true, true, true]
-    imu0_relative: false # Use absolute IMU data for global EKF
+                  false, false, true]
+    imu0_relative: true # Use absolute IMU data for global EKF
     
     # GPS Odometry produced by NavSat Transform
     odom1: /odometry/navsat_gps

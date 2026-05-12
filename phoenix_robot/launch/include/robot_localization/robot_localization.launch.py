@@ -76,7 +76,7 @@ def generate_launch_description():
         remappings=[
             ('imu', '/phoenix/imu'),           # Data from VectorNav
             ('gps/fix', '/phoenix/navsat'),    # Data from VectorNav
-            ('odometry/filtered', '/odom'),    # Input from LOCAL EKF
+            ('odometry/filtered', '/odometry/gps/filter'),    # Input from global EKF
             ('odometry/gps', '/odometry/navsat_gps'), # Output to GLOBAL EKF
             ('gps/filtered', 'gps/filtered'),  # Extra gps/filtered sensor_msgs/NavSatFix 
         ]
@@ -87,7 +87,7 @@ def generate_launch_description():
                               default_value='true',
                               description='Use simulation clock if true'),
         DeclareLaunchArgument('yaw_offset',
-                              default_value='-0.105', # flaot for dearborn, needto change for purdue
+                              default_value='-0.455', # flaot for dearborn, needto change for purdue
                               description='magnetic_declination_radians paramter'),
         
         # Nodes
