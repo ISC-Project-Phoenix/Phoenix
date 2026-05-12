@@ -25,11 +25,22 @@ from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 
 from launch_ros.actions import Node
+from launch.substitutions import PythonExpression
+
 
 
 def generate_launch_description():
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+
+    # Hardcoded paths, so you should update these to use path join at some point
+    sim_waypoints = '/home/redtoo/Documents/ws-gps-phoenix/src/gps_publisher/src/gps_waypoints_purdue_sim_mk1.txt'
+    real_waypoints = '/home/isc/Documents/dev/phnx_ws_2026/src/gps_publisher/src/gps_waypoints_parking_lot_mk1.txt'
+
+    # This expression picks the real path if use_sim_time is 'false', else sim path
+    chosen_file = PythonExpression([
+        "'", real_waypoints, "' if '", use_sim_time, "' == 'false' else '", sim_waypoints, "'"
+    ])
 
     plan = Node(
         package='yet_another_gps_publisher',
@@ -38,6 +49,7 @@ def generate_launch_description():
         output='screen',
         parameters=[{
             'use_sim_time': use_sim_time,
+            'waypoint_file_path': chosen_file
         }], )
 
     return LaunchDescription([

@@ -143,9 +143,9 @@ def generate_launch_description():
 
         # Nodes
         sim,
-        #teleop_ack_joy,
+        teleop_ack_joy,
         logi_g29,
         rviz,
         robot_state_controller,
-        teleop_ack_rc
+        # teleop_ack_rc
     ])

@@ -582,6 +582,7 @@
                 <topicName>/vectornav/gnss</topicName>
                 <updateRate>10</updateRate>
                 <alwaysOn>true</alwaysOn>
+                <parameter name="gpsReference">40.0 -86.9 0</parameter>
             </ros>
         </device>
 

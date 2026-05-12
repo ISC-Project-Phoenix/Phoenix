@@ -14,7 +14,7 @@ ekf_filter_node_odom:
     odom0: /odom_can #
     odom0_config: [false, false, false, 
                   false, false, false, 
-                  true, true, false, 
+                  true, false, false, 
                   false, false, false, 
                   false, false, false] 
                   # x y z
@@ -22,8 +22,13 @@ ekf_filter_node_odom:
                   # vx vy vz
                   # vr vp vy
                   # ax ay az
+    #        [x_pos   , y_pos    , z_pos,
+    #         roll    , pitch    , yaw,
+    #         x_vel   , y_vel    , z_vel,
+    #         roll_vel, pitch_vel, yaw_vel,
+    #         x_accel , y_accel  , z_accel]
     
-    imu0: /phoenix/imu
+    imu0: /phoenix/imu  # this is the vector_nav imu
     imu0_config: [false, false, false, 
                 false, false, false, 
                 false, false, false, 
@@ -36,6 +41,8 @@ ekf_filter_node_map:
     frequency: 30.0
     two_d_mode: true
     publish_tf: true
+    print_diagnostics: true
+    publish_tf: true
     
     # Frame configuration
     map_frame: map
@@ -47,20 +54,27 @@ ekf_filter_node_map:
     odom0: /odom_can
     odom0_config: [false, false, false, # x y z
                   false, false, false,  # x y z
-                  true, true, false,    # vx vy vz
+                  true, false, false,    # vx vy vz
                   false, false, false,  # vr vp vy
                   false, false, false]  # ax ay az
     
+    #        [x_pos   , y_pos    , z_pos,
+    #         roll    , pitch    , yaw,
+    #         x_vel   , y_vel    , z_vel,
+    #         roll_vel, pitch_vel, yaw_vel,
+    #         x_accel , y_accel  , z_accel]
+
+    
     imu0: /phoenix/gps/imu
     imu0_config: [false, false, false, 
-                  true, true, true, 
+                  false, false, true, 
                   false, false, false, 
-                  true, true, true, 
+                  false, false, true, 
                   true, true, true]
     imu0_relative: false # Use absolute IMU data for global EKF
     
     # GPS Odometry produced by NavSat Transform
-    odom1: /odometry/gps
+    odom1: /odometry/navsat_gps
     odom1_config: [true,  true,  false, # X, Y (Global position)
                    false, false, false, 
                    false, false, false, 

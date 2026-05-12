@@ -15,6 +15,7 @@ from launch.conditions import IfCondition, UnlessCondition
 def generate_launch_description():
     # ROS packages
     pkg_phoenix_gazebo = get_package_share_directory('phoenix_gazebo')
+    pkg_phoenix_robot = get_package_share_directory('phoenix_robot')
 
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
@@ -91,6 +92,34 @@ def generate_launch_description():
         condition=UnlessCondition(use_ai)
     )
 
+    vectornav = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_robot, 'launch'),
+            '/include/vectornav/vectornav.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+    )
+
+    robot_localization = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_robot, 'launch')
+            , '/include/robot_localization/robot_localization.launch.py'
+        ]),
+        launch_arguments={'use_sim_time': use_sim_time}.items(),
+    )
+
+    GPS_waypoints = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_phoenix_gazebo, 'launch'),
+            '/include/gps_waypoint_publisher/gps_waypoint_publisher.launch.py' 
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+    )
+
     pp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_phoenix_gazebo, 'launch'),
@@ -121,11 +150,13 @@ def generate_launch_description():
 
         # Nodes
         state_publishers,
-        ekf,
+        # ekf,  # old odom stack 
         webots,
-        obj_detector_ai,
-        obj_detector_cv,
+        # obj_detector_ai,
+        # obj_detector_cv,
         pp,
-        poly_plan,
-        poly_plan_ai
+        # poly_plan,
+        # poly_plan_ai
+        robot_localization,     # new locationization! 
+        GPS_waypoints           # auton now
     ])

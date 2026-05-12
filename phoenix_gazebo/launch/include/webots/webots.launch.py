@@ -25,7 +25,11 @@ def generate_launch_description():
             {'robot_description': urdf_path,
              'use_sim_time': True}
         ],
-        respawn=True
+        respawn=True,
+        remappings=[
+            ('/vectornav/imu', '/phoenix/imu'),
+            ('/vectornav/gnss', '/phoenix/navsat'),
+        ]
     )
 
     # The WebotsLauncher is a Webots custom action that allows you to start a Webots simulation instance.
