@@ -25,65 +25,58 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch.conditions import IfCondition, UnlessCondition
+from launch.substitutions import PathJoinSubstitution
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
-
 
 def generate_launch_description():
-    pkg_share = get_package_share_directory('phoenix_robot')
-    
-    rl_config = PathJoinSubstitution([pkg_share, 'config', 'robot_localization.yaml'])
-    navsat_config = PathJoinSubstitution([pkg_share, 'config', 'navsat_transform.yaml'])
+    # Launch arguments
+    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    config_file_name = LaunchConfiguration('config_file_name')
 
-    # LOCAL EKF (odom -> base_link)
-    # No gps instead a smooth transtion. 
-    local_ekf = Node(
-        package='robot_localization',
-        executable='ekf_node',
-        name='ekf_filter_node_odom',
-        output='screen',
-        parameters=[rl_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
-        remappings=[('/odometry/filtered', '/odom')]
-    )
 
-    # GLOBAL EKF (map -> odom)
-    # This node provides the 'map' frame. It consumes the GPS odometry.
-    global_ekf = Node(
-        package='robot_localization',
-        executable='ekf_node',
-        name='ekf_filter_node_map',
+    # Vectornav
+    start_vectornav_cmd = Node(
+        package='vectornav',
+        executable='vectornav',
+        name='vectornav',
         output='screen',
-        parameters=[rl_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
-        remappings=[('/odometry/filtered', '/odometry/global')]
-    )
-
-    # 3. NAVSAT TRANSFORM NODE
-    # Converts Lat/Lon to X/Y and bridges the GPS into the Global EKF
-    navsat_transform = Node(
-        package='robot_localization',
-        executable='navsat_transform_node',
-        name='navsat_transform',
-        output='screen',
-        parameters=[navsat_config, {'use_sim_time': LaunchConfiguration('use_sim_time')}],
+        parameters=[PathJoinSubstitution(
+            [get_package_share_directory('phoenix_robot'), 'config', 'vectornav', config_file_name])
+        ],
         remappings=[
-            ('imu', '/phoenix/imu'),           # Data from VectorNav
-            ('gps/fix', '/phoenix/navsat'),    # Data from VectorNav
-            ('odometry/filtered', '/odom'),    # Input from LOCAL EKF
-            ('odometry/gps', '/odometry/gps')  # Output to GLOBAL EKF
-        ]
+            ('/odometry/filtered', '/odom'),
+        ],
     )
+
+    # Node that converts raw vectornav data to ros msgs
+    start_vectornav_sensor_msgs_cmd = Node(
+        package='vectornav',
+        executable='vn_sensor_msgs',
+        output='screen',
+        # confirm remappings for the vectornav.
+        remappings=[
+            ('/vectornav/imu', '/phoenix/imu'),
+            ('vectornav/gnss', '/phoenix/navsat'),
+            ('/vectornav/magnetic', '/phoenix/mag'),
+        ],
+        parameters=[PathJoinSubstitution(
+            [get_package_share_directory('phoenix_robot'), 'config', 'vn_sensor_msgs', config_file_name])],
+    )
+
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument('use_sim_time',
-                              default_value='true',
+                              default_value='false',
                               description='Use simulation clock if true'),
+        DeclareLaunchArgument('config_file_name',
+                              default_value='vectornav.yaml',
+                              description='Name of the config file to load'),
         # Nodes
-        local_ekf,
-        global_ekf,
-        navsat_transform,
+        start_vectornav_cmd,
+        start_vectornav_sensor_msgs_cmd,
     ])

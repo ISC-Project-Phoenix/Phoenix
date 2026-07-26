@@ -39,14 +39,14 @@ repositories:
       type: git
       url: git@github.com:luxonis/depthai-ros.git
       version: 82ce67c
-    polynomial_planner:
+    vectornav:
       type: git
-      url: git@github.com:ISC-Project-Phoenix/Polynomial_planner.git
-      version: master
-    road_detectors:
+      url: https://github.com/dawonn/vectornav.git
+      version: ros2
+    gps_publisher:
       type: git
-      url: git@github.com:ISC-Project-Phoenix/road_detectors.git
-      version: master
+      url: git@github.com:ISC-Project-Phoenix/GPS-publisher.git
+      version: redtoo_dev_experiements
     hybrid_pp:
       type: git
       url: git@github.com:ISC-Project-Phoenix/hybrid_pp.git
@@ -63,3 +63,11 @@ repositories:
       type: git
       url: git@github.com:iscumd/teleop_ack_joy.git
       version: master
+    design:
+      type: git
+      url:  git@github.com:ISC-Project-Phoenix/design.git
+      version: main
+    teleop_ack_rc:
+      type: git
+      url:  git@github.com:ISC-Project-Phoenix/teleop_ack_rc.git
+      verison: main
